@@ -1,0 +1,36 @@
+/* Polices */
+:root{
+    --titre-font: "Monoton", sans-serif;
+    --sousTitre-font: "Rowdies", sans-serif;
+    --paragraphe-font:  "Poppins", sans-serif;
+}
+
+
+/* Couleurs */
+
+
+
+
+
+
+
+
+
+
+
+h1{
+    font-family: var(--titre-font);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20rem;
+}
+
+h2{
+    font-family: var(--sousTitre-font);
+    font-size: 2rem;
+}
+
+p{
+    font-family: var(--paragraphe-font);
+    font-size: 1rem;
+}
