@@ -7,7 +7,23 @@
 
 
 /* Couleurs */
+:root{
+    --header-couleur:#0D0106;
+    --footer-couleur: #0D0106;
+    --bouton-couleur: #0D0106;
+    --texte-couleurPrincipal:#0D0106;
+    --boutonSelectionner-couleur: #3626A7;
+    --section-couleurPrincipal: #3626A7;
+    --background-couleurPrincipal: #FBFBFF;
+    --carte-couleurPrincipal: #FBFBFF;
+    --texte-couleurSecondaire: #FBFBFF;
+    --background-couleurSecondaire: #657ED4;
+    --boutonHover-couleur: #657ED4;
+    --carte-couleurSecondaire: #657ED4;  
+    --titre-couleur: #FF331F;
+    --section-couleurSecondaire: #FF331F;
 
+}
 
 
 
