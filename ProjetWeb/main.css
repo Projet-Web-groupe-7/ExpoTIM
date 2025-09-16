@@ -12,7 +12,7 @@
     --main-paragraphe-font:  "Poppins", sans-serif;
 
     /* Footer */
-    --footer-nav-fonnt:"Poppins", sans-serif;
+    --footer-nav-font:"Poppins", sans-serif;
 
 }
 
@@ -140,7 +140,7 @@ footer{
 }
 
 footer nav{
-    font-family: var(--footer-nav-fonnt);
+    font-family: var(--footer-nav-font);
     font-size: 1rem;
     color: var(--texte-couleur-secondaire);
 }
