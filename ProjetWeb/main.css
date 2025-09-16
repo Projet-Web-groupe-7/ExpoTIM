@@ -1,52 +1,97 @@
 /* Polices */
 :root{
-    --titre-font: "Monoton", sans-serif;
-    --sousTitre-font: "Rowdies", sans-serif;
-    --paragraphe-font:  "Poppins", sans-serif;
+    --titre-accueil-font: "Monoton", sans-serif;
+
+    --header-nav-font:  "Poppins", sans-serif;
+
+    --main-sousTitre-font: "Rowdies", sans-serif;
+    --main-paragraphe-font:  "Poppins", sans-serif;
+
+    --footer-nav-fonnt:"Poppins", sans-serif;
+
 }
 
 
 /* Couleurs */
 :root{
-    --header-couleur:#0D0106;
-    --footer-couleur: #0D0106;
-    --bouton-couleur: #0D0106;
-    --texte-couleurPrincipal:#0D0106;
-    --boutonSelectionner-couleur: #3626A7;
-    --section-couleurPrincipal: #3626A7;
-    --background-couleurPrincipal: #FBFBFF;
-    --carte-couleurPrincipal: #FBFBFF;
-    --texte-couleurSecondaire: #FBFBFF;
-    --background-couleurSecondaire: #657ED4;
-    --boutonHover-couleur: #657ED4;
-    --carte-couleurSecondaire: #657ED4;  
-    --titre-couleur: #FF331F;
-    --section-couleurSecondaire: #FF331F;
+    --titre-accueil-couleur: #FF331F;
+
+    /* Header */
+    --header-nav-couleur-fond :#0D0106;
+    --header-nav-couleur-border:#FBFBFF;
+    --header-recherche-couleur-fond:#FBFBFF;
+    
+    /* Main */
+    --main-couleur-fond:#FBFBFF;
+
+    /* Footer */
+    --footer-couleur-fond: #0D0106;
+
+    /* Boutons */
+    --bouton-couleur-fond : #0D0106;
+    --bouton-couleur-fond-selectionner: #3626A7;
+    --bouton-couleur-fond-hover: #657ED4;
+    --bouton-couleur-font: #FBFBFF;
+
+    /* Textes */
+    --texte-couleur-principal:#0D0106;
+    --texte-couleur-secondaire: #FBFBFF;
+
+
+    /* Page accueil */
+    --section-EXPO-TIM-couleur-fond-principal: #3626A7;
+    --section-EXPO-TIM-couleur-fond-secondaire: #FF331F;
+    --section-aleatoire-couleur-fond: #FBFBFF;
+    --section-exposition-couleur-fond-principal: #3626A7;
+    --section-exposition-couleur-fond-secondaire: #FF331F;
+
+    /* Page projet */
+    --section-equipe-couleur-fond: #FBFBFF;
+    --section-projet-info-couleur-fond-principal: #3626A7;
+    --section-projet-info-couleur-fond-secondaire: #FF331F;
+    --section-recommendations-couleur-fond: #FBFBFF;
+
+
+    /* Page galerie */
+    --section-galerie-info-couleur-fond-principal: #3626A7;
+    --section-galerie-info-couleur-fond-secondaire: #FF331F;
+    --section-galerie-image-couleur-fond: #FBFBFF;
+
+
+    /* Cartes */
+    --carte-couleur-fond:#FBFBFF;
+    --carte-couleur-border:linear-gradient(90deg,rgba(101, 126, 212, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    --carte-couleur-border-alternatif:linear-gradient(90deg,rgba(255, 51, 31, 1) 0%, rgba(255, 255, 255, 1) 100%);
+
 
 }
 
 
 
-
-
-
-
-
-
-
 h1{
-    font-family: var(--titre-font);
+    font-family: var(--titre-accueil-font);
     font-weight: 400;
     font-style: normal;
     font-size: 20rem;
 }
 
-h2{
-    font-family: var(--sousTitre-font);
+header nav{
+    font-family: var(--header-nav-font);
+    font-size: 1rem;
+}
+
+main h2{
+    font-family: var(--main-sousTitre-font);
     font-size: 2rem;
 }
 
-p{
-    font-family: var(--paragraphe-font);
+main p{
+    font-family: var(--main-paragraphe-font);
+    font-size: 1rem;
+}
+
+
+footer nav{
+    font-family: var(--footer-nav-fonnt);
     font-size: 1rem;
 }
