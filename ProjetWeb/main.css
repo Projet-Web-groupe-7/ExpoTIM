@@ -1,12 +1,17 @@
 /* Polices */
 :root{
+    /* Accueil */
     --titre-accueil-font: "Monoton", sans-serif;
 
+    /* Header */
     --header-nav-font:  "Poppins", sans-serif;
+    --header-recherche-font:  "Poppins", sans-serif;
 
+    /* Main */
     --main-sousTitre-font: "Rowdies", sans-serif;
     --main-paragraphe-font:  "Poppins", sans-serif;
 
+    /* Footer */
     --footer-nav-fonnt:"Poppins", sans-serif;
 
 }
@@ -14,12 +19,15 @@
 
 /* Couleurs */
 :root{
+    /* Accueil */
     --titre-accueil-couleur: #FF331F;
 
     /* Header */
+    --header-couleur-fond:#0D0106;
     --header-nav-couleur-fond :#0D0106;
     --header-nav-couleur-border:#FBFBFF;
     --header-recherche-couleur-fond:#FBFBFF;
+    --header-recherche-couleur-border:#0D0106;
     
     /* Main */
     --main-couleur-fond:#FBFBFF;
@@ -29,7 +37,7 @@
 
     /* Boutons */
     --bouton-couleur-fond : #0D0106;
-    --bouton-couleur-fond-selectionner: #3626A7;
+    --bouton-couleur-fond-active: #3626A7;
     --bouton-couleur-fond-hover: #657ED4;
     --bouton-couleur-font: #FBFBFF;
 
@@ -66,32 +74,73 @@
 
 }
 
+/* Boutons */
+.boutons{
+    background-color:var(--bouton-couleur-fond);
+    color: var(--bouton-couleur-font);
+}
 
+.boutons:hover{
+    background-color: var(--bouton-couleur-fond-hover);
+}
 
-h1{
+.boutons:active{
+    background-color: var(--bouton-couleur-fond-active);
+}
+
+/* Titre accueil */
+.titreLogo{
     font-family: var(--titre-accueil-font);
     font-weight: 400;
     font-style: normal;
     font-size: 20rem;
+    color: var(--titre-accueil-couleur);
+}
+
+/* Header */
+header{
+    background-color: var(--header-couleur-fond);
 }
 
 header nav{
     font-family: var(--header-nav-font);
     font-size: 1rem;
+    background-color: var(--header-nav-couleur-fond);
+    border-color: var(--header-nav-couleur-border);
+    color: var(--texte-couleur-secondaire);
+}
+
+.recherche{
+    font-family: var(--header-recherche-font);
+    color: var(--texte-couleur-principal);
+    background-color: var(--header-recherche-couleur-fond);
+    border-color: var(--header-recherche-couleur-border);
+}
+
+/* Main */
+main{
+    background-color: var(--main-couleur-fond);
 }
 
 main h2{
     font-family: var(--main-sousTitre-font);
     font-size: 2rem;
+    color: var(--texte-couleur-principal);
 }
 
 main p{
     font-family: var(--main-paragraphe-font);
     font-size: 1rem;
+    color: var(--texte-couleur-principal);
 }
 
+/* Footer */
+footer{
+    background-color: var(--footer-couleur-fond);
+}
 
 footer nav{
     font-family: var(--footer-nav-fonnt);
     font-size: 1rem;
+    color: var(--texte-couleur-secondaire);
 }
