@@ -1,4 +1,4 @@
-<p>front-page.php</p>
+<p>index.php</p>
 <?php get_header(); ?>
 
     <main>
