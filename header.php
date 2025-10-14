@@ -20,6 +20,8 @@
                         }
                     ?>
             </figure>
+            <input type="checkbox" id="maCheckbox" aria-label="menu-burger">
+           
             <div class="entete-navigation">
                 <?php wp_nav_menu(array(
                     "menu" => "principal",
@@ -30,5 +32,11 @@
                     <?php get_search_form(); ?>
                 </div>
             </div>
+
+            <label for="maCheckbox">
+                <div class="trait"></div>
+                <div class="trait"></div>
+                <div class="trait"></div>
+            </label>
         </div>
     </header>

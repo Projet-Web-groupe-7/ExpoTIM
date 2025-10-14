@@ -3,40 +3,74 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* allows wrapping when space is tight */
+  gap: 1rem;
 }
 
+#maCheckbox {
+  display: none;
+}
+
+/* LOGO */
 .custom-logo {
-  max-width: 220px;
+  max-width: 180px;
   height: auto;
 }
 
+/* NAVIGATION CONTAINER */
 .entete-navigation {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   flex-grow: 1;
-  position: relative;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* MENU */
+.entete-menu {
+  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-.entete-menu {
-  flex-grow: 1;
+#menu-principal {
   display: flex;
-  justify-content: center; 
-  margin-left: -20rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
+#menu-principal a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid white;
+  border-radius: 1.2rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+#menu-principal a:hover{
+  background-color: var(--bouton-couleur-fond-hover);
+}
+
+#menu-principal a:active{
+  background-color: var(--bouton-couleur-fond-active);
+}
+
+/* SEARCH */
 .entete-recherche {
-  position: absolute;
-  right: 2rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .recherche {
   display: flex;
   height: 2rem;
   width: 14rem;
-  border: 2px solid rgba(0,0,0, .01);
+  border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 2px;
 }
 
@@ -45,19 +79,19 @@
 }
 
 .recherche-input {
-  border:none;
+  border: none;
   outline: none;
-  flex : 1 0 auto;
+  flex: 1;
   padding: 3px;
 }
 
-.recherche-input::placeholder{
-  color: rgba(0,0,0, .2);
+.recherche-input::placeholder {
+  color: rgba(0, 0, 0, 0.2);
   font-style: italic;
 }
 
 .recherche-bouton {
-  background-color: black;
+  background-color:var(--header-nav-couleur-fond);
   border: none;
   padding: 0 10px;
   cursor: pointer;
@@ -67,30 +101,89 @@
   transition: background 0.2s ease;
 }
 
-#menu-principal {
+/* Tablette*/
+@media screen and (max-width: 1024px) {
+  .entete {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .entete-menu {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .entete-recherche {
+    position: static;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .recherche {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Téléphone */
+@media screen and (max-width: 720px) {
+  .entete {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #menu-principal {
     display: flex;
-    gap: 2rem; 
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #menu-principal a {
+    border: none;
+  }
+
+  .trait {
+    top:0;
+    right: 0;
+    background: var(--header-nav-couleur-border);
+    width: 30px;
+    height: 2px;
+    margin-bottom: 10px;
+    transition: 0.2s;
+    text-align: center;
+  }
+
+  /* background pour le label */
+  label {
+      background-color: var(--header-nav-couleur-fond);
+      width: 30px;
+      height: 26px;
+      display: block;
+      z-index: 6;
+  }
+
+  /*Translation rotation et transition du 1er trait */
+  #maCheckbox:checked ~ label .trait:nth-of-type(1) {
+      transform: translateY(12px) rotate(45deg);
+      transition: 0.2s;
+  }
+
+  /*Translation rotation et transition du 3eme trait */
+  #maCheckbox:checked ~ label .trait:nth-of-type(3) {
+      transform: translateY(-12px) rotate(-45deg);
+      transition: 0.2s;
+  }
+
+  /*Transition du 2eme trait */
+  #maCheckbox:checked ~ label .trait:nth-of-type(2) {
+      transform: scale(0);
+      transition: 0.2s;
+  }
+
+  #maCheckbox:checked ~ .entete-navigation {
+      transform: translateX(0);
+  }
 }
 
-  
-#menu-principal a {
-    display: inline-block;
-    padding: 0.6rem 2rem;
-    border: 2px solid white; 
-    border-radius: 1.2rem; 
-    text-decoration: none;
-    transition: all 0.3s ease;
 
-}
-  
 
-#menu-principal a:hover{
-    background-color: var(--bouton-couleur-fond-hover);
-}
-
-#menu-principal a:active{
-    background-color: var(--bouton-couleur-fond-active);
-}
