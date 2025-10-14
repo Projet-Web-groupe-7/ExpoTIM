@@ -74,6 +74,12 @@
 
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Boutons */
 .boutons{
     background-color:var(--bouton-couleur-fond);
@@ -105,9 +111,16 @@ header{
 header nav{
     font-family: var(--header-nav-font);
     font-size: 1rem;
-    background-color: var(--header-nav-couleur-fond);
+    /* background-color: var(--header-nav-couleur-fond); */
     border-color: var(--header-nav-couleur-border);
+    
+}
+
+
+header nav a{
     color: var(--texte-couleur-secondaire);
+    text-decoration: none;
+    
 }
 
 .recherche{
