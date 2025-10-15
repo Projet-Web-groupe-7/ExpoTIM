@@ -28,12 +28,11 @@
                     'container' => 'nav',
                     'container_class' => 'entete-menu'
                 )); ?>
-                <div class="entete-recherche">
+            </div>
+            <div class="entete-recherche">
                     <?php get_search_form(); ?>
                 </div>
-            </div>
-
-            <label for="maCheckbox">
+            <label for="maCheckbox" class="boutons">
                 <div class="trait"></div>
                 <div class="trait"></div>
                 <div class="trait"></div>
