@@ -87,9 +87,9 @@
     transform: rotate3d(0, 0, 0, 180deg);
     transition: transform .7s;
 }
-/* .carte:hover .container{
+.carte:hover .container{
     transform: rotate3d(0, 1, 0, 180deg);
-} */
+}
 .carte.turned .container{
     transform: rotate3d(0, 1, 0, 180deg);
 }
@@ -105,10 +105,11 @@
     border-radius: 20px;
 
     backface-visibility: hidden;
-    /* position: absolute; */
+    position: absolute;
 }
 .carte .back{
-    background-color: rgb(24, 130, 200);
+    background-color: rgb(138, 28, 21);
+    /* background-image: url("images/cartes/carteDosR.png"); */
 }
 .carte .front{
     display: flex;
@@ -117,11 +118,9 @@
     align-items: center;
     font-family: var(--main-paragraphe-font);
 
-    /* padding: 15px 20px; */
-
     background-color: var(--carte-couleur-fond);
 
-    /* transform: rotate3d(0, 1, 0, 180deg); */
+    transform: rotate3d(0, 1, 0, 180deg);
 }
 .carte .front .premier-etage{
     width: 100%;
@@ -156,7 +155,7 @@
     align-self: flex-start;
 }
 .carte.heart .container .front{
-    border: 6px solid linear-gradient(180deg,rgba(255, 51, 31, 1) 0%, rgba(248, 245, 245, 1) 51%, rgba(255, 51, 31, 1) 100%);
+    border: 6px solid rgb(255, 51, 31);
 }
 
 
