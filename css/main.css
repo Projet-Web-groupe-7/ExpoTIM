@@ -20,7 +20,7 @@
 /* Couleurs */
 :root{
     /* Accueil */
-    --titre-accueil-couleur: #FF331F;
+    --titre-accueil-couleur: #FBFBFF;
 
     /* Header */
     --header-couleur-fond:#0D0106;
@@ -74,10 +74,17 @@
 
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Boutons */
 .boutons{
     background-color:var(--bouton-couleur-fond);
     color: var(--bouton-couleur-font);
+   
 }
 
 .boutons:hover{
@@ -93,8 +100,9 @@
     font-family: var(--titre-accueil-font);
     font-weight: 400;
     font-style: normal;
-    font-size: 20rem;
+    font-size: clamp(5rem, 9vw, 10rem);
     color: var(--titre-accueil-couleur);
+    text-align: center;
 }
 
 /* Header */
@@ -105,9 +113,23 @@ header{
 header nav{
     font-family: var(--header-nav-font);
     font-size: 1rem;
-    background-color: var(--header-nav-couleur-fond);
+    /* background-color: var(--header-nav-couleur-fond); */
     border-color: var(--header-nav-couleur-border);
+    
+}
+
+
+header nav a{
+    
     color: var(--texte-couleur-secondaire);
+    text-decoration: none;
+    
+}
+
+@media screen and (max-width: 720px) {
+    header nav a{
+        color: var(--texte-couleur);
+    }
 }
 
 .recherche{

@@ -1,0 +1,32 @@
+.main-front-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, var(--section-EXPO-TIM-couleur-fond-principal), var(--section-EXPO-TIM-couleur-fond-secondaire));
+  min-height: 100vh;
+  width: 100%;
+  row-gap: 2rem;
+}
+
+/* Section contenant le logo, la vidéo et la description */
+.hero {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  row-gap: 2rem;
+}
+
+.video-front-page {
+  background-color: lightgray;
+  width: 100vw;
+}
+
+/* Description de l'exposition sous la vidéo */
+.desc-expo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  margin: 0 auto;
+  width: 80vw;
+}
