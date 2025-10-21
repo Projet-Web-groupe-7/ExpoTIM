@@ -21,7 +21,7 @@
             <?php
                 //code pour alterner le symbole de la carte
                 $index = 0;
-                $nbCartes = 8;
+                $nbCartes = 32;
 
                 function classSymbole(){
                     global $index;

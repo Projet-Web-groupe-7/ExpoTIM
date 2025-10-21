@@ -13,6 +13,17 @@ main.gallerie{
     color: var(--texte-couleur-secondaire);
 }
 
+/* main.gallerie section#gallerie-cartes{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+} */
+main.gallerie section#gallerie-cartes{
+    display: grid;
+    grid-template-columns: repeat(5, 325px);
+}
+
 
 /* //////////////////////////////////////////////////// style cartes */
 
@@ -29,23 +40,25 @@ main.gallerie{
     width: 259px;
     height: 388px;
     margin: 20px;
+    margin: 37;
     /* transition pour le déplacement */
     transition: transform .7s;
+    /* margin: calc((20% - 259px)/2); */
 }
 /* le container est ce qui tourne */
 .carte .container{
-    width: 100%;
-    height: 100%;
+    width: 259px;
+    height: 388px;
 
     transform-style: preserve-3d;
     transform: rotate3d(0, 0, 0, 180deg);
     transition: transform .7s;
 }
 .carte:hover .container{
-    transform: rotate3d(0, 1, 0, 180deg);
+    /* transform: rotate3d(0, 1, 0, 180deg) translateX(-50px); */
 }
 .carte.turned .container{
-    transform: rotate3d(0, 1, 0, 180deg);
+    transform: rotate3d(0, 1, 0, 180deg) translateX(-50px);
 }
 
 
