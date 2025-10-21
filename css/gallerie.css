@@ -17,12 +17,11 @@ main.gallerie{
 /* //////////////////////////////////////////////////// style cartes */
 
 .paquet{
-    width: 259px;
-    height: 388px;
-    border: 5px solid red;
-    background-color: rgb(0, 52, 108);
-
-    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    visibility: hidden;
 }
 
 
@@ -56,7 +55,7 @@ main.gallerie{
 .carte .back,.front{
     width: 100%;
     height: 100%;
-    border: 6px solid red;
+    /* border: 6px solid red; */
     border-radius: 20px;
 
     backface-visibility: hidden;
@@ -64,7 +63,7 @@ main.gallerie{
 }
 .carte .back{
     background-color: rgb(138, 28, 21);
-    /* background-image: url("images/cartes/carteDosR.png"); */
+    background-image: url("images/cartes/carteDosR.png");
 }
 .carte .front{
     display: flex;
@@ -108,9 +107,6 @@ main.gallerie{
 .front .symbole:nth-of-type(2){
     margin: 0 15px 15px 15px;
     align-self: flex-start;
-}
-.carte.heart .container .front{
-    border: 6px solid rgb(255, 51, 31);
 }
 
 
