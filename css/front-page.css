@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, var(--section-EXPO-TIM-couleur-fond-principal), var(--section-EXPO-TIM-couleur-fond-secondaire));
+  background: var(--main-couleur-fond);
   min-height: 100vh;
   width: 100%;
   row-gap: 2rem;
