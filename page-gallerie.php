@@ -41,7 +41,7 @@
                     //echo "..." . classSymbole();
             ?>
 
-                <div class="carte <?= classSymbole(); ?>">
+                <div class="carte hidden <?= classSymbole(); ?>">
                     <div class="container">
                         <div class="front">
                             <div class="premier-etage">
@@ -99,3 +99,5 @@
     }
 
 </style>
+
+<script src="js/cartes.js"></script>
