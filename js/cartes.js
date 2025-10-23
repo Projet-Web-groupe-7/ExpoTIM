@@ -47,8 +47,8 @@ function deal(){
     cartes[i].classList.remove("hidden")
 
     //sortir les cartes du paquet
-    let section = document.querySelector("section");
-    section.append(cartes[i]);
+    // let section = document.querySelector("section");
+    // section.append(cartes[i]);
 
     // deplacer les cartes
     let paq = document.querySelector(".paquet");
