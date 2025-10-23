@@ -1,4 +1,4 @@
-<p>page-galerie.php</p>
+<p>page-gallerie.php</p>
 <?php get_header(); ?>
 
     <main class="gallerie">
@@ -65,8 +65,15 @@
 </body>
 </html>
 
+
+<!-- cartes differentes -->
+<?php
+    $imgHeart = get_field("heart_symbol");
+    $imgSpade = get_field("spade_symbol");
+    $imgDiamond = get_field("diamond_symbol");
+    $imgclub = get_field("club_symbol");
+?>
 <style>
-    /* ////////////////////////// cartes differentes */
     /* coeur */
     .carte.heart .container .front, .carte.diamond .container .front, .carte.heart .container .back, .carte.diamond .container .back{
         border: 6px solid red;
@@ -83,21 +90,20 @@
 
     /* symboles */
     .carte.heart .container .front .symbole{
-        background-image: url("<?=  ?>");
+        background-image: url("<?= $imgHeart?>");
         /* background-color:red; */
     }
     .carte.diamond .container .front .symbole{
-        /* background-image: url("images/hearts.png"); */
-        background-color:blue;
+        background-image: url("<?= $imgDiamond?>");
+        /* background-color:blue; */
     }
     .carte.spade .container .front .symbole{
-        /* background-image: url("images/hearts.png"); */
-        background-color:grey;
+        background-image: url("<?= $imgSpade?>");
+        /* background-color:grey; */
     }
     .carte.club .container .front .symbole{
-        /* background-image: url("images/hearts.png"); */
-        background-color:black;
+        background-image: url("<?= $imgclub?>");
+        /* background-color:black; */
     }
 
 </style>
-<script src="js/cartes.js"></script>

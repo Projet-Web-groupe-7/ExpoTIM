@@ -109,18 +109,18 @@ main.gallerie section#gallerie-cartes{
     background-color: #D9D9D9;
 }
 .front .symbole{
-    width: 22px;
-    height: 24px;
+    width: 26px;
+    height: 28px;
     background-size: contain;
     background-position: center;
 
 
-    /* background-image: url("images/hearts.png"); */
-    background-color:green;
+    /* background-color:green; */
 }
 .front .symbole:nth-of-type(2){
     margin: 0 15px 15px 15px;
     align-self: flex-start;
+    transform: rotate(180deg);
 }
 
 
