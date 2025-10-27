@@ -21,7 +21,7 @@
     <?php  endif; ?>
     <?php  if  ($projet_arcade_image): ?>
         <div>
-            <img src="<?php  echo $projet_arcade_image ['url'] ?>" alt="<?php $projet_arcade_nom?>">
+            <img src="<?php  echo $projet_arcade_image ['url'] ?>" alt="<?php $projet_arcade_nom?>" style="height: 500px; width: 500px;">
         </div>
     <?php  endif; ?>
     <?php  if  ($projet_arcade_membre1): ?>
