@@ -1,5 +1,7 @@
 body{
-    background: linear-gradient(180deg,rgba(101, 126, 212, 1) 6%, rgba(178, 95, 126, 1) 61%, rgba(255, 56, 61, 1) 96%);
+   
+    background: linear-gradient(to bottom,  #090730 0%,#1c1696 100%);
+
 }
 main.gallerie{
     padding: 0 50px;

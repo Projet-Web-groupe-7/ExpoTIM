@@ -23,20 +23,21 @@
     --titre-accueil-couleur: #FF331F;
 
     /* Header */
-    --header-couleur-fond:#080730;
-    --header-nav-couleur-fond :#080730;
-    --header-nav-couleur-border:#FBFBFF;
+    --header-couleur-fond:#090730;
+    --header-nav-couleur-fond :#090730;
+    --header-nav-couleur-border:#000000;
     --header-recherche-couleur-fond:#FBFBFF;
-    --header-recherche-couleur-border:#080730;
+    --header-recherche-couleur-border:#090730;
     
     /* Main */
-    --main-couleur-fond: linear-gradient(to bottom, #080730, #657ED4);
+    --main-couleur-fond: linear-gradient(to bottom,  #090730 0%,#1c1696 100%);
+
 
     /* Footer */
-    --footer-couleur-fond: #080730;
+    --footer-couleur-fond: #000F5E;
 
     /* Boutons */
-    --bouton-couleur-fond : #080730;
+    --bouton-couleur-fond : #090730;
     --bouton-couleur-fond-active: #3626A7;
     --bouton-couleur-fond-hover: #657ED4;
     --bouton-couleur-font: #FBFBFF;
@@ -47,7 +48,7 @@
 
 
     /* Page accueil */
-    --section-EXPO-TIM-couleur-fond-principal: #080730;
+    --section-EXPO-TIM-couleur-fond-principal: #090730;
     --section-EXPO-TIM-couleur-fond-secondaire: #657ED4;
     --section-aleatoire-couleur-fond: #FBFBFF;
     --section-exposition-couleur-fond-principal: #3626A7;

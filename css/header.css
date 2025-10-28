@@ -5,6 +5,7 @@
   padding: 1rem 2rem;
   flex-wrap: wrap; /* allows wrapping when space is tight */
   gap: 1rem;
+  margin: 0;
 }
 
 #maCheckbox {
