@@ -1,8 +1,12 @@
+<h1 class="titreLogo"><?php echo get_bloginfo('name'); ?></h1>
 <?php get_header(); ?>
     <main class="main-front-page">
         <!-- Section contenant le logo, la vidéo et la description -->
         <section class="hero">
-                <div class="desc-expo">
+            <video class="video-front-page" src="">
+                
+            </video>
+            <div class="desc-expo">
                 <h2>C'est quoi l'expo TIM?</h2>
                 <p><?php echo get_theme_mod('hero_desc', __('Bienvenue sur le site de l\'exposition des travaux des étudiants du programme TIM', 'theme_5w5')); ?></p>
                 <div class="fondCarteAS"></div>
@@ -12,8 +16,7 @@
                     <img src="../images/cartes/spades.png" alt="motifs">
                     <img src="../images/cartes/hearts.png" alt="motifs">
                 </div>
-            </div>
-            
+            </div>     
         </section>
         <section class="projet-random">
             <h2>Choisis un projet au hasard</h2>
