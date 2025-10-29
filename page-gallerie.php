@@ -70,10 +70,15 @@
 
 <!-- cartes differentes -->
 <?php
+    // symbols 
     $imgHeart = get_field("heart_symbol");
     $imgSpade = get_field("spade_symbol");
     $imgDiamond = get_field("diamond_symbol");
     $imgclub = get_field("club_symbol");
+
+    //dos des cartes
+    $dosRouge = get_field("derriere_cartes_rouge");
+    $dosBleu = get_field("derriere_cartes_bleu");
 ?>
 <style>
     /* coeur */
@@ -81,13 +86,15 @@
         border: 6px solid red;
     }
     .carte.heart .container .back, .carte.diamond .container .back{
-        background-color: rgb(156, 0, 0);
+        /* background-color: rgb(156, 0, 0); */
+        background-image: url(<?= $dosRouge ['url']?>);
     }
     .carte.spade .container .front, .carte.club .container .front, .carte.spade .container .back, .carte.club .container .back{
         border: 6px solid blue;
     }
     .carte.spade .container .back, .carte.club .container .back{
-        background-color: rgb(0, 4, 130);
+        /* background-color: rgb(0, 4, 130); */
+        background-image: url(<?= $dosBleu ['url']?>);
     }
 
     /* symboles */
