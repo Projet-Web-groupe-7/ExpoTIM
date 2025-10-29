@@ -1,5 +1,5 @@
 <?php
-    $footer_couleur_arriere = get_theme_mod('footer_couleur_arriere', '#080730');
+    $footer_couleur_arriere = get_theme_mod('footer_couleur_arriere', '#000F5E');
     $footer_couleur_texte = get_theme_mod('footer_couleur_texte', '#B6B7C1');
     
 ?>

@@ -12,6 +12,19 @@
 </head>
 <body>
     <header>
+
+              <h1 class="titreLogo"><?php echo get_bloginfo('name'); ?></h1>
+            <figure class="entete__logo">
+                <?php 
+                if (function_exists('the_custom_logo')) {
+                    the_custom_logo();
+                }; 
+                ?>
+            </figure>
+            <video class="video-front-page" src="">
+                
+            </video>
+  
         <div class="entete">
             <figure class="entete-logo">
                     <?php  
