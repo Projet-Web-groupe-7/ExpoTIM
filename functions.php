@@ -3,7 +3,9 @@ function theme_tp_enqueue_styles() {
     wp_enqueue_style('normalize', get_template_directory_uri() . '/css/normalize.css'); 
     wp_enqueue_style('main-style', get_stylesheet_uri()); 
     // fichiers css
+    wp_enqueue_style('normalize', get_template_directory_uri() . '/css/normalize.css'); 
     wp_enqueue_style('main-css', get_template_directory_uri() . '/css/main.css'); 
+    wp_enqueue_style('expo-header-style', get_template_directory_uri() . '/css/header.css');
     wp_enqueue_style('main-gallerie', get_template_directory_uri() . '/css/gallerie.css'); 
 
 

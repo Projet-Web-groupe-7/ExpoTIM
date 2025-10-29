@@ -39,27 +39,49 @@
                     return $suit;
                 }
 
-                //loop instancier les cartes
-                for ($i = 0; $i <= $nbCartes; $i++) {
-                    //echo "..." . classSymbole();
+                // instancier les cartes
+                $args= array(
+                    'posts_per_page'  => -1,
+                    'post_type'       => 'projets-arcade',
+                );
+
+                $the_query = new WP_Query($args);
+
+                if($the_query->have_posts()){
+                    while($the_query->have_posts()): $the_query -> the_post();
+
+                    $post_name = get_field('projet-arcade_nom');
+                    $post_img = get_field('projet-arcade_image');;
             ?>
 
-                <div class="carte hidden <?= classSymbole(); ?>">
-                    <div class="container">
-                        <div class="front">
-                            <div class="premier-etage">
-                                <p>Nom du projet</p>
-                                <div class="symbole"></div>
-                            </div>
-                            <img src="" alt="image du projet">
+            <!-- lien projet -->
+            <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>">
+                <div class="container">
+                    <div class="front">
+                        <div class="premier-etage">
+                            <!-- nom projet -->
+                            <p><?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?></p>
                             <div class="symbole"></div>
                         </div>
-
-
-                        <div class="back"></div>
+                        <!-- img projet -->
+                        <img src="<?php if($post_img){echo $post_img ['url'];}?>" alt="<?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?>">
+                        <div class="symbole"></div>
                     </div>
+
+
+                    <div class="back"></div>
                 </div>
-                <?php } ?>
+            </a>
+            <?php
+                    endwhile;
+                } else {
+            ?>
+            <h1>Oops! <br> Aucun projet...</h1>
+            <?php 
+                }
+                // tres important!!
+                wp_reset_postdata();
+            ?>
         </section>
     </main>
     
@@ -74,6 +96,10 @@
     $imgSpade = get_field("spade_symbol");
     $imgDiamond = get_field("diamond_symbol");
     $imgclub = get_field("club_symbol");
+
+    echo '<!-- Debug symbols: ';
+var_dump($imgHeart, $imgSpade, $imgDiamond, $imgClub);
+echo ' -->';
 ?>
 <style>
     /* coeur */
@@ -94,6 +120,7 @@
     .carte.heart .container .front .symbole{
         background-image: url("<?= $imgHeart?>");
         /* background-color:red; */
+        
     }
     .carte.diamond .container .front .symbole{
         background-image: url("<?= $imgDiamond?>");
