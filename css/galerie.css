@@ -1,7 +1,7 @@
 body{
    
     background: linear-gradient(to bottom,  #090730 0%,#1c1696 100%);
-
+    position: relative;
 }
 main.gallerie{
     padding: 0 50px;

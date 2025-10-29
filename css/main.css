@@ -20,12 +20,12 @@
 /* Couleurs */
 :root{
     /* Accueil */
-    --titre-accueil-couleur: #FF331F;
+    --titre-accueil-couleur: #ffffff;
 
     /* Header */
     --header-couleur-fond:#090730;
     --header-nav-couleur-fond :#090730;
-    --header-nav-couleur-border:#000000;
+    --header-nav-couleur-border:#ffffff;
     --header-recherche-couleur-fond:#FBFBFF;
     --header-recherche-couleur-border:#090730;
     
