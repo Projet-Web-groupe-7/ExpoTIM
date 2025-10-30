@@ -54,25 +54,30 @@
   display: flex;
   flex-direction: column;
 }
-details {
+.expo-menu li {
   margin: 10px 0;
   border: blue solid 3px;
   background-color: #f7f7f7;
   border-radius: 8px;
-  padding: 30px;
-}
-
-details:hover {
- padding: 100px;
-}
-summary {
+  width: 100%;
   cursor: pointer;
   font-weight: bold;
   list-style: none; 
-  
+  transition: padding 0.3s ease;
 }
 
-details[open] {
+.expo-menu li:hover {
+ padding: 100px;
+}
+
+.expo-menu li a {
+  display: block;
+  padding: 30px;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+}
+.expo-menu[open] {
   background-color: #f7f7f7;
 }
 

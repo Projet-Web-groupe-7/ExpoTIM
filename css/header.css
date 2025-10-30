@@ -7,7 +7,6 @@
   gap: 1rem;
   margin: 0;
   background-color:var(--header-couleur-fond);
-  -webkit-box-shadow: 0 10px 10px 0 #0b0b0b;
   box-shadow: 0 10px 10px 0 #0b0b0b;
 
   z-index: 1000;
@@ -25,7 +24,6 @@
 .custom-logo {
   max-width: 180px;
   height: auto;
-  border: red solid 3px;
 }
 
 /* NAVIGATION CONTAINER */
@@ -162,7 +160,7 @@
     margin: -1px;
     padding: 0;
     border: 0;
-    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
     clip-path: inset(50%);
     overflow: hidden;
     white-space: nowrap;
