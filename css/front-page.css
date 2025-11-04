@@ -6,7 +6,7 @@
   background: var(--main-couleur-fond);
   min-height: 100vh;
   width: 100%;
-  row-gap: 2rem;
+  row-gap: 3rem;
 }
 
 /* Section contenant le logo, la vidéo et la description */
@@ -19,14 +19,70 @@
 
 .video-front-page {
   background-color: lightgray;
-  width: 100vw;
+  width: 100%;
 }
 
 /* Description de l'exposition sous la vidéo */
-.desc-expo {
+.desc-expo, .projet-random, .decks {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
   row-gap: 1rem;
   margin: 0 auto;
   width: 80vw;
+}
+
+.desc-expo {
+  padding-bottom: 90px;
+  padding: 90px;
+  border-bottom: white solid 0.5px;
+  position: relative;
+    background-image: url("../images/cartes/AsReel.png");
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.motifs {
+  position: absolute;
+  bottom: -10px;
+  right: 50px;
+}
+
+.decks {
+  display: flex;
+  flex-direction: column;
+}
+.expo-menu li {
+  margin: 10px 0;
+  border: blue solid 3px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+  list-style: none; 
+  transition: padding 0.3s ease;
+}
+
+.expo-menu li:hover {
+ padding: 100px;
+}
+
+.expo-menu li a {
+  display: block;
+  padding: 30px;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+}
+.expo-menu[open] {
+  background-color: #f7f7f7;
+}
+
+.deckBox {
+  background-color: #161693;
+  padding: 90px;
+  border: #f7f7f7 solid 2px;
 }

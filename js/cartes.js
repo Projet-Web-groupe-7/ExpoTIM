@@ -1,8 +1,8 @@
 let laSection = document.querySelector("section#gallerie-cartes");
 if(laSection == null){
-    console.log("va chier");
+    //console.log("va chier");
 } else {
-    console.log("bonne page");
+    //console.log("bonne page");
     dealAll();
 }
 

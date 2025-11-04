@@ -5,6 +5,15 @@
   padding: 1rem 2rem;
   flex-wrap: wrap; /* allows wrapping when space is tight */
   gap: 1rem;
+  margin: 0;
+  background-color:var(--header-couleur-fond);
+  box-shadow: 0 10px 10px 0 #0b0b0b;
+
+  z-index: 1000;
+  position : sticky;
+  top: 0;
+  left: 0;
+
 }
 
 #maCheckbox {
@@ -70,12 +79,8 @@
   display: flex;
   height: 2rem;
   width: 14rem;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-}
 
-.recherche:hover {
-  border-color: var(--header-nav-couleur-border);
+
 }
 
 .recherche-input {
@@ -83,16 +88,20 @@
   outline: none;
   flex: 1;
   padding: 3px;
+  border: white solid 2px;
+  border-radius: 10px;
 }
 
 .recherche-input::placeholder {
   color: rgba(0, 0, 0, 0.2);
   font-style: italic;
+
 }
 
 .recherche-bouton {
   background-color:var(--header-nav-couleur-fond);
-  border: none;
+  border: white solid 2px;
+  border-radius: 10px;
   padding: 0 10px;
   cursor: pointer;
   display: flex;
@@ -100,6 +109,10 @@
   justify-content: center;
   transition: background 0.2s ease;
 }
+.recherche-bouton:hover {
+  background-color:var(--bouton-couleur-fond-hover);
+}
+
 
 /* Tablette*/
 @media screen and (max-width: 1024px) {
@@ -147,7 +160,7 @@
     margin: -1px;
     padding: 0;
     border: 0;
-    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
     clip-path: inset(50%);
     overflow: hidden;
     white-space: nowrap;
