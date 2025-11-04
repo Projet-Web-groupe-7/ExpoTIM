@@ -81,6 +81,13 @@
     box-sizing: border-box;
 }
 
+body {
+    background: var(--main-couleur-fond);
+    color: var(--texte-couleur-principal);
+    font-family: var(--main-paragraphe-font);
+    min-height: 100vh;
+}
+
 /* Boutons */
 .boutons{
     background-color:var(--bouton-couleur-fond);
