@@ -14,7 +14,7 @@
             case 'jour de la terre':
                 $args =  array(
                     'posts_per_page'  => -1,
-                    'post_type'       => 'Projets-Jour-de-la-Terre',
+                    'post_type'       => 'projets-jour-terre',
                 );
             break;
         }
@@ -59,10 +59,8 @@
         if($the_query->have_posts()){
             while($the_query->have_posts()): $the_query -> the_post();
 
-            // $post_name = get_field('projet-arcade_nom');
-            // $post_img = get_field('projet-arcade_image');
-            $post_name = "projet";
-            $post_img = "kjdsfnskjdn";
+            $post_name = get_field('projet-arcade_nom');
+            $post_img = get_field('projet-arcade_image');
     ?>
 
     <!-- lien projet -->
