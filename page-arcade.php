@@ -4,7 +4,10 @@
         <?php galerie_hero(); ?>
 
         <section id="gallerie-cartes">
-            <?php galerie_get_cartes(); ?>
+            <?php 
+                $query_args = galerie_set_args('arcade');
+                galerie_get_cartes($query_args);
+            ?>
         </section>
     </main>
     

@@ -1,4 +1,28 @@
 <?php
+    function galerie_set_args($case){
+        // retourner des arguemnt differents dépendamentb du cas,
+        // pour etre utilisés dans le query plus bas
+        $args;
+        switch ($case) {
+            case 'arcade':
+                $args =  array(
+                    'posts_per_page'  => -1,
+                    'post_type'       => 'projets-arcade',
+                );
+            break;
+
+            case 'jour de la terre':
+                $args =  array(
+                    'posts_per_page'  => -1,
+                    'post_type'       => 'Projets-Jour-de-la-Terre',
+                );
+            break;
+        }
+        return $args;
+    }
+
+
+
     // la section hero
     function galerie_hero() {
 ?>
@@ -20,55 +44,55 @@
 
 
     // le code PHP de la carte
-    function galerie_get_cartes() {
+    function galerie_get_cartes($args) {
 ?>
 <div class="paquet" style="color:white;"></div>
-            <?php
-                
+    <?php
+        
 
-                // instancier les cartes
-                $args= array(
-                    'posts_per_page'  => -1,
-                    'post_type'       => 'projets-arcade',
-                );
+        // $args= array(
+        //     'posts_per_page'  => -1,
+        //     'post_type'       => 'projets-arcade',
+        // );
+        $the_query = new WP_Query($args);
 
-                $the_query = new WP_Query($args);
+        if($the_query->have_posts()){
+            while($the_query->have_posts()): $the_query -> the_post();
 
-                if($the_query->have_posts()){
-                    while($the_query->have_posts()): $the_query -> the_post();
+            // $post_name = get_field('projet-arcade_nom');
+            // $post_img = get_field('projet-arcade_image');
+            $post_name = "projet";
+            $post_img = "kjdsfnskjdn";
+    ?>
 
-                    $post_name = get_field('projet-arcade_nom');
-                    $post_img = get_field('projet-arcade_image');;
-            ?>
-
-            <!-- lien projet -->
-            <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>">
-                <div class="container">
-                    <div class="front">
-                        <div class="premier-etage">
-                            <!-- nom projet -->
-                            <p><?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?></p>
-                            <div class="symbole"></div>
-                        </div>
-                        <!-- img projet -->
-                        <img src="<?php if($post_img){echo $post_img ['url'];}?>" alt="<?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?>">
-                        <div class="symbole"></div>
-                    </div>
-
-
-                    <div class="back"></div>
+    <!-- lien projet -->
+    <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>">
+        <div class="container">
+            <div class="front">
+                <div class="premier-etage">
+                    <!-- nom projet -->
+                    <p><?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?></p>
+                    <div class="symbole"></div>
                 </div>
-            </a>
-            <?php
-                    endwhile;
-                } else {
-            ?>
-            <h1>Oops! <br> Aucun projet...</h1>
-            <?php 
-                }
-                // tres important!!
-                wp_reset_postdata();
-            ?>
+                <!-- img projet -->
+                <img src="<?php if($post_img){echo $post_img ['url'];}?>" alt="<?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?>">
+                <div class="symbole"></div>
+            </div>
+
+
+            <div class="back"></div>
+        </div>
+    </a>
+    <?php
+            endwhile;
+        } else {
+    ?>
+    <h1>Oops! <br> Aucun projet...</h1>
+    <?php 
+        }
+        // tres important!!
+        wp_reset_postdata();
+    ?>
 <?php } ?>
 
 
