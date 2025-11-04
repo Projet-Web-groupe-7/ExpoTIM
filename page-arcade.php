@@ -2,12 +2,8 @@
 
     <main class="gallerie">
         <div class="hero">
-            <h2>Gallerie projets Jour de la Terre - 1ère année</h2>
-            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum officia possimus
-                eius esse voluptatum sequi totam illo adipisci explicabo numquam aperiam exercitationem 
-                praesentium nemo tempore ea maxime culpa, consequuntur nam cum voluptatem 
-                repellendus tenetur. Perferendis porro iste hic? Molestias inventore sunt perferendis 
-                doloremque possimus quod debitis fuga eius qui unde?
+            <h2>Galerie projets Arcade - 2ème année</h2>
+            <h3>L’Arcade de l’expoTIM présente les prototypes de jeux vidéo créés par les étudiants de deuxième année en Technique d’intégration multimédia. Réalisés dans le cadre du cours Création de jeu en équipe, ces projets sont le fruit d’un processus de production complet : de la conception et la planification à la création des médias, de la programmation aux tests de qualité jusqu’au produit fini.
             </h3>
 
             <nav class = nav-gallerie>
@@ -38,27 +34,49 @@
                     return $suit;
                 }
 
-                //loop instancier les cartes
-                for ($i = 0; $i <= $nbCartes; $i++) {
-                    //echo "..." . classSymbole();
+                // instancier les cartes
+                $args= array(
+                    'posts_per_page'  => -1,
+                    'post_type'       => 'projets-arcade',
+                );
+
+                $the_query = new WP_Query($args);
+
+                if($the_query->have_posts()){
+                    while($the_query->have_posts()): $the_query -> the_post();
+
+                    $post_name = get_field('projet-arcade_nom');
+                    $post_img = get_field('projet-arcade_image');;
             ?>
 
-                <div class="carte hidden <?= classSymbole(); ?>">
-                    <div class="container">
-                        <div class="front">
-                            <div class="premier-etage">
-                                <p>Nom du projet</p>
-                                <div class="symbole"></div>
-                            </div>
-                            <img src="" alt="image du projet">
+            <!-- lien projet -->
+            <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>">
+                <div class="container">
+                    <div class="front">
+                        <div class="premier-etage">
+                            <!-- nom projet -->
+                            <p><?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?></p>
                             <div class="symbole"></div>
                         </div>
-
-
-                        <div class="back"></div>
+                        <!-- img projet -->
+                        <img src="<?php if($post_img){echo $post_img ['url'];}?>" alt="<?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?>">
+                        <div class="symbole"></div>
                     </div>
+
+
+                    <div class="back"></div>
                 </div>
-                <?php } ?>
+            </a>
+            <?php
+                    endwhile;
+                } else {
+            ?>
+            <h1>Oops! <br> Aucun projet...</h1>
+            <?php 
+                }
+                // tres important!!
+                wp_reset_postdata();
+            ?>
         </section>
     </main>
     
@@ -78,6 +96,10 @@
     //dos des cartes
     $dosRouge = get_field("derriere_cartes_rouge");
     $dosBleu = get_field("derriere_cartes_bleu");
+
+    echo '<!-- Debug symbols: ';
+var_dump($imgHeart, $imgSpade, $imgDiamond, $imgClub);
+echo ' -->';
 ?>
 <style>
     /* coeur */
@@ -100,6 +122,7 @@
     .carte.heart .container .front .symbole{
         background-image: url("<?= $imgHeart?>");
         /* background-color:red; */
+        
     }
     .carte.diamond .container .front .symbole{
         background-image: url("<?= $imgDiamond?>");
