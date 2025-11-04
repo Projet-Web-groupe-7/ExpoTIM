@@ -56,4 +56,51 @@ function modifie_requete_principal( $query ) {
       }
      }
      add_action( 'pre_get_posts', 'modifie_requete_principal' );
+     
+
+  /**
+ * 🔍 Custom search: project titles OR member names (ACF fields containing "membre")
+ */
+function custom_search_projects_by_member( $query ) {
+  if ( ! is_admin() && $query->is_main_query() && $query->is_search() ) {
+      global $wpdb;
+
+      $search_term = $query->get( 's' );
+
+      if ( ! empty( $search_term ) ) {
+          // Split the search term into words for partial matching
+          $search_terms = array_filter( array_map( 'trim', explode( ' ', $search_term ) ) );
+
+          if ( ! empty( $search_terms ) ) {
+              // Build WHERE clause for meta_value LIKE '%word%'
+              $where_like = '';
+              foreach ( $search_terms as $word ) {
+                  $where_like .= $wpdb->prepare( " AND meta_value LIKE %s ", '%' . $wpdb->esc_like( $word ) . '%' );
+              }
+
+              // Query posts where any "membre" field matches any part of the search term
+              $matching_posts = $wpdb->get_col(
+                  "
+                  SELECT DISTINCT post_id
+                  FROM $wpdb->postmeta
+                  WHERE meta_key LIKE '%membre%'
+                  $where_like
+                  "
+              );
+
+              // If matches found, include them in the search results
+              if ( ! empty( $matching_posts ) ) {
+                  $query->set( 'post__in', array_unique(
+                      array_merge(
+                          $query->get( 'post__in' ) ?: [],
+                          $matching_posts
+                      )
+                  ));
+              }
+          }
+      }
+  }
+}
+add_action( 'pre_get_posts', 'custom_search_projects_by_member' );
+
 ?>
