@@ -5,8 +5,9 @@
 
         <section id="gallerie-cartes">
             <?php 
-                $query_args = galerie_set_args('jour de la terre');
-                galerie_get_cartes($query_args);
+                $case = 'jour-de-la-terre';
+                $query_args = galerie_set_args($case);
+                galerie_get_cartes($query_args, $case);
             ?>
         </section>
     </main>

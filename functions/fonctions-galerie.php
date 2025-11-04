@@ -11,7 +11,7 @@
                 );
             break;
 
-            case 'jour de la terre':
+            case 'jour-de-la-terre':
                 $args =  array(
                     'posts_per_page'  => -1,
                     'post_type'       => 'projets-jour-terre',
@@ -44,7 +44,7 @@
 
 
     // le code PHP de la carte
-    function galerie_get_cartes($args) {
+    function galerie_get_cartes($args, $case) {
 ?>
 <div class="paquet" style="color:white;"></div>
     <?php
@@ -59,8 +59,20 @@
         if($the_query->have_posts()){
             while($the_query->have_posts()): $the_query -> the_post();
 
-            $post_name = get_field('projet-arcade_nom');
-            $post_img = get_field('projet-arcade_image');
+            //définir les champs
+            $post_name;
+            $post_img;
+            switch ($case) {
+                case 'arcade':
+                    $post_name = get_field('projet-arcade_nom');
+                    $post_img = get_field('projet-arcade_image');
+                break;
+
+                case 'jour-de-la-terre':
+                    $post_name = get_field('projet-jour-terre_nom');
+                    $post_img = get_field('projet-jour-terre_image');
+                break;
+            }
     ?>
 
     <!-- lien projet -->
@@ -95,6 +107,9 @@
 
 
 
+
+
+
 <?php
     // fonction pour alterner les symboles des cartes
     function classSymbole(){
@@ -110,6 +125,9 @@
 
         return $suit;
     }
+
+
+
 
 
 

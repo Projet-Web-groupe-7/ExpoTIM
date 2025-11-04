@@ -5,8 +5,9 @@
 
         <section id="gallerie-cartes">
             <?php 
-                $query_args = galerie_set_args('arcade');
-                galerie_get_cartes($query_args);
+                $case = 'arcade';
+                $query_args = galerie_set_args($case);
+                galerie_get_cartes($query_args, $case);
             ?>
         </section>
     </main>
