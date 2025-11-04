@@ -3,18 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--main-couleur-fond);
-  min-height: 100vh;
   width: 100%;
   row-gap: 3rem;
-}
-
-/* Section contenant le logo, la vidéo et la description */
-.hero {
-  display: flex;
-  flex-direction: column;
-  margin: 2rem;
-  row-gap: 2rem;
 }
 
 .video-front-page {
@@ -22,67 +12,83 @@
   width: 100%;
 }
 
-/* Description de l'exposition sous la vidéo */
-.desc-expo, .projet-random, .decks {
+/* Sections de contenu de la page d'accueil */
+.desc-expo, .projet-random, .decks-expo {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  row-gap: 1rem;
+  row-gap: 2rem;
   margin: 0 auto;
   width: 80vw;
 }
 
+/* Section contenant l'explication de l'exposition */
 .desc-expo {
   padding-bottom: 90px;
   padding: 90px;
   border-bottom: white solid 0.5px;
   position: relative;
-    background-image: url("../images/cartes/AsReel.png");
+  background-image: url("../images/cartes/AsReel.png");
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
+/* Décorations entre les sections */
 .motifs {
   position: absolute;
   bottom: -10px;
   right: 50px;
 }
 
-.decks {
-  display: flex;
-  flex-direction: column;
-}
-.expo-menu li {
-  margin: 10px 0;
-  border: blue solid 3px;
-  background-color: #f7f7f7;
-  border-radius: 8px;
+.decks-expo {
   width: 100%;
-  cursor: pointer;
-  font-weight: bold;
-  list-style: none; 
-  transition: padding 0.3s ease;
+  padding-bottom: 3rem;
 }
 
-.expo-menu li:hover {
- padding: 100px;
+/* Styles pour le menu accordéon des différentes expositions sur grands écrans */
+.expo-menu {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Style pour la boîte de cartes */
+.expo-menu::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  display: block;
+  width: 100px;
+  height: 260px;
+  background-color: #161693;
+  border: #f7f7f7 solid 2px;
+  z-index: 10;
+}
+
+.expo-menu ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.expo-menu li {
+  list-style: none;
 }
 
 .expo-menu li a {
   display: block;
-  padding: 30px;
-  width: 100%;
-  text-decoration: none;
-  color: black;
-}
-.expo-menu[open] {
+  border: blue solid 3px;
   background-color: #f7f7f7;
+  color: black;
+  border-radius: 8px;
+  width: 350px;
+  height: 250px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s ease;
 }
 
-.deckBox {
-  background-color: #161693;
-  padding: 90px;
-  border: #f7f7f7 solid 2px;
+.expo-menu li a:hover {
+ transform: translate(4rem);
+ cursor: pointer;
 }
