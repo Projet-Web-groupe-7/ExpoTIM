@@ -1,5 +1,8 @@
 <?php if ( have_posts() ) : ?>
-    <h2>Search Results for: "<?php echo get_search_query(); ?>"</h2>
+    <?php
+    $display_query = get_query_var('custom_search_display') ?: get_search_query();
+    ?>
+    <h2>Search Results for: "<?php echo esc_html($display_query); ?>"</h2>
     <ul>
         <?php while ( have_posts() ) : the_post(); ?>
             <li>
