@@ -1,9 +1,11 @@
-let laSection = document.querySelector("section#gallerie-cartes");
-if(laSection == null){
-    //console.log("va chier");
-} else {
-    //console.log("bonne page");
+if(document.querySelector("section#gallerie-cartes") != null){
     dealAll();
+    // console.log("1")
+} else if(document.querySelector("section.projet-random .cartes-random") != null){
+    // console.log("2")
+    centrerCartes();
+} else {
+    // console.log("3")
 }
 
 
@@ -84,6 +86,21 @@ function vroom(elm1, elm2){
     }, "1");
 }
 
+// ////////////////////////////// aleatoire
+//fonction pour centrer les cartes dans la section projet aleatoire
+function centrerCartes(){
+    let cartesCentrer = document.querySelectorAll("section.projet-random .cartes-random .carte-anim");
+
+    //trouver la larger
+    let x1 = cartesCentrer[0].getBoundingClientRect().left;
+    let x2 = cartesCentrer[cartesCentrer.length-1].getBoundingClientRect().right;
+    let largeur = x2-x1;
+    console.log(largeur);
+
+    //ajuster la largeur du contenant
+    let contenant = document.querySelector("section.projet-random .cartes-random");
+    contenant.style.width = largeur.toString() + "px";
+}
 
 
 

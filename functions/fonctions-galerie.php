@@ -79,7 +79,7 @@
     ?>
 
     <!-- lien projet -->
-    <a href="<?php  the_permalink(); ?>" class="carte hiddeneeeeeeeee turned <?= classSymbole(); ?>">
+    <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>">
         <div class="container">
             <div class="front">
                 <div class="premier-etage">
@@ -204,16 +204,36 @@
     <section class="projet-random">
         <h2>Choisis un projet au hasard</h2>
         <div class="cartes-random">
-            <div class="paquet" style="color:white;">
-                
-            </div>
-            <?php
+            <div class="paquet carte-anim" style="color:white;">
+                <?php
                     foreach($allCases as $case){
                         // print($case);
                         $query_args = galerie_set_args($case);
                         galerie_get_cartes($query_args, $case);
                     }
                 ?>
+            </div>
+            <?php
+                $nb=6;
+                for($i=0; $i< $nb; $i++){
+            ?>
+                <div class="carte-anim"></div>
+            <?php } ?>
         </div>
     </section>
+
+    <style>
+        .cartes-random .carte-anim{
+            background-color: rgb(0, 0, 163);
+        }
+        .cartes-random .carte-anim:nth-child(2n){
+            background-color: rgb(163, 0, 0);
+        }
+        <?php for($i=1; $i<= $nb+1; $i++){?>
+            .cartes-random .carte-anim:nth-child(<?= $i ?>){
+                position: relative;
+                right: <?= ($i-1) * 130 ?>px;
+            }
+        <?php } ?>
+    </style>
 <?php } ?>
