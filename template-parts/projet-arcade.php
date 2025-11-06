@@ -12,32 +12,53 @@
 
 ?>
 
-<article>
-    <?php  if  ($projet_arcade_nom): ?>
-        <h1><?php  echo $projet_arcade_nom ; ?></h1>
+<article class="projet-container">
+<?php  if  ($projet_arcade_image): ?>
+    <div class="projet-container-haut" style="background-image: url('<?php echo esc_url($projet_arcade_image['url']); ?>');">
+        <?php if ($projet_arcade_nom): ?>
+            <h1><?php echo $projet_arcade_nom; ?></h1>
+        <?php endif; ?> 
+    </div>
+
     <?php  endif; ?>
-    <?php  if  ( $projet_arcade_description): ?>
-        <h3><?php  echo  $projet_arcade_description ; ?></h3>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_image): ?>
-        <div>
-            <img src="<?php  echo $projet_arcade_image ['url'] ?>" alt="<?php $projet_arcade_nom?>" style="height: 500px; width: 500px;">
+    <div class="projet-container-bas">
+        <div class="caroussel">
+            <?php  if  ($projet_arcade_image): ?>
+                <div>
+                    <img src="<?php  echo $projet_arcade_image ['url'] ?>" alt="<?php $projet_arcade_nom?>" style="height: 500px; width: 500px;">
+                </div>
+            <?php  endif; ?>
         </div>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_membre1): ?>
-        <p><?php  echo $projet_arcade_membre1 ; ?></p>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_membre2): ?>
-        <p><?php  echo $projet_arcade_membre2 ; ?></p>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_membre3): ?>
-        <p><?php  echo $projet_arcade_membre3 ; ?></p>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_membre4): ?>
-        <p><?php  echo $projet_arcade_membre4 ; ?></p>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_membre5): ?>
-        <p><?php  echo $projet_arcade_membre5 ; ?></p>
-    <?php  endif; ?>
+        <div class="projet-container-bas-droite">
+            <div>
+                <h2>Équipe/Auteur</h2>
+                <?php  if  ($projet_arcade_membre1): ?>
+                    <p><?php  echo $projet_arcade_membre1 ; ?></p>
+                <?php  endif; ?>
+                <?php  if  ($projet_arcade_membre2): ?>
+                    <p><?php  echo $projet_arcade_membre2 ; ?></p>
+                <?php  endif; ?>
+                <?php  if  ($projet_arcade_membre3): ?>
+                    <p><?php  echo $projet_arcade_membre3 ; ?></p>
+                <?php  endif; ?>
+                <?php  if  ($projet_arcade_membre4): ?>
+                    <p><?php  echo $projet_arcade_membre4 ; ?></p>
+                <?php  endif; ?>
+                <?php  if  ($projet_arcade_membre5): ?>
+                    <p><?php  echo $projet_arcade_membre5 ; ?></p>
+                <?php  endif; ?>
+            </div>
+            
+            <div>
+                <h2>Résumé du projet</h2>
+                <?php  if  ( $projet_arcade_description): ?>
+                    <h3><?php  echo  $projet_arcade_description ; ?></h3>
+                <?php  endif; ?>
+            </div>
+            
+        </div>
+    </div>
+   
 </article>
-    
+
+<?php get_footer(); ?>

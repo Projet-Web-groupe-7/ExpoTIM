@@ -1,0 +1,40 @@
+.projet-container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+.projet-container-haut {
+    position: relative;
+    width: 100%;
+    height: 70vh; /* ou 400px, selon ton besoin */
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.projet-container-haut h1{
+    z-index: 1;
+}
+
+
+.projet-container-bas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+
+.projet-container-bas-droite{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
