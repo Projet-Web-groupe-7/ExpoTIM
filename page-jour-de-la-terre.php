@@ -4,6 +4,7 @@
         <?php galerie_hero(); ?>
 
         <section id="gallerie-cartes">
+            <div class="paquet" style="color:white;"></div>
             <?php 
                 $case = 'jour-de-la-terre';
                 $query_args = galerie_set_args($case);

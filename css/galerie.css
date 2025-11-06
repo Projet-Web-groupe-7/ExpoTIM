@@ -1,3 +1,4 @@
+/* //////////////////////////cartes et gallerie */
 main.gallerie{
     padding: 0 50px;
     background: none;
@@ -131,4 +132,23 @@ main.gallerie section#gallerie-cartes{
 }
 .carte-no-transit{
     transition: none;
+}
+
+
+
+
+/* ///////////////////////////////////////// cartes projet random */
+.cartes-random .paquet{
+    visibility: visible;
+    position: static;
+    min-width: 259px;
+    min-height: 388px;
+    max-width: 259px;
+    max-height: 388px;
+    background-color: rgb(0, 0, 163);
+}
+.cartes-random{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
 }

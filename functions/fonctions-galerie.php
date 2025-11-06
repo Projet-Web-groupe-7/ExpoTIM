@@ -21,6 +21,10 @@
         return $args;
     }
 
+    // ne pas oublier de rajouter les cas ici, necessaire pour
+    // la fonction section_projet_random()
+    $allCases = ['arcade', 'jour-de-la-terre'];
+
 
 
     // la section hero
@@ -30,7 +34,7 @@
         <!-- <h2>Galerie projets Arcade - 2ème année</h2> -->
         <!-- <h3>L’Arcade de l’expoTIM présente les prototypes de jeux vidéo créés par les étudiants de deuxième année en Technique d’intégration multimédia. Réalisés dans le cadre du cours Création de jeu en équipe, ces projets sont le fruit d’un processus de production complet : de la conception et la planification à la création des médias, de la programmation aux tests de qualité jusqu’au produit fini.
         </h3> -->
-        <h3><?= get_the_content(); ?></h3>
+        <?= get_the_content(); ?>
     </div>
 <?php
     }
@@ -46,7 +50,6 @@
     // le code PHP de la carte
     function galerie_get_cartes($args, $case) {
 ?>
-<div class="paquet" style="color:white;"></div>
     <?php
         
 
@@ -76,7 +79,7 @@
     ?>
 
     <!-- lien projet -->
-    <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>">
+    <a href="<?php  the_permalink(); ?>" class="carte hiddeneeeeeeeee turned <?= classSymbole(); ?>">
         <div class="container">
             <div class="front">
                 <div class="premier-etage">
@@ -187,4 +190,30 @@
         /* background-color:black; */
     }
 </style>
+<?php } ?>
+
+
+
+
+
+<?php
+    //cartes random
+    function section_projet_random(){
+        global $allCases;
+?>
+    <section class="projet-random">
+        <h2>Choisis un projet au hasard</h2>
+        <div class="cartes-random">
+            <div class="paquet" style="color:white;">
+                
+            </div>
+            <?php
+                    foreach($allCases as $case){
+                        // print($case);
+                        $query_args = galerie_set_args($case);
+                        galerie_get_cartes($query_args, $case);
+                    }
+                ?>
+        </div>
+    </section>
 <?php } ?>

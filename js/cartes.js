@@ -47,8 +47,8 @@ function deal(){
     cartes[i].classList.remove("hidden")
 
     //sortir les cartes du paquet
-    let section = document.querySelector("section");
-    section.append(cartes[i]);
+    //let section = document.querySelector("section");
+    //section.append(cartes[i]);
 
     // deplacer les cartes
     let paq = document.querySelector(".paquet");
@@ -83,3 +83,16 @@ function vroom(elm1, elm2){
         elm1.style.transform = `translate(${0}px,${0}px)`;
     }, "1");
 }
+
+
+
+
+//effet hover sur cartes
+// document.querySelectorAll(".carte").forEach(carte => {
+//     carte.addEventListener("mouseenter", () => {
+//         carte.style.transform += " translateY(-10px) scale(1.05)";
+//     });
+//     carte.addEventListener("mouseleave", () => {
+//         carte.style.transform = carte.style.transform.replace(" translateY(-10px) scale(1.05)", "");
+//     });
+// });

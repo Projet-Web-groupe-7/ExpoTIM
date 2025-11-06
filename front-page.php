@@ -18,10 +18,9 @@
                 </div>
             </div>     
         </section>
-        <section class="projet-random">
-            <h2>Choisis un projet au hasard</h2>
-            <img src=".images/cartes/carteDosR" alt="Carte">
-        </section>
+
+        <?php section_projet_random() ?>
+        
         <section class="decks">
             <h2>Nos decks de carte d’expositions</h2>
             <?php wp_nav_menu(array(
