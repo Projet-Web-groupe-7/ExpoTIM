@@ -28,6 +28,9 @@
     wp_enqueue_style('expo-front-page-style', get_template_directory_uri() . '/css/front-page.css');
     wp_enqueue_style('expo-footer-style', get_template_directory_uri() . '/css/footer.css');
     wp_enqueue_style('expo-galerie-style', get_template_directory_uri() . '/css/galerie.css');
+    wp_enqueue_style('expo-search-style', get_template_directory_uri() . '/css/search.css');
+
+
 
     wp_enqueue_script(
         'cartes',
@@ -37,6 +40,16 @@
         '/js/cartes.js'),
         true
     );
+
+    if (is_search()) {
+        wp_enqueue_script(
+            'search-animations',
+            get_template_directory_uri() . '/js/search-animations.js',
+            array('cartes'), // optionally depend on cartes.js
+            filemtime(get_template_directory() . '/js/search-animations.js'),
+            true
+        );
+    }
   } 
   
   add_action('wp_enqueue_scripts', 'theme_tp_enqueue_styles');
