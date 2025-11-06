@@ -1,13 +1,3 @@
-document.querySelectorAll("main.gallerie.search-page .carte").forEach(carte => {
-    carte.addEventListener("mouseenter", () => {
-        carte.style.transform += " translateY(-10px) scale(1.05)";
-    });
-    carte.addEventListener("mouseleave", () => {
-        carte.style.transform = carte.style.transform.replace(" translateY(-10px) scale(1.05)", "");
-    });
-});
-
-
 document.addEventListener("DOMContentLoaded", () => {
     const cartes = document.querySelectorAll("main.gallerie.search-page .carte");
 

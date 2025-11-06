@@ -1,14 +1,23 @@
 <?php get_header(); ?>
 
 <main class="gallerie search-page">
-    <h2>Résultats de recherche pour : "<?php echo esc_html(get_search_query()); ?>"</h2>
+    <?php
+    $search_query = '';
+
+    if (!empty(get_query_var('s'))) {
+        $search_query = get_query_var('s');
+    } elseif (!empty($_GET['s'])) {
+        $search_query = sanitize_text_field($_GET['s']);
+    } elseif (!empty($_POST['s'])) {
+        $search_query = sanitize_text_field($_POST['s']);
+    }
+    ?>
+    <h2>Résultats de recherche pour : "<?php echo esc_html($search_query); ?>"</h2>
     <section id="gallerie-cartes">
         <?php
         global $wp_query;
 
-        // Collect all matching posts
         if ( have_posts() ) {
-            // Build arguments compatible with galerie_get_cartes()
             $args = array(
                 'post_type'      => array('projets-arcade', 'projets-jour-terre'),
                 'post__in'       => wp_list_pluck($wp_query->posts, 'ID'),
@@ -16,7 +25,7 @@
                 'orderby'        => 'post__in',
             );
 
-            galerie_get_cartes($args); // reuse your existing card layout
+            galerie_get_cartes($args); 
         } else {
             echo '<h1>Oops! Aucun projet trouvé...</h1>';
         }

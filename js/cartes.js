@@ -83,3 +83,12 @@ function vroom(elm1, elm2){
         elm1.style.transform = `translate(${0}px,${0}px)`;
     }, "1");
 }
+
+document.querySelectorAll(".carte").forEach(carte => {
+    carte.addEventListener("mouseenter", () => {
+        carte.style.transform += " translateY(-10px) scale(1.05)";
+    });
+    carte.addEventListener("mouseleave", () => {
+        carte.style.transform = carte.style.transform.replace(" translateY(-10px) scale(1.05)", "");
+    });
+});
