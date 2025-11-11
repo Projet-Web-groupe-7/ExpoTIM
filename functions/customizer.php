@@ -174,7 +174,80 @@ function theme_31w_customize_register($wp_customize) {
       'section' => 'footer_section',
       'type' => 'text',
     ));
+
+    ///////////////////////////////////////////////////////////// Section crédits
+    $wp_customize->add_section('credits_section', array(
+        'title' => __('Section crédits', 'theme_31w'),
+        'priority' => 30,
+    ));
+
+    ///////////////////////////////////////////////////////////// Gérer le nombre de membres dans la section crédits
+    $wp_customize->add_setting('credits_nb_membres', array(
+        'default' => 3,
+        'sanitize_callback' => 'absint'
+    ));
+    $wp_customize->add_control('credits_nb_membres', array(
+        'label' => __('Nombre de membres', 'theme_31w'),
+        'section' => 'credits_section',
+        'type' => 'number',
+        'input_attrs' => array('min' => 0, 'max' => 20),
+    ));
+
+    // Générer dynamiquement les réglages pour chaque membre
+    $nb_membres = get_theme_mod('credits_nb_membres', 3);
+    if (! $nb_membres || $nb_membres < 0) {
+      $nb_membres = 0;
+    }
+
+    for ($i = 1; $i <= $nb_membres; $i++) {
+      // Nom du membre
+      $wp_customize->add_setting('credits_membre_nom' . $i, array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+      ));
   
+      $wp_customize->add_control('credits_membre_nom' . $i, array(
+        'label' => sprintf(__('Nom du membre %d', 'theme_31w'), $i),
+        'section' => 'credits_section',
+        'type' => 'text',
+      ));
+  
+      // Image du membre (utilise le contrôle d'image du Customizer)
+      $wp_customize->add_setting('credits_membre_image' . $i, array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+      ));
+  
+      $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'credits_membre_image' . $i, array(
+        'label' => sprintf(__('Image du membre %d', 'theme_31w'), $i),
+        'section' => 'credits_section',
+        'settings' => 'credits_membre_image' . $i,
+      )));
+    }
   }
   
   add_action('customize_register', 'theme_31w_customize_register'); 
+
+
+/**
+   * Récupère le tableau des membres configurés dans le Customizer.
+   * Retourne un tableau d'items ['nom' => string, 'image' => url]
+   */
+  function expo_get_membres_equipe() {
+    $membres = array();
+    $nb_membres = get_theme_mod('credits_nb_membres', 3);
+    if (! $nb_membres || $nb_membres < 1) {
+      return $membres;
+    }
+
+    for ($i = 1; $i <= $nb_membres; $i++) {
+      $nom = get_theme_mod('credits_membre_nom' . $i, '');
+      $image = get_theme_mod('credits_membre_image' . $i, '');
+      $membres[] = array(
+        'nom' => $nom,
+        'image' => $image,
+      );
+    }
+
+  return $membres;
+  }
