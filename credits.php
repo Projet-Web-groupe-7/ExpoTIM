@@ -1,3 +1,5 @@
+<?php get_header(); ?>
+
 <main class="credits">
   <section class="équipe">
     <h2>Équipe de l'exposition TIM</h2>
@@ -9,3 +11,5 @@
     </ul>
   </section>
 </main>
+
+ <?php get_footer(); ?>
