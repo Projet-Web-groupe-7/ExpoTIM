@@ -3,18 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--main-couleur-fond);
-  min-height: 100vh;
   width: 100%;
   row-gap: 3rem;
-}
-
-/* Section contenant le logo, la vidéo et la description */
-.hero {
-  display: flex;
-  flex-direction: column;
-  margin: 2rem;
-  row-gap: 2rem;
 }
 
 .video-front-page {
@@ -22,67 +12,210 @@
   width: 100%;
 }
 
-/* Description de l'exposition sous la vidéo */
-.desc-expo, .projet-random, .decks {
+/* Sections de contenu de la page d'accueil */
+.desc-expo, .projet-random, .decks-expo {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  row-gap: 1rem;
+  row-gap: 2rem;
   margin: 0 auto;
   width: 80vw;
 }
 
+/* Section contenant l'explication de l'exposition */
 .desc-expo {
-  padding-bottom: 90px;
   padding: 90px;
   border-bottom: white solid 0.5px;
   position: relative;
-    background-image: url("../images/cartes/AsReel.png");
-  background-repeat: no-repeat;
-  background-position: center;
-
+  z-index: 1;
 }
 
+.desc-expo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../images/cartes/AsReel.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.1;
+  transform: rotate(15deg);
+  z-index: -1;
+}
+
+/* Décorations entre les sections */
 .motifs {
   position: absolute;
   bottom: -10px;
   right: 50px;
 }
 
-.decks {
+/** Styles pour le menu accordéon des différentes expositions sur grands écrans **/
+.decks-expo {
+  width: 100vw;
+  justify-content: flex-start;
+}
+
+/* Conteneur pour les decks de cartes et la boîte décorative */
+.expo-deck {
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content:  center;
+  margin: 2rem auto;
+  position: relative;
+}
+
+/* Définir une taille adaptative commune pour boîte et cartes */
+:root {
+  --expo-width: clamp(200px, 25vw, 350px);
+  --expo-height: clamp(150px, 20vw, 250px);
+}
+
+/* Boîte décorative */
+.expo-boite {
+  width: calc(var(--expo-width) + 20px);
+  height: calc(var(--expo-height) + 20px);
+  flex-shrink: 0;
+  border: 1px solid white;
+  background-color: #161693;
+  position: relative;
+  z-index: 5;
+}
+
+/* Décorations internes de la boîte */
+.expo-boite::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  border: 2px solid white;
+  box-sizing: border-box;
+}
+
+/********** Menu/ deck de cartes **********/
+.expo-menu {
+  display: flex;
+  margin-left: calc(-0.5 * var(--expo-width)); /* chevauchement adaptatif */
+}
+
+.deck-cartes {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Chaque carte empilée */
+.deck-cartes li {
   display: flex;
   flex-direction: column;
-}
-.expo-menu li {
-  margin: 10px 0;
-  border: blue solid 3px;
-  background-color: #f7f7f7;
-  border-radius: 8px;
-  width: 100%;
-  cursor: pointer;
-  font-weight: bold;
-  list-style: none; 
-  transition: padding 0.3s ease;
+  width: var(--expo-width);
+  height: var(--expo-height);
+  min-width: 200px;
+  min-height: 150px;
+  border-radius: 10px;
+  background: var(--carte-couleur-fond);
+  box-shadow: 1rem 0 2rem rgba(0,0,0,0.5);
+  transition: 0.3s ease;
 }
 
-.expo-menu li:hover {
- padding: 100px;
+/* Chevauchement des cartes */
+.deck-cartes li:not(:first-child) {
+  margin-left: calc(-0.5 * var(--expo-width));
 }
 
-.expo-menu li a {
-  display: block;
-  padding: 30px;
+/* La première carte (la plus à gauche) doit être au premier plan */
+.deck-cartes li:nth-child(1) { z-index: 3; }
+.deck-cartes li:nth-child(2) { z-index: 2; }
+.deck-cartes li:nth-child(3) { z-index: 1; }
+
+/* Au survol : la carte "sort" du paquet */
+.deck-cartes li:hover {
+  transform: translateX(calc(0.35 * var(--expo-width)));
+}
+
+/* Contenu de la carte */
+.deck-cartes li a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
   width: 100%;
+  height: 100%;
   text-decoration: none;
   color: black;
-}
-.expo-menu[open] {
-  background-color: #f7f7f7;
+  font-weight: bold;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.deckBox {
-  background-color: #161693;
-  padding: 90px;
-  border: #f7f7f7 solid 2px;
+/* Image de fond */
+.deck-cartes li a::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+/* Images par nom de classe (à ajouter dans le menu Wordpress) */
+.deck-cartes .finissants a::before {
+  background-image: url('../images/cartes/carteDosR.png');
+}
+.deck-cartes .arcade a::before {
+  background-image: url('../images/cartes/Arcade.jpg');
+}
+.deck-cartes .graphisme a::before {
+  background-image: url('../images/cartes/Graphisme.jpg');
+}
+
+/********** VERSION MOBILE **********/
+@media (max-width: 768px) {
+  .expo-deck {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .expo-boite {
+    height: 300px;
+    width: 220px;
+  }
+  .expo-menu {
+    margin-left: 0;
+    margin-bottom: -150px;
+    display: flex;
+  }
+
+  .deck-cartes {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .deck-cartes li {
+    margin: 0;
+    width: 90%;
+    height: 300px;
+    width: 200px;
+    min-width: 200px;
+    box-shadow: 0 -1rem 3rem rgba(0,0,0,0.5);
+  }
+
+  .deck-cartes li:not(:first-child) {
+    margin-left: 0;
+    margin-bottom: -150px;
+  }
+
+  .deck-cartes li:hover {
+    transform: translateY(-100px);
+  }
 }

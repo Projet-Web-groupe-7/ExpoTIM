@@ -86,6 +86,7 @@ body {
     color: var(--texte-couleur-principal);
     font-family: var(--main-paragraphe-font);
     min-height: 100vh;
+    overflow-x: hidden; /* Empêche le débordement horizontal indésirable */
 }
 
 /* Boutons */
@@ -108,12 +109,26 @@ body {
     font-family: var(--titre-accueil-font);
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(5rem, 9vw, 10rem);
+    font-size: clamp(4rem, 9vw, 10rem);
     color: var(--titre-accueil-couleur);
     text-align: center;
-    background-color: var(--header-couleur-fond);
-    margin: 0;
-    padding: 4rem 0;
+    margin: 0 auto;
+    padding: 6rem 0;
+    position: relative;
+    z-index: 1;
+    max-width: 50vw;
+}
+
+/* Logo à l'arrière-plan */
+.titreLogo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/logos/IconLogo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    z-index: -1;
 }
 
 /* Header */
