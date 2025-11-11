@@ -4,6 +4,8 @@
     // Liste des fichiers à inclure
     $function_files = array(
         'options.php',
+        'customizer.php',
+        'svg.php',
     );
   
     

@@ -20,35 +20,36 @@
 /* Couleurs */
 :root{
     /* Accueil */
-    --titre-accueil-couleur: #FF331F;
+    --titre-accueil-couleur: #ffffff;
 
     /* Header */
-    --header-couleur-fond:#0D0106;
-    --header-nav-couleur-fond :#0D0106;
-    --header-nav-couleur-border:#FBFBFF;
+    --header-couleur-fond:#090730;
+    --header-nav-couleur-fond :#090730;
+    --header-nav-couleur-border:#ffffff;
     --header-recherche-couleur-fond:#FBFBFF;
-    --header-recherche-couleur-border:#0D0106;
+    --header-recherche-couleur-border:#090730;
     
     /* Main */
-    --main-couleur-fond:#FBFBFF;
+    --main-couleur-fond: linear-gradient(to bottom,  #090730 0%,#1c1696 100%);
+
 
     /* Footer */
-    --footer-couleur-fond: #0D0106;
+    --footer-couleur-fond: #000F5E;
 
     /* Boutons */
-    --bouton-couleur-fond : #0D0106;
+    --bouton-couleur-fond : #090730;
     --bouton-couleur-fond-active: #3626A7;
     --bouton-couleur-fond-hover: #657ED4;
     --bouton-couleur-font: #FBFBFF;
 
     /* Textes */
-    --texte-couleur-principal:#0D0106;
+    --texte-couleur-principal:#B6B7C1;
     --texte-couleur-secondaire: #FBFBFF;
 
 
     /* Page accueil */
-    --section-EXPO-TIM-couleur-fond-principal: #3626A7;
-    --section-EXPO-TIM-couleur-fond-secondaire: #FF331F;
+    --section-EXPO-TIM-couleur-fond-principal: #090730;
+    --section-EXPO-TIM-couleur-fond-secondaire: #657ED4;
     --section-aleatoire-couleur-fond: #FBFBFF;
     --section-exposition-couleur-fond-principal: #3626A7;
     --section-exposition-couleur-fond-secondaire: #FF331F;
@@ -80,6 +81,13 @@
     box-sizing: border-box;
 }
 
+body {
+    background: var(--main-couleur-fond);
+    color: var(--texte-couleur-principal);
+    font-family: var(--main-paragraphe-font);
+    min-height: 100vh;
+}
+
 /* Boutons */
 .boutons{
     background-color:var(--bouton-couleur-fond);
@@ -100,8 +108,12 @@
     font-family: var(--titre-accueil-font);
     font-weight: 400;
     font-style: normal;
-    font-size: 20rem;
+    font-size: clamp(5rem, 9vw, 10rem);
     color: var(--titre-accueil-couleur);
+    text-align: center;
+    background-color: var(--header-couleur-fond);
+    margin: 0;
+    padding: 4rem 0;
 }
 
 /* Header */
@@ -139,10 +151,6 @@ header nav a{
 }
 
 /* Main */
-main{
-    background-color: var(--main-couleur-fond);
-}
-
 main h2{
     font-family: var(--main-sousTitre-font);
     font-size: 2rem;
@@ -153,15 +161,4 @@ main p{
     font-family: var(--main-paragraphe-font);
     font-size: 1rem;
     color: var(--texte-couleur-principal);
-}
-
-/* Footer */
-footer{
-    background-color: var(--footer-couleur-fond);
-}
-
-footer nav{
-    font-family: var(--footer-nav-font);
-    font-size: 1rem;
-    color: var(--texte-couleur-secondaire);
 }
