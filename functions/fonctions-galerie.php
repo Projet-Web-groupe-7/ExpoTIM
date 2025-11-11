@@ -234,6 +234,16 @@
                 position: relative;
                 right: <?= ($i-1) * 130 ?>px;
             }
+
+            .cartes-random .carte-anim.shuffled:nth-child(<?= $i ?>){
+                position: relative;
+                right: <?= ($i-1) * 259 ?>px;
+            }
         <?php } ?>
+
+
+        .carte .back{
+            background-color: rgb(138, 28, 21);
+        }
     </style>
 <?php } ?>

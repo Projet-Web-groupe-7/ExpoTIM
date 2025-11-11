@@ -1,3 +1,4 @@
+<?php get_header(); ?>
 <?php 
     $projet_arcade_nom= get_field('projet-arcade_nom');
     $projet_arcade_description= get_field('projet-arcade_description');
@@ -40,4 +41,9 @@
         <p><?php  echo $projet_arcade_membre5 ; ?></p>
     <?php  endif; ?>
 </article>
+
+<?php section_projet_random(); ?>
+
+
+<?php get_footer(); ?>
     

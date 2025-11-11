@@ -129,6 +129,7 @@ main.gallerie section#gallerie-cartes{
 .carte.hidden{
     position: absolute;
     opacity: 0;
+    user-select: none;
 }
 .carte-no-transit{
     transition: none;
@@ -150,7 +151,7 @@ main.gallerie section#gallerie-cartes{
 }
 
 .cartes-random .paquet,.carte-anim{
-    visibility: visible;
+    /* visibility: visible; */
     position: static;
     min-width: 259px;
     min-height: 388px;
@@ -159,4 +160,10 @@ main.gallerie section#gallerie-cartes{
     border: 10px solid rgb(0, 0, 0);
 
     margin: 0;
+    transition: right .5s, width 0.5s;
+}
+.cartes-random .carte {
+    position: relative;
+    right: 1500;
+    bottom: 75px;
 }

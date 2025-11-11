@@ -1,11 +1,13 @@
+console.log("cartes.js");
 if(document.querySelector("section#gallerie-cartes") != null){
     dealAll();
-    // console.log("1")
+    console.log("1")
 } else if(document.querySelector("section.projet-random .cartes-random") != null){
-    // console.log("2")
+    console.log("2")
     centrerCartes();
+    Randomlistner();
 } else {
-    // console.log("3")
+    console.log("3")
 }
 
 
@@ -86,6 +88,8 @@ function vroom(elm1, elm2){
     }, "1");
 }
 
+
+
 // ////////////////////////////// aleatoire
 //fonction pour centrer les cartes dans la section projet aleatoire
 function centrerCartes(){
@@ -95,14 +99,105 @@ function centrerCartes(){
     let x1 = cartesCentrer[0].getBoundingClientRect().left;
     let x2 = cartesCentrer[cartesCentrer.length-1].getBoundingClientRect().right;
     let largeur = x2-x1;
-    console.log(largeur);
+    //console.log(largeur);
 
     //ajuster la largeur du contenant
     let contenant = document.querySelector("section.projet-random .cartes-random");
     contenant.style.width = largeur.toString() + "px";
 }
 
+function animateRandomShuffle(){
+    let lesCartes = document.querySelectorAll("section.projet-random .cartes-random .carte-anim");
+    let nbCartes = 2;
 
+    //si un a la classe, les autres devraient aussi
+    if(!lesCartes[0].classList.contains("shuffled")){
+        for(let carte of lesCartes){
+            carte.classList.add("shuffled");
+        }
+
+        setTimeout(function(){
+            dealAllRandom(nbCartes);
+        }, "600");
+    } else{
+        //reshuffle
+        for(let carte of lesCartes){
+            carte.classList.remove("shuffled");
+
+            setTimeout(function(){
+                carte.classList.add("shuffled");
+            }, "400");
+        }
+        let carteCacher = document.querySelectorAll("section.projet-random .cartes-random .carte");
+        for(let carte of carteCacher){
+            carte.classList.add("hidden")
+            carte.classList.remove("turned")
+            let paquet = document.querySelector("section.projet-random .cartes-random .paquet");
+            paquet.append(carte);
+        }
+        
+        setTimeout(function(){
+            dealAllRandom(nbCartes);
+        }, "950");
+    }
+}
+//addeventloistener
+function Randomlistner(){
+    let lesCartes = document.querySelectorAll("section.projet-random .cartes-random .carte-anim");
+    for (let carte of lesCartes) {
+        carte.addEventListener("click", animateRandomShuffle);
+    }
+}
+
+//animer les cartes une apres lautre
+function dealAllRandom(nbCartes) {
+    let delay = 30;
+    let i = 0;
+    let frame = 0;
+
+    function dealAllRandomRAF(){
+        if(i >= nbCartes){
+            return
+        }
+
+        if(frame == 0){
+            dealRandom();
+            i++;
+        }
+
+        frame++;
+        //loop back to 0
+        if(frame >= delay){
+            frame = 0;
+        }
+        requestAnimationFrame(dealAllRandomRAF);
+    }
+    requestAnimationFrame(dealAllRandomRAF);
+}
+
+//fonction pour faire apparaitre les cartes
+function dealRandom(){
+    let cartes = document.querySelectorAll("section.projet-random .cartes-random .paquet .carte.hidden");
+    ////cartes choisies alléatoirement
+    let i = Math.random() * cartes.length;
+    i = Math.floor(i);
+    
+    cartes[i].classList.remove("hidden")
+
+    //sortir les cartes du paquet
+    let section = document.querySelector("section.projet-random .cartes-random");
+    section.append(cartes[i]);
+    console.log(cartes[i]);
+
+    // deplacer les cartes
+    let paq = document.querySelector("section.projet-random .cartes-random .paquet");
+    vroom(cartes[i], paq);
+
+    // retourner les cartes automatiquement
+    setTimeout(function(){
+        cartes[i].classList.add("turned");
+    }, "700");
+}
 
 //effet hover sur cartes
 // document.querySelectorAll(".carte").forEach(carte => {
