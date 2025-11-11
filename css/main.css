@@ -81,11 +81,17 @@
     box-sizing: border-box;
 }
 
+
 body {
     background: var(--main-couleur-fond);
     color: var(--texte-couleur-principal);
     font-family: var(--main-paragraphe-font);
     min-height: 100vh;
+    
+}
+
+html, body {
+    overflow-x: hidden; /* hides horizontal scroll */
 }
 
 /* Boutons */
