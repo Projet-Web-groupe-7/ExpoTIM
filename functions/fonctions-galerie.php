@@ -11,10 +11,10 @@
                 );
             break;
 
-            case 'jour de la terre':
+            case 'graphisme':
                 $args =  array(
                     'posts_per_page'  => -1,
-                    'post_type'       => 'projets-jour-terre',
+                    'post_type'       => 'projets-graphisme',
                 );
             break;
         }
