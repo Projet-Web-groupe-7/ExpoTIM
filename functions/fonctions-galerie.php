@@ -141,14 +141,26 @@
 <?php
     // symbols 
     // cartes differentes
-    $imgHeart = get_field("heart_symbol");
-    $imgSpade = get_field("spade_symbol");
-    $imgDiamond = get_field("diamond_symbol");
-    $imgclub = get_field("club_symbol");
+    // ACF
+    // $imgHeart = get_field("heart_symbol");
+    // $imgSpade = get_field("spade_symbol");
+    // $imgDiamond = get_field("diamond_symbol");
+    // $imgclub = get_field("club_symbol");
+
+    // customiser
+    $imgHeart = get_theme_mod('cartes_hearts', 'Default Title');
+    $imgSpade = get_theme_mod('cartes_spades', 'Default Title');
+    $imgDiamond = get_theme_mod('cartes_diamonds', 'Default Title');
+    $imgclub = get_theme_mod('cartes_clubs', 'Default Title');
 
     //dos des cartes
-    $dosRouge = get_field("derriere_cartes_rouge");
-    $dosBleu = get_field("derriere_cartes_bleu");
+    // ACF
+    // $dosRouge = get_field("derriere_cartes_rouge");
+    // $dosBleu = get_field("derriere_cartes_bleu");
+
+    //customiser
+    $dosRouge = get_theme_mod('cartes_rouge', 'Default Title');
+    $dosBleu = get_theme_mod('cartes_bleu', 'Default Title');
 
 //     echo '<!-- Debug symbols: ';
 // var_dump($imgHeart, $imgSpade, $imgDiamond, $imgClub);
@@ -161,14 +173,14 @@
     }
     .carte.heart .container .back, .carte.diamond .container .back{
         /* background-color: rgb(156, 0, 0); */
-        background-image: url(<?= $dosRouge ['url']?>);
+        background-image: url(<?= $dosRouge //['url']?>);
     }
     .carte.spade .container .front, .carte.club .container .front, .carte.spade .container .back, .carte.club .container .back{
         border: 6px solid blue;
     }
     .carte.spade .container .back, .carte.club .container .back{
         /* background-color: rgb(0, 4, 130); */
-        background-image: url(<?= $dosBleu ['url']?>);
+        background-image: url(<?= $dosBleu //['url']?>);
     }
 
     /* symboles */
@@ -246,4 +258,6 @@
             background-color: rgb(138, 28, 21);
         }
     </style>
+
+    <?php galerie_carte_css(); ?>
 <?php } ?>
