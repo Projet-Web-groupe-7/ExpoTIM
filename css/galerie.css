@@ -157,7 +157,12 @@ main.gallerie section#gallerie-cartes{
     min-height: 388px;
     max-width: 259px;
     max-height: 388px;
-    border: 10px solid rgb(0, 0, 0);
+    border: 3px solid rgb(0, 0, 0);
+    box-shadow: -10px 0px 14px rgba(0, 0, 0, 1);
+
+    background-repeat: no-repeat;
+    background-size: cover; 
+    border-radius: 20px;
 
     margin: 0;
     transition: right .5s, width 0.5s;

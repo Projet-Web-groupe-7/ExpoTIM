@@ -234,12 +234,17 @@
         </div>
     </section>
 
+    <?php 
+        //dos cartes
+        $dosRouge = get_theme_mod('cartes_rouge', 'Default Title');
+        $dosBleu = get_theme_mod('cartes_bleu', 'Default Title');
+    ?>
     <style>
         .cartes-random .carte-anim{
-            background-color: rgb(0, 0, 163);
+            background-image: url(<?= $dosRouge ?>);
         }
         .cartes-random .carte-anim:nth-child(2n){
-            background-color: rgb(163, 0, 0);
+            background-image: url(<?= $dosBleu ?>);
         }
         <?php for($i=1; $i<= $nb+1; $i++){?>
             .cartes-random .carte-anim:nth-child(<?= $i ?>){
