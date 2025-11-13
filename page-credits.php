@@ -5,6 +5,7 @@
 <main class="credits">
   <section class="equipe">
     <h2>Équipe de l'exposition TIM</h2>
+    <p>Voici l'équipe qui a contribué à la création du site de cette exposition.</p>
     <div class="liste-equipe">
       <?php
       // Récupère les membres depuis le Customizer (fonctions définies dans functions/customizer.php)
@@ -19,7 +20,8 @@
             <?php if (! empty($image)) : ?>
               <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($nom ?: 'Membre'); ?>">
             <?php else : ?>
-              <!-- <img src="<?php echo esc_url(get_template_directory_uri() . '/images/placeholder-member.png'); ?>" alt="<?php echo esc_attr($nom ?: 'Membre'); ?>"> -->
+              <!-- Image par défaut si aucune photo -->
+              <img src="<?php echo esc_url(get_template_directory_uri() . '/images/cartes/placeholder.png'); ?>" alt="<?php echo esc_attr($nom ?: 'Membre'); ?>">
             <?php endif; ?>
             <p><?php echo esc_html($nom); ?></p>
           </span>
