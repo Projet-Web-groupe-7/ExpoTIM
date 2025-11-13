@@ -58,6 +58,11 @@
     justify-content: space-evenly;
 }
 
+.projet-container-bas-droite h2,
+.projet-container-bas-droite p{
+    padding-bottom: 20px;
+}
+
 .carrousel {
     flex: 1 1 60%;
     position: relative;
