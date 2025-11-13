@@ -1,19 +1,17 @@
+header {
+  z-index: 1000;
+  position : sticky;
+  top: 0;
+  transition: transform 0.3s ease-in-out;
+
+}
+
 .entete {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 1rem 2rem;
   flex-wrap: wrap; /* allows wrapping when space is tight */
   gap: 1rem;
   margin: 0;
-  background-color:var(--header-couleur-fond);
-  box-shadow: 0 10px 10px 0 #0b0b0b;
-
-  z-index: 1000;
-  position : sticky;
-  top: 0;
-  left: 0;
-
 }
 
 #maCheckbox {
@@ -29,40 +27,40 @@
 /* NAVIGATION CONTAINER */
 .entete-navigation {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
+  width: 100vw;
+  margin: 0;
+  flex: 1;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 
 /* MENU */
 .entete-menu {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
 #menu-principal {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 20px;
 }
 
 #menu-principal a {
+  width: 150px;
   display: inline-block;
   padding: 0.6rem 1.2rem;
-  border: 2px solid white;
-  border-radius: 1.2rem;
+  text-align: center;
+  border-radius: 0.8rem;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 #menu-principal a:hover{
   background-color: var(--bouton-couleur-fond-hover);
+  color: var(--header-couleur-fond);
 }
 
 #menu-principal a:active{
@@ -73,13 +71,14 @@
 .entete-recherche {
   display: flex;
   justify-content: flex-end;
+  margin: 0 5px;
 }
 
 .recherche {
   display: flex;
   height: 2rem;
   width: 14rem;
-
+    border-radius: 10px;
 
 }
 
