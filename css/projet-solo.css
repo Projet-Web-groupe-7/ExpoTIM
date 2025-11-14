@@ -1,0 +1,129 @@
+.projet-container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+.projet-container-haut {
+    position: relative;
+    width: 100%;
+    height: 70vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.background-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    -webkit-mask-image: linear-gradient(to right, black 10%, transparent 55%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+    mask-image: linear-gradient(to right, black 10%, transparent 55%);
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    z-index: 0;
+}
+
+
+
+.projet-container-haut h1{
+    z-index: 1;
+}
+
+
+.projet-container-bas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+    margin-top: 20px;
+    height: 70vh; /* ou un max-height selon ton besoin */
+}
+
+
+/* Section droite */
+.projet-container-bas-droite {
+    flex: 1 1 35%; /* prend environ 35% de l'espace */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.projet-container-bas-droite h2,
+.projet-container-bas-droite p{
+    padding-bottom: 20px;
+}
+
+.carrousel {
+    flex: 1 1 60%;
+    position: relative;
+    overflow: hidden;
+    max-height: 70vh; /* limite la hauteur */
+}
+
+
+/* Slides */
+.carrousel__images {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+.carrousel__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* transition de fondu */
+    z-index: 0;
+}
+
+.carrousel__slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.carrousel__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Flèches du carrousel */
+.carrousel__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.3s;
+}
+
+.carrousel__btn:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+.carrousel__btn--prev {
+    left: 50px;
+}
+
+.carrousel__btn--next {
+    right: 10px;
+}

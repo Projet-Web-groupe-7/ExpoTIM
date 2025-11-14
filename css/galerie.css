@@ -1,3 +1,4 @@
+/* //////////////////////////cartes et gallerie */
 main.gallerie{
     padding: 0 50px;
     background: none;
@@ -128,7 +129,46 @@ main.gallerie section#gallerie-cartes{
 .carte.hidden{
     position: absolute;
     opacity: 0;
+    user-select: none;
 }
 .carte-no-transit{
     transition: none;
+}
+
+
+
+
+/* ///////////////////////////////////////// cartes projet random */
+.projet-random{
+    display: flex;
+    flex: column nowrap;
+
+    align-items: center;
+}
+.cartes-random{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.cartes-random .paquet,.carte-anim{
+    /* visibility: visible; */
+    position: static;
+    min-width: 259px;
+    min-height: 388px;
+    max-width: 259px;
+    max-height: 388px;
+    border: 3px solid rgb(0, 0, 0);
+    box-shadow: -10px 0px 14px rgba(0, 0, 0, 1);
+
+    background-repeat: no-repeat;
+    background-size: cover; 
+    border-radius: 20px;
+
+    margin: 0;
+    transition: right .5s, width 0.5s;
+}
+.cartes-random .carte {
+    position: relative;
+    right: 1500;
+    bottom: 75px;
 }

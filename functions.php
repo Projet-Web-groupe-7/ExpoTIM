@@ -6,7 +6,7 @@
         'options.php',
         'customizer.php',
         'svg.php',
-        'cartes-expo.php',
+        'fonctions-galerie.php',
     );
   
     

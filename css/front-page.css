@@ -138,29 +138,8 @@
   transform: translateX(calc(0.35 * var(--expo-width)));
 }
 
-.deck-cartes li a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--expo-width);
-  height: var(--expo-height);
-  border-radius: 10px;
-  overflow: hidden;
-  color: white;
-  text-decoration: none;
-  background-color: #222;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.3s ease;
-}
-
-.deck-cartes li a:hover {
-  transform: translateY(-10px);
-}
-
-
 /* Contenu de la carte */
-/* .deck-cartes li a {
+.deck-cartes li a {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -172,10 +151,10 @@
   font-weight: bold;
   border-radius: 10px;
   overflow: hidden;
-} */
+}
 
 /* Image de fond */
-/* .deck-cartes li a::before {
+.deck-cartes li a::before {
   content: "";
   position: absolute;
   inset: 1rem;
@@ -185,10 +164,10 @@
   background-position: center;
   background-repeat: no-repeat;
   transition: transform 0.3s ease;
-} */
+}
 
 /* Images par nom de classe (à ajouter dans le menu Wordpress) */
-/* .deck-cartes .finissants a::before {
+.deck-cartes .finissants a::before {
   background-image: url('../images/cartes/carteDosR.png');
 }
 .deck-cartes .arcade a::before {
@@ -196,7 +175,7 @@
 }
 .deck-cartes .graphisme a::before {
   background-image: url('../images/cartes/Graphisme.jpg');
-} */
+}
 
 /********** VERSION MOBILE **********/
 @media (max-width: 768px) {
