@@ -14,7 +14,6 @@
 		    // On scroll vers le bas et cache le header
             // En rajouter au header un style qui est le translate 
             header.style.transform = 'translateY(-100%)';
-            console.log("scroll")
 	    }
 	    else{
 		    // On scroll vers le haut et montrer le header
@@ -23,3 +22,5 @@
 	    }
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // éviter les valeurs négatives
         }
+
+        

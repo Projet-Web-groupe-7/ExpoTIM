@@ -7,9 +7,19 @@
   row-gap: 3rem;
 }
 
+.contenuVideo {
+  margin: 0;
+  background-color: #000000;
+}
+
 .video-front-page {
-  background-color: lightgray;
-  width: 100%;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+
 }
 
 /* Sections de contenu de la page d'accueil */
@@ -54,6 +64,7 @@
 .decks-expo {
   width: 100vw;
   justify-content: flex-start;
+  margin-bottom: 300px;
 }
 
 /* Conteneur pour les decks de cartes et la boîte décorative */
@@ -218,4 +229,7 @@
   .deck-cartes li:hover {
     transform: translateY(-100px);
   }
+
+ 
 }
+
