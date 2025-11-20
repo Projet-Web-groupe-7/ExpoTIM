@@ -21,6 +21,7 @@ footer .adresse {
 }
 footer .adresse a {
     padding: 10px 0;
+    
 }
 footer .reseaux {
     text-align: center;
@@ -29,6 +30,9 @@ footer .reseaux {
 footer h4 {
     font-size: larger;
     padding-bottom: 10px;
+}
+footer ul {
+    list-style: none;
 }
 
 a {

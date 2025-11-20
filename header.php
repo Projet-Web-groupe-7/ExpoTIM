@@ -28,6 +28,14 @@
                     'container' => 'nav',
                     'container_class' => 'entete-menu'
                 )); ?>
+                <div class="dropdown">
+                    <li class="dropdown-btn">ExpoTim</li>
+                    <?php wp_nav_menu(array(
+                        "menu" => "siteExpoTim",
+                        'container' => 'nav',
+                        'container_class' => 'entete-expoTim'
+                    )); ?>
+                </div>
             </div>
             <div class="entete-recherche">
                     <?php get_search_form(); ?>
