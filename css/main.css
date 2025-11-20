@@ -79,6 +79,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -102,6 +103,10 @@ body {
 
 .boutons:active{
     background-color: var(--bouton-couleur-fond-active);
+}
+
+li{
+    border: red solid 2px;
 }
 
 /* Titre accueil */
