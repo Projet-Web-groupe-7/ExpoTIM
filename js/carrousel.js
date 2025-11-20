@@ -1,9 +1,9 @@
 (function(){
     console.log("carrousel.js");
 
-    const slides = document.querySelectorAll(".carrousel__slide");
-    const prevBtn = document.querySelector(".carrousel__btn--prev");
-    const nextBtn = document.querySelector(".carrousel__btn--next");
+    const slides = document.querySelectorAll(".carrousel-slide");
+    const prevBtn = document.querySelector(".carrousel-btn--prev");
+    const nextBtn = document.querySelector(".carrousel-btn--next");
 
     if (slides.length === 0) return;
 
@@ -34,3 +34,23 @@
 
     afficherSlide(indexActuel);
 })();
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".scroll-reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target); // animate only once
+            }
+        });
+    }, { 
+        threshold: 0.3 // trigger when 30% of element is visible
+    });
+
+    elements.forEach(el => observer.observe(el));
+});
+
+

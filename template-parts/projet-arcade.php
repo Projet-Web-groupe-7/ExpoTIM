@@ -13,18 +13,42 @@
 ?>
 
 <article class="projet-container">
-<?php  if  ($projet_arcade_image): ?>
+<?php  //if  ($projet_arcade_image): ?>
+    <!-- <div class="projet-container-haut">
+        <div  class="background-mask" style="background-image: url('<?php //echo esc_url($projet_arcade_image['url']); ?>');"></div>
+        <?php //if ($projet_arcade_nom): ?>
+            <h1><?php //echo $projet_arcade_nom; ?></h1>
+        <?php// endif; ?> 
+    </div> -->
+    <?php  //endif; ?>
+
     <div class="projet-container-haut">
-        <div  class="background-mask" style="background-image: url('<?php echo esc_url($projet_arcade_image['url']); ?>');"></div>
-        <?php if ($projet_arcade_nom): ?>
-            <h1><?php echo $projet_arcade_nom; ?></h1>
-        <?php endif; ?> 
+    
+        <?php if ($projet_arcade_image): ?>
+
+                
+                <img class="projet-bg" 
+                    src="<?php echo esc_url($projet_arcade_image['url']); ?>" 
+                    alt="" />
+
+            
+                <img class="projet-poster" 
+                    src="<?php echo esc_url($projet_arcade_image['url']); ?>" 
+                    alt="<?php echo esc_attr($projet_arcade_image['alt']); ?>" />
+
+            <?php endif; ?>
+
+            <?php if ($projet_arcade_nom): ?>
+                <h1><?php echo $projet_arcade_nom; ?></h1>
+        <?php endif; ?>
+
     </div>
+
     
 
-    <?php  endif; ?>
+    
     <div class="projet-container-bas">
-        <div class="carrousel">
+        <div class="carrousel scroll-reveal">
             <?php 
                 $images = [];
                 for ($i = 1; $i <= 10; $i++) {
@@ -34,24 +58,24 @@
 
                 if (!empty($images)): 
             ?>
-                <div class="carrousel__images">
+                <div class="carrousel-images">
                     <?php foreach ($images as $index => $image): ?>
-                        <div class="carrousel__slide <?php echo $index === 0 ? 'active' : ''; ?>">
+                        <div class="carrousel-slide <?php echo $index === 0 ? 'active' : ''; ?>">
                             <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
                         </div>
                     <?php endforeach; ?>
                 </div>
 
                 <!-- Flèches de navigation -->
-                <button class="carrousel__btn carrousel__btn--prev">&#10094;</button>
-                <button class="carrousel__btn carrousel__btn--next">&#10095;</button>
+                <button class="carrousel-btn carrousel-btn--prev">&#10094;</button>
+                <button class="carrousel-btn carrousel-btn--next">&#10095;</button>
                 
             <?php else: ?>
                 <p>Aucune image disponible pour ce carrousel.</p>
             <?php endif; ?>
     </div>
 
-        <div class="projet-container-bas-droite">
+        <div class="projet-container-bas-droite scroll-reveal">
             <div>
                 <h2>Équipe/Auteur</h2>
                 <?php  if  ($projet_arcade_membre1): ?>
@@ -80,7 +104,12 @@
             
         </div>
     </div>
+
+
+  
    
 </article>
+
+
 
 <?php get_footer(); ?>

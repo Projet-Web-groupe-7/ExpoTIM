@@ -78,5 +78,5 @@
     </div>
    
 </article>
-
+<?php section_projet_random(); ?>
 <?php get_footer(); ?>

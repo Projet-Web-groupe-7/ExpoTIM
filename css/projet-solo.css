@@ -1,43 +1,120 @@
+@keyframes titleFadeSlide {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes bgFadeInBlur {
+    0% {
+        opacity: 0;
+        filter: blur(40px) brightness(0.4);
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(20px) brightness(0.6);
+        transform: scale(1.1);
+    }
+}
+
+
+@keyframes posterFade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
 .projet-container{
     display: flex;
     flex-direction: column;
 
 }
 
-
-
 .projet-container-haut {
     position: relative;
-    width: 100%;
-    height: 70vh; 
+    width: 100vw;
+    height: 65vh;
+    overflow: hidden;
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 }
 
-.background-mask {
+/* Background blur */
+.projet-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center center;
-    -webkit-mask-image: linear-gradient(to right, black 10%, transparent 55%);
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: cover;
-    mask-image: linear-gradient(to right, black 10%, transparent 55%);
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    z-index: 0;
-}
-
-
-
-.projet-container-haut h1{
+    object-fit: cover;
+    filter: blur(20px) brightness(0.6);
+    transform: scale(1.1);
     z-index: 1;
+
+    opacity: 0;
+    animation: bgFadeInBlur 1.8s ease forwards;
 }
+
+/* Full poster (not cropped) */
+.projet-poster {
+    position: relative;
+    max-height: 90%;
+    width: auto;
+    z-index: 2;
+
+    opacity: 0;
+    animation: posterFade 1.2s ease-out forwards;  
+
+    transition: transform 0.4s ease, filter 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.projet-poster:hover {
+    transform: 
+        translateY(-10px)
+        rotateY(6deg)
+        rotateX(3deg)
+        scale(1.03);
+    filter: brightness(1.05);
+}
+
+.projet-container-haut h1 {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 25px;
+    border-radius: 4px;
+    opacity: 0;                 
+    animation: titleFadeSlide 1.2s ease forwards 0.3s;
+}
+
+
+.projet-container-haut::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    z-index: 2;
+    pointer-events: none;
+}
+
+
 
 
 .projet-container-bas {
@@ -72,14 +149,14 @@
 
 
 /* Slides */
-.carrousel__images {
+.carrousel-images {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
 
-.carrousel__slide {
+.carrousel-slide {
     position: absolute;
     top: 0;
     left: 0;
@@ -90,19 +167,19 @@
     z-index: 0;
 }
 
-.carrousel__slide.active {
+.carrousel-slide.active {
     opacity: 1;
     z-index: 1;
 }
 
-.carrousel__slide img {
+.carrousel-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 /* Flèches du carrousel */
-.carrousel__btn {
+.carrousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -116,14 +193,32 @@
     transition: background 0.3s;
 }
 
-.carrousel__btn:hover {
+.carrousel-btn:hover {
     background: rgba(0,0,0,0.8);
 }
 
-.carrousel__btn--prev {
+.carrousel-btn--prev {
     left: 50px;
 }
 
-.carrousel__btn--next {
+.carrousel-btn--next {
     right: 10px;
+}
+
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(6px);
+    transition: 
+        opacity 0.9s ease-out,
+        transform 0.9s ease-out,
+        filter 0.9s ease-out;
+}
+
+/* When visible */
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
 }

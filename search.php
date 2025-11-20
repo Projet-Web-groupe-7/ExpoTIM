@@ -19,7 +19,7 @@
 
         if ( have_posts() ) {
             $args = array(
-                'post_type'      => array('projets-arcade', 'projets-jour-terre'),
+                'post_type'      => array('projets-arcade', 'projets-graphisme'),
                 'post__in'       => wp_list_pluck($wp_query->posts, 'ID'),
                 'posts_per_page' => -1,
                 'orderby'        => 'post__in',
