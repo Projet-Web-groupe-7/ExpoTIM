@@ -247,15 +247,22 @@
         .cartes-random .carte-anim:nth-child(2n){
             background-image: url(<?= $dosBleu ?>);
         }
+
         <?php for($i=1; $i<= $nb+1; $i++){?>
             .cartes-random .carte-anim:nth-child(<?= $i ?>){
                 position: relative;
                 right: <?= ($i-1) * 130 ?>px;
             }
-
             .cartes-random .carte-anim.shuffled:nth-child(<?= $i ?>){
                 position: relative;
                 right: <?= ($i-1) * 259 ?>px;
+            }
+
+            @media screen and (max-width: 720px){
+            .cartes-random .carte-anim:nth-child(<?= $i ?>){
+                position: relative;
+                right: <?= ($i-1) * 200 ?>px;
+            }
             }
         <?php } ?>
 

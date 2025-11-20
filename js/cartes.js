@@ -247,6 +247,7 @@ function resizeListener(){
     }
 }
 
+
 // effet hover sur cartes
 document.querySelectorAll(".carte").forEach(carte => {
     carte.addEventListener("mouseenter", () => {
