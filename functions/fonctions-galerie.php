@@ -227,6 +227,7 @@
             </div>
             <?php
                 $nb=6;
+                // $nb=2;
                 for($i=0; $i< $nb; $i++){
             ?>
                 <div class="carte-anim"></div>

@@ -148,6 +148,8 @@ main.gallerie section#gallerie-cartes{
 .cartes-random{
     display: flex;
     flex-flow: row nowrap;
+
+    transition: width .5s;
 }
 
 .cartes-random .paquet,.carte-anim{
@@ -169,6 +171,38 @@ main.gallerie section#gallerie-cartes{
 }
 .cartes-random .carte {
     position: relative;
-    right: 1500;
+    right: 1590px;
     bottom: 75px;
+}
+
+
+@media screen and (max-width: 720px){
+    .cartes-random .carte-anim:nth-of-type(n+4){
+        display: none;
+    }
+
+    .cartes-random .carte {
+        position: relative;
+        right: 750px;
+        bottom: calc(75px - 435px);
+    }
+    .cartes-random .carte:nth-of-type(2) {
+        position: relative;
+        right: calc(750px + 333px);
+        bottom: calc(75px - (435px * 2));
+    }
+
+    .cartes-random{
+        transition: padding-bottom .5s;
+    }
+    .cartes-random:has(.shuffled){
+        padding-bottom: calc(-75px + (435px * 2));
+    }
+
+    .cartes-random .carte-anim.shuffled{
+        translate: 5px 0 ;
+    }
+    .cartes-random .carte-anim:not(.shuffled){
+        translate: -100px 0 ;
+    }
 }
