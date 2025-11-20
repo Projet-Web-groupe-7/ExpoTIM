@@ -1,7 +1,9 @@
 <h1 class="titreLogo"><?php echo get_bloginfo('name'); ?></h1>
-<video class="video-front-page" src="">
-                
-</video>
+<div class="contenuVideo">
+   <video autoplay loop muted playsinline class="video-front-page">
+        <source src="<?php echo get_template_directory_uri(); ?>/video/VideoPromotionnelleWeb.mp4" type="video/mp4">
+    </video> 
+</div> 
 <?php get_header(); ?>
     <main class="main-front-page">
         <!-- Section contenant la description de l'exposition -->

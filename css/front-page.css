@@ -168,13 +168,13 @@
 
 /* Images par nom de classe (à ajouter dans le menu Wordpress) */
 .deck-cartes .finissants a::before {
-  background-image: url('../images/cartes/carteDosR.png');
+  background-image: url('../images/cartes/finissants.png');
 }
 .deck-cartes .arcade a::before {
-  background-image: url('../images/cartes/Arcade.jpg');
+  background-image: url('../images/cartes/arcade.jpg');
 }
 .deck-cartes .graphisme a::before {
-  background-image: url('../images/cartes/Graphisme.jpg');
+  background-image: url('../images/cartes/graphisme.jpg');
 }
 
 /********** VERSION MOBILE **********/

@@ -3,30 +3,34 @@ header {
   position : sticky;
   top: 0;
   transition: transform 0.3s ease-in-out;
+
 }
 
 .entete {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem 2rem;
   flex-wrap: wrap; /* allows wrapping when space is tight */
   gap: 1rem;
   margin: 0;
 }
 
-#maCheckbox {
+#maCheckbox,
+.entete > label.boutons {
   display: none;
 }
 
 /* LOGO */
 .custom-logo {
-  max-width: 180px;
+  max-width: 100px;
   height: auto;
 }
 
 /* NAVIGATION CONTAINER */
 .entete-navigation {
   display: flex;
-  width: 100vw;
+  justify-content: space-around;
   margin: 0;
   flex: 1;
   flex-wrap: wrap;
