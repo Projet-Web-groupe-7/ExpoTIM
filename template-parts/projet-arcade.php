@@ -13,14 +13,7 @@
 ?>
 
 <article class="projet-container">
-<?php  //if  ($projet_arcade_image): ?>
-    <!-- <div class="projet-container-haut">
-        <div  class="background-mask" style="background-image: url('<?php //echo esc_url($projet_arcade_image['url']); ?>');"></div>
-        <?php //if ($projet_arcade_nom): ?>
-            <h1><?php //echo $projet_arcade_nom; ?></h1>
-        <?php// endif; ?> 
-    </div> -->
-    <?php  //endif; ?>
+
 
     <div class="projet-container-haut">
     
@@ -48,7 +41,7 @@
 
     
     <div class="projet-container-bas">
-        <div class="carrousel scroll-reveal">
+        <div class="carrousel">
             <?php 
                 $images = [];
                 for ($i = 1; $i <= 10; $i++) {
@@ -73,9 +66,9 @@
             <?php else: ?>
                 <p>Aucune image disponible pour ce carrousel.</p>
             <?php endif; ?>
-    </div>
+        </div>
 
-        <div class="projet-container-bas-droite scroll-reveal">
+        <div class="projet-container-bas-droite fondu-en-bas">
             <div>
                 <h2>Équipe/Auteur</h2>
                 <?php  if  ($projet_arcade_membre1): ?>

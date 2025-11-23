@@ -35,7 +35,7 @@
 
     </div>
     <div class="projet-container-bas">
-        <div class="carrousel scroll-reveal">
+        <div class="carrousel">
             <?php 
                 $images = [];
                 for ($i = 1; $i <= 10; $i++) {
@@ -62,7 +62,7 @@
             <?php endif; ?>
     </div>
 
-        <div class="projet-container-bas-droite scroll-reveal">
+        <div class="projet-container-bas-droite fondu-en-bas">
             <div>
                 <h2>Équipe/Auteur</h2>
                 <?php  if  ($projet_graphisme_membre1): ?>
