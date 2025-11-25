@@ -81,6 +81,10 @@
     box-sizing: border-box;
 }
 
+html {
+	overflow-x: hidden;
+}
+
 body {
     background: var(--main-couleur-fond);
     color: var(--texte-couleur-principal);
@@ -113,10 +117,10 @@ body {
     color: var(--titre-accueil-couleur);
     text-align: center;
     margin: 0 auto;
-    padding: 6rem 0;
+    width: clamp(200px, 50%, 550px);
+    padding: clamp(3rem, 6vw, 6rem) 0;
     position: relative;
     z-index: 1;
-    max-width: 50vw;
 }
 
 /* Logo à l'arrière-plan */
@@ -127,8 +131,19 @@ body {
     background-image: url("../images/logos/IconLogo.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: auto 100%;
+    background-size: contain;
     z-index: -1;
+    pointer-events: none;
+}
+
+/* État initial */
+.fondu-en-bas {
+    opacity: 0;
+}
+
+/* Animation quand .active est ajoutée */
+.fondu-en-bas.active {
+    animation: fondu-en-bas 700ms cubic-bezier(.17, .67, .88, 1.46) forwards;
 }
 
 /* Header */
@@ -176,4 +191,18 @@ main p{
     font-family: var(--main-paragraphe-font);
     font-size: 1rem;
     color: var(--texte-couleur-principal);
+}
+
+/* Animations pour le contenu principal des sections.
+=============================================== */
+@keyframes fondu-en-bas {
+	0% {
+		translate: 0 10vh;
+		opacity: 0;
+	}
+
+	100% {
+		translate: 0 0vh;
+		opacity: 1;
+	}
 }
