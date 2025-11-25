@@ -55,16 +55,38 @@ header {
   text-align: center;
   border-radius: 0.8rem;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, width 0.5s ease-out;
+}
+#menu-principal a::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--couleur-text);
+    transition: width 0.5s ease-out;
 }
 
-#menu-principal a:hover{
+#menu-principal a::after {
+    z-index: -1;
+    width: 100%;
+    color: #fff;
+}
+
+/* #menu-principal a:hover{
   background-color: var(--bouton-couleur-fond-hover);
   color: var(--header-couleur-fond);
-}
+} */
 
 #menu-principal a:active{
   background-color: var(--bouton-couleur-fond-active);
+}
+
+#menu-principal a:hover::after {
+    z-index: -1;
+    width: 100%;
+    color: #fff;
 }
 
 /* MENU DEROULANT EXPOTIM */
@@ -196,12 +218,15 @@ header {
   .dropdown {
     align-self: center;
   }
+  .dropdown-btn {
+    margin-top: 20px;
+  }
 
   .entete-expoTim {
     width: 100vw;
     background-color: #D9D9D9;
     display: flex;
-    flex-direction: flex-end;
+    flex-direction: center;
   }
 
 

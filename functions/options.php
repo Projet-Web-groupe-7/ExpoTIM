@@ -53,6 +53,14 @@
         '/js/defilementFondu.js'),
         true
     );
+    wp_enqueue_script(
+        'curseur',
+        get_template_directory_uri() . '/js/curseur.js',
+        array(),
+        filemtime(get_template_directory() . 
+        '/js/curseur.js'),
+        true
+    );
   } 
   
   add_action('wp_enqueue_scripts', 'theme_tp_enqueue_styles');

@@ -11,6 +11,8 @@
     <?php wp_head(); ?>
 </head>
 <body>
+    <div class="curseur"></div>
+
     <header>
         <div class="entete">
             <figure class="entete-logo">

@@ -1,3 +1,13 @@
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+
+}
+
 /* Polices */
 :root{
     /* Accueil */
@@ -13,6 +23,12 @@
 
     /* Footer */
     --footer-nav-font:"Poppins", sans-serif;
+
+    
+    /* Curseur */
+    --mouse-x: 0px;
+    --mouse-y: 0px;
+ 
 
 }
 
@@ -72,14 +88,17 @@
     --carte-couleur-border:linear-gradient(90deg,rgba(101, 126, 212, 1) 0%, rgba(255, 255, 255, 1) 100%);
     --carte-couleur-border-alternatif:linear-gradient(90deg,rgba(255, 51, 31, 1) 0%, rgba(255, 255, 255, 1) 100%);
 
+    /* Curseur */
+    --mouse-x: 0px;
+    --mouse-y: 0px;
 
 }
 
-* {
+html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     scroll-behavior: smooth;
+
 }
 
 body {
@@ -88,6 +107,55 @@ body {
     font-family: var(--main-paragraphe-font);
     min-height: 100vh;
     overflow-x: hidden; /* Empêche le débordement horizontal indésirable */
+}
+
+/* Curseur personnalisé
+============================================================================= */
+
+
+/* Curseur général de la page */
+.curseur {
+    position: fixed;
+    z-index: 9999999;
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid var(--carte-couleur-fond);
+    border-radius: 50%;
+    top: calc(var(--mouse-y) - 1rem);
+    left: calc(var(--mouse-x) - 1rem);
+    pointer-events: none;
+    will-change: top, left;
+    transition: width 0.25s, height 0.25s;
+}
+
+.curseur::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Curseur inactif lorsqu'on quitte la fenêtre */
+.curseur.inactif {
+    display: none;
+}
+
+/*Lorsque le curseur passe sur un bouton il disparait*/
+.curseur.c-bouton {
+    border: none;
+    
+    transform: scale(2);
+    
+}
+
+.curseur.c-bouton::after {
+
+    display: none;
+    
 }
 
 /* Boutons */
