@@ -1,6 +1,10 @@
 //console.log("cartes.js");
 if(document.querySelector("section#gallerie-cartes") != null){
     dealAll();
+    //set les symboles
+    resetSymboles();
+    // event listner
+    window.addEventListener("resize", resetSymboles);
     //console.log("1")
 } else if(document.querySelector("section.projet-random .cartes-random") != null){
     //console.log("2")
@@ -87,6 +91,39 @@ function vroom(elm1, elm2){
         elm1.classList.remove("carte-no-transit");
         elm1.style.transform = `translate(${0}px,${0}px)`;
     }, "1");
+}
+
+
+// changer symbols on resize 
+// la fonction qui change les styles des cartes
+function resetSymboles() {
+    let symboles;
+    if(window.innerWidth > 1280){
+        //syboles défaut (grid 4)
+        symboles = ["heart", "spade", "diamond", "club", "club", "diamond", "spade", "heart"];
+    } else if(window.innerWidth > 950){
+        //syboles défaut (grid 3)
+        symboles = ["heart", "spade", "diamond", "club"];
+    } else {
+        //symboles mobiles (grid 2)
+        symboles = ["heart", "spade", "club", "diamond"];
+    }
+    let syIndex = 0;
+
+    let lesCartes = document.querySelectorAll("section#gallerie-cartes .carte");
+    for(let i = 0; i<= lesCartes.length-1; i++){
+        //clear la classe
+        lesCartes[i].classList.remove("heart");
+        lesCartes[i].classList.remove("spade");
+        lesCartes[i].classList.remove("diamond");
+        lesCartes[i].classList.remove("club");
+        // rajouter la bonne classe
+        lesCartes[i].classList.add(symboles[syIndex]);
+        
+        // alterner sybole
+        syIndex++;
+        syIndex = syIndex % symboles.length;
+    }
 }
 
 

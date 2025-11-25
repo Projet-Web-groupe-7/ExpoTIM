@@ -1,11 +1,15 @@
 /* //////////////////////////cartes et gallerie */
 main.gallerie{
-    padding: 0 50px;
+    padding: 0;
+    overflow-x: hidden;
     background: none;
+    max-width: 100vw;
 }
 
 .gallerie .hero{
     color: var(--texte-couleur-secondaire);
+    padding-left: 10px;
+    max-width: 84%;
 }
 .gallerie .hero h2,h3{
     color: var(--texte-couleur-secondaire);
@@ -111,7 +115,7 @@ main.gallerie section#gallerie-cartes{
 .front .symbole{
     width: 26px;
     height: 28px;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
 
 
@@ -135,6 +139,21 @@ main.gallerie section#gallerie-cartes{
     transition: none;
 }
 
+
+@media screen and (max-width: 1280px){
+    main.gallerie section#gallerie-cartes{
+        display: grid;
+        grid-template-columns: repeat(3, 325px);
+        margin-bottom: 70px;
+    }
+}
+@media screen and (max-width: 950px){
+    main.gallerie section#gallerie-cartes{
+        display: grid;
+        grid-template-columns: repeat(2, 325px);
+        margin-bottom: 70px;
+    }
+}
 
 
 
