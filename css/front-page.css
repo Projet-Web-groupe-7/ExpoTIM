@@ -35,7 +35,7 @@
 
 /* Section contenant l'explication de l'exposition */
 .desc-expo {
-  padding: 90px;
+
   border-bottom: white solid 0.5px;
   position: relative;
   z-index: 1;
@@ -62,7 +62,6 @@
 
 /** Styles pour le menu accordéon des différentes expositions sur grands écrans **/
 .decks-expo {
-  width: 100vw;
   justify-content: flex-start;
   margin-bottom: 300px;
 }
@@ -195,7 +194,7 @@
 @media (max-width: 768px) {
   .expo-deck {
     flex-direction: column-reverse;
-    align-items: center;
+    
   }
   .expo-boite {
     height: 300px;

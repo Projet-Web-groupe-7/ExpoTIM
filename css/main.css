@@ -107,7 +107,16 @@ body {
     font-family: var(--main-paragraphe-font);
     min-height: 100vh;
     overflow-x: hidden; /* Empêche le débordement horizontal indésirable */
+
 }
+
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
 
 /* Curseur personnalisé
 ============================================================================= */
@@ -119,7 +128,7 @@ body {
     z-index: 9999999;
     width: 2rem;
     height: 2rem;
-    border: 3px solid var(--carte-couleur-fond);
+    background-color: red;
     border-radius: 50%;
     top: calc(var(--mouse-y) - 1rem);
     left: calc(var(--mouse-x) - 1rem);
@@ -146,7 +155,7 @@ body {
 
 /*Lorsque le curseur passe sur un bouton il disparait*/
 .curseur.c-bouton {
-    border: none;
+    background-color: initial;
     
     transform: scale(2);
     
@@ -203,7 +212,6 @@ body {
 /* État initial */
 .fondu-en-bas {
     opacity: 0;
-    transform: translateY(10vh);
 }
 
 /* Animation quand .active est ajoutée */
@@ -236,6 +244,10 @@ header nav a{
     header nav a{
         color: var(--texte-couleur);
     }
+}
+
+.curseur{
+    display: none;
 }
 
 .recherche{

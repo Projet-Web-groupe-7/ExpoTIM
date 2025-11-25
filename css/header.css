@@ -49,6 +49,7 @@ header {
 }
 
 #menu-principal a {
+  position: relative;
   width: 150px;
   display: inline-block;
   padding: 0.6rem 1.2rem;
@@ -56,23 +57,30 @@ header {
   border-radius: 0.8rem;
   text-decoration: none;
   transition: all 0.3s ease, width 0.5s ease-out;
-}
-#menu-principal a::after {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: var(--couleur-text);
-    transition: width 0.5s ease-out;
+  overflow: hidden;
 }
 
 #menu-principal a::after {
-    z-index: -1;
-    width: 100%;
-    color: #fff;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;                        /* point de départ */
+  background-color: red;
+  z-index: -1;
+  transition: width 0.5s ease-out;
 }
+
+#menu-principal a:hover::after {
+  width: 100%;                     /* animation */
+}
+
+#menu-principal a:hover {
+  color: #000000;
+}
+
+
 
 /* #menu-principal a:hover{
   background-color: var(--bouton-couleur-fond-hover);

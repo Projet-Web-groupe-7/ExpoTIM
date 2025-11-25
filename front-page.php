@@ -18,7 +18,7 @@
             </div>
         </section>
         <!-- Section contenant la sélection d'un projet aléatoire -->
-        <section class="projet-random fondu-en-bas">
+        <section class="projet-random fondu-en-bas card">
             <h2>Choisis un projet au hasard</h2>
             <img src=".images/cartes/carteDosR" alt="Carte">
         </section>
