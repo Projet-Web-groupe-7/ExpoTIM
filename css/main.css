@@ -1,3 +1,14 @@
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+
+}
+
+
 /* Polices */
 :root{
     /* Accueil */
@@ -13,6 +24,11 @@
 
     /* Footer */
     --footer-nav-font:"Poppins", sans-serif;
+    
+      /* Curseur */
+    --mouse-x: 0px;
+    --mouse-y: 0px;
+ 
 
 }
 
@@ -20,35 +36,36 @@
 /* Couleurs */
 :root{
     /* Accueil */
-    --titre-accueil-couleur: #FF331F;
+    --titre-accueil-couleur: #ffffff;
 
     /* Header */
-    --header-couleur-fond:#0D0106;
-    --header-nav-couleur-fond :#0D0106;
-    --header-nav-couleur-border:#FBFBFF;
+    --header-couleur-fond:#090730;
+    --header-nav-couleur-fond :#090730;
+    --header-nav-couleur-border:#ffffff;
     --header-recherche-couleur-fond:#FBFBFF;
-    --header-recherche-couleur-border:#0D0106;
+    --header-recherche-couleur-border:#090730;
     
     /* Main */
-    --main-couleur-fond:#FBFBFF;
+    --main-couleur-fond: linear-gradient(to bottom,  #090730 0%,#1c1696 100%);
+
 
     /* Footer */
-    --footer-couleur-fond: #0D0106;
+    --footer-couleur-fond: #000F5E;
 
     /* Boutons */
-    --bouton-couleur-fond : #0D0106;
+    --bouton-couleur-fond : #090730;
     --bouton-couleur-fond-active: #3626A7;
     --bouton-couleur-fond-hover: #657ED4;
     --bouton-couleur-font: #FBFBFF;
 
     /* Textes */
-    --texte-couleur-principal:#0D0106;
+    --texte-couleur-principal:#B6B7C1;
     --texte-couleur-secondaire: #FBFBFF;
 
 
     /* Page accueil */
-    --section-EXPO-TIM-couleur-fond-principal: #3626A7;
-    --section-EXPO-TIM-couleur-fond-secondaire: #FF331F;
+    --section-EXPO-TIM-couleur-fond-principal: #090730;
+    --section-EXPO-TIM-couleur-fond-secondaire: #657ED4;
     --section-aleatoire-couleur-fond: #FBFBFF;
     --section-exposition-couleur-fond-principal: #3626A7;
     --section-exposition-couleur-fond-secondaire: #FF331F;
@@ -71,13 +88,88 @@
     --carte-couleur-border:linear-gradient(90deg,rgba(101, 126, 212, 1) 0%, rgba(255, 255, 255, 1) 100%);
     --carte-couleur-border-alternatif:linear-gradient(90deg,rgba(255, 51, 31, 1) 0%, rgba(255, 255, 255, 1) 100%);
 
-
+	  /* Curseur */
+    --mouse-x: 0px;
+    --mouse-y: 0px;
+ 
 }
+
+
+html {
+	overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--main-couleur-fond);
+    color: var(--texte-couleur-principal);
+    font-family: var(--main-paragraphe-font);
+    min-height: 100vh;
+    overflow-x: hidden; /* Empêche le débordement horizontal indésirable */
+}
+
+
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+/* Curseur personnalisé
+============================================================================= */
+/* Curseur général de la page */
+.curseur {
+    position: fixed;
+    z-index: 9999999;
+    width: 2rem;
+    height: 2rem;
+    background-color: red;
+    border: red solid 5px;
+    border-radius: 50%;
+    top: calc(var(--mouse-y) - 1rem);
+    left: calc(var(--mouse-x) - 1rem);
+    pointer-events: none;
+    will-change: top, left;
+    transition: width 0.25s, height 0.25s;
+}
+
+.curseur::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Curseur inactif lorsqu'on quitte la fenêtre */
+.curseur.inactif {
+    display: none;
+}
+
+/*Lorsque le curseur passe sur un bouton il disparait*/
+.curseur.c-bouton {
+    background-color: initial;
+    
+    transform: scale(2);
+    
+}
+
+.curseur.c-bouton::after {
+
+    display: none;
+    
+}
+
 
 /* Boutons */
 .boutons{
     background-color:var(--bouton-couleur-fond);
     color: var(--bouton-couleur-font);
+   
 }
 
 .boutons:hover{
@@ -93,8 +185,38 @@
     font-family: var(--titre-accueil-font);
     font-weight: 400;
     font-style: normal;
-    font-size: 20rem;
+    font-size: clamp(4rem, 9vw, 10rem);
     color: var(--titre-accueil-couleur);
+    text-align: center;
+    margin: 0 auto;
+    width: clamp(200px, 50%, 550px);
+    padding: clamp(3rem, 6vw, 6rem) 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Logo à l'arrière-plan */
+.titreLogo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/logos/IconLogo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* État initial */
+.fondu-en-bas {
+    opacity: 0;
+    transform: translateY(10vh);
+}
+
+/* Animation quand .active est ajoutée */
+.fondu-en-bas.active {
+    animation: fondu-en-bas 700ms cubic-bezier(.17, .67, .88, 1.46) forwards;
 }
 
 /* Header */
@@ -105,9 +227,27 @@ header{
 header nav{
     font-family: var(--header-nav-font);
     font-size: 1rem;
-    background-color: var(--header-nav-couleur-fond);
+    /* background-color: var(--header-nav-couleur-fond); */
     border-color: var(--header-nav-couleur-border);
+    
+}
+
+
+header nav a{
+    
     color: var(--texte-couleur-secondaire);
+    text-decoration: none;
+    
+}
+
+@media screen and (max-width: 720px) {
+    header nav a{
+        color: var(--texte-couleur);
+    }
+}
+
+.curseur{
+    display: none;
 }
 
 .recherche{
@@ -118,10 +258,6 @@ header nav{
 }
 
 /* Main */
-main{
-    background-color: var(--main-couleur-fond);
-}
-
 main h2{
     font-family: var(--main-sousTitre-font);
     font-size: 2rem;
@@ -134,13 +270,16 @@ main p{
     color: var(--texte-couleur-principal);
 }
 
-/* Footer */
-footer{
-    background-color: var(--footer-couleur-fond);
-}
+/* Animations pour le contenu principal des sections.
+=============================================== */
+@keyframes fondu-en-bas {
+	0% {
+		translate: 0 10vh;
+		opacity: 0;
+	}
 
-footer nav{
-    font-family: var(--footer-nav-font);
-    font-size: 1rem;
-    color: var(--texte-couleur-secondaire);
+	100% {
+		translate: 0 0vh;
+		opacity: 1;
+	}
 }
