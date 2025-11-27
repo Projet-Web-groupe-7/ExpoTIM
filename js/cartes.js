@@ -104,9 +104,11 @@ function resetSymboles() {
     } else if(window.innerWidth > 950){
         //syboles défaut (grid 3)
         symboles = ["heart", "spade", "diamond", "club"];
-    } else {
+    } else if(window.innerWidth > 680){
         //symboles mobiles (grid 2)
         symboles = ["heart", "spade", "club", "diamond"];
+    } else {
+        symboles = ["heart", "spade", "diamond", "club"];
     }
     let syIndex = 0;
 

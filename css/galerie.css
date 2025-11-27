@@ -154,6 +154,13 @@ main.gallerie section#gallerie-cartes{
         margin-bottom: 70px;
     }
 }
+@media screen and (max-width: 680px){
+    main.gallerie section#gallerie-cartes{
+        display: grid;
+        grid-template-columns: repeat(1, 325px);
+        margin-bottom: 70px;
+    }
+}
 
 
 
