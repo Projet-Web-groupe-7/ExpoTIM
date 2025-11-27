@@ -240,9 +240,14 @@ header nav a{
 }
 
 @media screen and (max-width: 720px) {
-    header nav a{
-        color: var(--texte-couleur);
-    }
+
+* {
+    cursor: initial;
+}   
+
+header nav a{
+    color: var(--texte-couleur);
+}
 
 .curseur{
     display: none;

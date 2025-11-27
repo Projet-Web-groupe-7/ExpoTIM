@@ -41,7 +41,7 @@ function bougerCurseur(event) {
  function changerCurseurBouton(event) {
     // Selon le type d'événement, on veut ajouter ou enlever la classe 'c-bouton'
     // du curseur, et modifier son contenu textuel en conséquence (voir la démo)
-    if(event.type === "mouseover" && event.target.tagName === "A") {
+    if (event.type === "mouseover" && event.target.closest(".entete-menu a")){
         curseur.classList.add('c-bouton');
     }
 
