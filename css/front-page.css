@@ -19,7 +19,6 @@
   justify-content: center;
   align-content: center;
   margin: 0 auto;
-
 }
 
 /* Sections de contenu de la page d'accueil */
@@ -35,10 +34,9 @@
 
 /* Section contenant l'explication de l'exposition */
 .desc-expo {
-
-  border-bottom: white solid 0.5px;
   position: relative;
-  z-index: 1;
+  padding: clamp(2rem, 6vw, 6rem);
+  border-bottom: white solid 0.5px;
 }
 
 .desc-expo::before {
@@ -47,10 +45,11 @@
   inset: 0;
   background-image: url("../images/cartes/AsReel.png");
   background-repeat: no-repeat;
+  background-size: contain;
   background-position: center;
-  opacity: 0.1;
-  transform: rotate(15deg);
+  opacity: 0.15;
   z-index: -1;
+  pointer-events: none;
 }
 
 /* Décorations entre les sections */
@@ -62,8 +61,9 @@
 
 /** Styles pour le menu accordéon des différentes expositions sur grands écrans **/
 .decks-expo {
+  width: 100vw;
   justify-content: flex-start;
-  margin-bottom: 300px;
+  margin-bottom: 200px;
 }
 
 /* Conteneur pour les decks de cartes et la boîte décorative */
@@ -115,6 +115,7 @@
 
 .deck-cartes {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: flex-start;
   align-items: center;
   list-style: none;
@@ -134,17 +135,13 @@
   background: var(--carte-couleur-fond);
   box-shadow: 1rem 0 2rem rgba(0,0,0,0.5);
   transition: 0.3s ease;
+  position: relative;
 }
 
 /* Chevauchement des cartes */
-.deck-cartes li:not(:first-child) {
+.deck-cartes li:not(:last-child) {
   margin-left: calc(-0.5 * var(--expo-width));
 }
-
-/* La première carte (la plus à gauche) doit être au premier plan */
-.deck-cartes li:nth-child(1) { z-index: 3; }
-.deck-cartes li:nth-child(2) { z-index: 2; }
-.deck-cartes li:nth-child(3) { z-index: 1; }
 
 /* Au survol : la carte "sort" du paquet */
 .deck-cartes li:hover {
@@ -175,26 +172,26 @@
   border-radius: 10px;
   background-size: cover;
   background-position: center;
-  z-index: -1;
+  background-repeat: no-repeat;
   transition: transform 0.3s ease;
 }
 
 /* Images par nom de classe (à ajouter dans le menu Wordpress) */
 .deck-cartes .finissants a::before {
-  background-image: url('../images/cartes/carteDosR.png');
+  background-image: url('../images/cartes/finissants.png');
 }
 .deck-cartes .arcade a::before {
-  background-image: url('../images/cartes/Arcade.jpg');
+  background-image: url('../images/cartes/arcade.jpg');
 }
 .deck-cartes .graphisme a::before {
-  background-image: url('../images/cartes/Graphisme.jpg');
+  background-image: url('../images/cartes/graphisme.jpg');
 }
 
 /********** VERSION MOBILE **********/
 @media (max-width: 768px) {
   .expo-deck {
     flex-direction: column-reverse;
-    
+    align-items: center;
   }
   .expo-boite {
     height: 300px;
@@ -207,12 +204,11 @@
   }
 
   .deck-cartes {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
   }
 
   .deck-cartes li {
-    margin: 0;
     width: 90%;
     height: 300px;
     width: 200px;
@@ -220,15 +216,15 @@
     box-shadow: 0 -1rem 3rem rgba(0,0,0,0.5);
   }
 
+  .deck-cartes li:not(:last-child) {
+    margin-left: 0; /* annule le décalage horizontal */
+  }
+
   .deck-cartes li:not(:first-child) {
-    margin-left: 0;
-    margin-bottom: -150px;
+    margin-top: -150px;
   }
 
   .deck-cartes li:hover {
     transform: translateY(-100px);
   }
-
- 
 }
-

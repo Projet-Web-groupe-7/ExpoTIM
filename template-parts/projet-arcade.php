@@ -12,32 +12,96 @@
 
 ?>
 
-<article>
-    <?php  if  ($projet_arcade_nom): ?>
-        <h1><?php  echo $projet_arcade_nom ; ?></h1>
-    <?php  endif; ?>
-    <?php  if  ( $projet_arcade_description): ?>
-        <h3><?php  echo  $projet_arcade_description ; ?></h3>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_image): ?>
-        <div>
-            <img src="<?php  echo $projet_arcade_image ['url'] ?>" alt="<?php $projet_arcade_nom?>" style="height: 500px; width: 500px;">
-        </div>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_membre1): ?>
-        <p><?php  echo $projet_arcade_membre1 ; ?></p>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_membre2): ?>
-        <p><?php  echo $projet_arcade_membre2 ; ?></p>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_membre3): ?>
-        <p><?php  echo $projet_arcade_membre3 ; ?></p>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_membre4): ?>
-        <p><?php  echo $projet_arcade_membre4 ; ?></p>
-    <?php  endif; ?>
-    <?php  if  ($projet_arcade_membre5): ?>
-        <p><?php  echo $projet_arcade_membre5 ; ?></p>
-    <?php  endif; ?>
-</article>
+<article class="projet-container">
+
+
+    <div class="projet-container-haut">
     
+        <?php if ($projet_arcade_image): ?>
+
+                
+                <img class="projet-bg" 
+                    src="<?php echo esc_url($projet_arcade_image['url']); ?>" 
+                    alt="" />
+
+            
+                <img class="projet-poster" 
+                    src="<?php echo esc_url($projet_arcade_image['url']); ?>" 
+                    alt="<?php echo esc_attr($projet_arcade_image['alt']); ?>" />
+
+            <?php endif; ?>
+
+            <?php if ($projet_arcade_nom): ?>
+                <h1><?php echo $projet_arcade_nom; ?></h1>
+        <?php endif; ?>
+
+    </div>
+
+    
+
+    
+    <div class="projet-container-bas">
+        <div class="carrousel">
+            <?php 
+                $images = [];
+                for ($i = 1; $i <= 10; $i++) {
+                    $image = get_field("projet-arcade_carrousel_image-{$i}");
+                    if ($image) $images[] = $image;
+                }
+
+                if (!empty($images)): 
+            ?>
+                <div class="carrousel-images">
+                    <?php foreach ($images as $index => $image): ?>
+                        <div class="carrousel-slide <?php echo $index === 0 ? 'active' : ''; ?>">
+                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <!-- Flèches de navigation -->
+                <button class="carrousel-btn carrousel-btn--prev">&#10094;</button>
+                <button class="carrousel-btn carrousel-btn--next">&#10095;</button>
+                
+            <?php else: ?>
+                <p>Aucune image disponible pour ce carrousel.</p>
+            <?php endif; ?>
+        </div>
+
+        <div class="projet-container-bas-droite fondu-en-bas">
+            <div>
+                <h2>Équipe/Auteur</h2>
+                <?php  if  ($projet_arcade_membre1): ?>
+                    <p><?php  echo $projet_arcade_membre1 ; ?></p>
+                <?php  endif; ?>
+                <?php  if  ($projet_arcade_membre2): ?>
+                    <p><?php  echo $projet_arcade_membre2 ; ?></p>
+                <?php  endif; ?>
+                <?php  if  ($projet_arcade_membre3): ?>
+                    <p><?php  echo $projet_arcade_membre3 ; ?></p>
+                <?php  endif; ?>
+                <?php  if  ($projet_arcade_membre4): ?>
+                    <p><?php  echo $projet_arcade_membre4 ; ?></p>
+                <?php  endif; ?>
+                <?php  if  ($projet_arcade_membre5): ?>
+                    <p><?php  echo $projet_arcade_membre5 ; ?></p>
+                <?php  endif; ?>
+            </div>
+            
+            <div>
+                <h2>Résumé du projet</h2>
+                <?php  if  ( $projet_arcade_description): ?>
+                    <h3><?php  echo  $projet_arcade_description ; ?></h3>
+                <?php  endif; ?>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <?php section_projet_random(); ?>
+   
+</article>
+
+
+<?php get_footer(); ?>

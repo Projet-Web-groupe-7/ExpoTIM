@@ -28,6 +28,11 @@
     wp_enqueue_style('expo-front-page-style', get_template_directory_uri() . '/css/front-page.css');
     wp_enqueue_style('expo-footer-style', get_template_directory_uri() . '/css/footer.css');
     wp_enqueue_style('expo-galerie-style', get_template_directory_uri() . '/css/galerie.css');
+    wp_enqueue_style('expo-credits-style', get_template_directory_uri() . '/css/credits.css');
+      wp_enqueue_style('expo-search-style', get_template_directory_uri() . '/css/search.css');
+    wp_enqueue_style('expo-projet-solo-style', get_template_directory_uri() . '/css/projet-solo.css');
+      
+      
 
     wp_enqueue_script(
         'cartes',
@@ -37,6 +42,27 @@
         '/js/cartes.js'),
         true
     );
+     
+      if (is_search()) {
+        wp_enqueue_script(
+            'search-animations',
+            get_template_directory_uri() . '/js/search-animations.js',
+            array('cartes'), // optionally depend on cartes.js
+            filemtime(get_template_directory() . '/js/search-animations.js'),
+            true
+        );
+    }
+
+
+    wp_enqueue_script(
+        'carrousel',
+        get_template_directory_uri() . '/js/carrousel.js',
+        array(),
+        filemtime(get_template_directory() . 
+        '/js/carrousel.js'),
+        true
+    );
+      
     wp_enqueue_script(
         'menu',
         get_template_directory_uri() . '/js/menu.js',
@@ -53,6 +79,7 @@
         '/js/defilementFondu.js'),
         true
     );
+    
     wp_enqueue_script(
         'curseur',
         get_template_directory_uri() . '/js/curseur.js',
@@ -61,6 +88,8 @@
         '/js/curseur.js'),
         true
     );
+      
+      
   } 
   
   add_action('wp_enqueue_scripts', 'theme_tp_enqueue_styles');
@@ -72,12 +101,47 @@
  * Dans ce cas ci nous filtrons la requête de la page d'accueil
  * @param WP_query  $query la requête principal de WP
  */
-function modifie_requete_principal( $query ) {
-    if ( $query->is_home() && $query->is_main_query() && ! is_admin() ) {
-      $query->set( 'category_name', 'populaire' );
-      $query->set( 'orderby', 'title' );
-      $query->set( 'order', 'ASC' );
-      }
-     }
-     add_action( 'pre_get_posts', 'modifie_requete_principal' );
+//function modifie_requete_principal( $query ) {
+ //   if ( $query->is_home() && $query->is_main_query() && ! is_admin() ) {
+ //     $query->set( 'category_name', 'populaire' );
+  //    $query->set( 'orderby', 'title' );
+  //    $query->set( 'order', 'ASC' );
+  //    }
+  //   }
+ //    add_action( 'pre_get_posts', 'modifie_requete_principal' );
+function custom_search_projects_by_member( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && $query->is_search() ) {
+        global $wpdb;
+
+        $search_term = trim( $query->get( 's' ) );
+
+        if ( ! empty( $search_term ) ) {
+            $search_terms = array_filter( array_map( 'trim', explode( ' ', $search_term ) ) );
+
+            $where_like = [];
+            foreach ( $search_terms as $term ) {
+                $where_like[] = $wpdb->prepare( "meta_value LIKE %s", '%' . $wpdb->esc_like( $term ) . '%' );
+            }
+            $where_clause = implode( ' AND ', $where_like );
+
+            $matching_posts = $wpdb->get_col(
+                "
+                SELECT DISTINCT post_id
+                FROM $wpdb->postmeta
+                WHERE meta_key LIKE '%membre%'
+                AND $where_clause
+                "
+            );
+
+            if ( ! empty( $matching_posts ) ) {
+                $query->set( 'post__in', $matching_posts );
+                // keep the display query for the template
+                $query->set( 'custom_search_display', $search_term );
+                $query->set( 's', '' ); // prevent default search filtering
+            }
+        }
+    }
+}
+add_action( 'pre_get_posts', 'custom_search_projects_by_member' );
+
 ?>

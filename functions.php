@@ -6,6 +6,7 @@
         'options.php',
         'customizer.php',
         'svg.php',
+        'fonctions-galerie.php'
     );
   
     

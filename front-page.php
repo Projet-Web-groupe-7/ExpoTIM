@@ -18,10 +18,7 @@
             </div>
         </section>
         <!-- Section contenant la sélection d'un projet aléatoire -->
-        <section class="projet-random fondu-en-bas card">
-            <h2>Choisis un projet au hasard</h2>
-            <img src=".images/cartes/carteDosR" alt="Carte">
-        </section>
+        <?php section_projet_random(); ?>
         <section class="decks-expo fondu-en-bas">
             <h2>Nos decks de cartes d’expositions</h2>
             <!--  Boîte décorative -->

@@ -6,7 +6,7 @@
         <section id="gallerie-cartes">
             <div class="paquet" style="color:white;"></div>
             <?php 
-                $case = 'arcade';
+                $case = 'graphisme';
                 $query_args = galerie_set_args($case);
                 galerie_get_cartes($query_args, $case);
             ?>
