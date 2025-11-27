@@ -246,9 +246,6 @@ header nav a{
     }
 }
 
-.curseur{
-    display: none;
-}
 
 .recherche{
     font-family: var(--header-recherche-font);
