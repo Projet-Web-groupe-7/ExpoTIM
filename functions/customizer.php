@@ -175,68 +175,6 @@ function theme_31w_customize_register($wp_customize) {
       'type' => 'text',
     ));
 
-    ////////////////////////////////////////////////////////////////// cartes
-    $wp_customize->add_section('section_cartes', array(
-      'title' => __('cartes', 'theme_31w'),
-      'priority' => 30,
-    ));
-
-    //////////////couleur dos cartes
-    $wp_customize->add_setting('cartes_rouge', array(
-      'default' => '',
-      'sanitize_callback' => 'esc_url_raw'
-    ));
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_rouge', array(
-      'label' => __('dos cartes rouges', 'theme_31w'),
-      'section' => 'section_cartes',
-    )));
-
-    $wp_customize->add_setting('cartes_bleu', array(
-      'default' => '',
-      'sanitize_callback' => 'esc_url_raw'
-    ));
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_bleu', array(
-      'label' => __('dos cartes bleus', 'theme_31w'),
-      'section' => 'section_cartes',
-    )));
-
-    ///////////////// symboles cartes
-    $wp_customize->add_setting('cartes_hearts', array(
-      'default' => '',
-      'sanitize_callback' => 'esc_url_raw'
-    ));
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_hearts', array(
-      'label' => __('symbole cartes coeurs', 'theme_31w'),
-      'section' => 'section_cartes',
-    )));
-
-    $wp_customize->add_setting('cartes_spades', array(
-      'default' => '',
-      'sanitize_callback' => 'esc_url_raw'
-    ));
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_spades', array(
-      'label' => __('symbole cartes pics', 'theme_31w'),
-      'section' => 'section_cartes',
-    )));
-
-    $wp_customize->add_setting('cartes_diamonds', array(
-      'default' => '',
-      'sanitize_callback' => 'esc_url_raw'
-    ));
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_diamonds', array(
-      'label' => __('symbole cartes carreaux', 'theme_31w'),
-      'section' => 'section_cartes',
-    )));
-
-    $wp_customize->add_setting('cartes_clubs', array(
-      'default' => '',
-      'sanitize_callback' => 'esc_url_raw'
-    ));
-    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_clubs', array(
-      'label' => __('symbole cartes trefles', 'theme_31w'),
-      'section' => 'section_cartes',
-    )));
-
     ///////////////////////////////////////////////////////////// Section crédits
     $wp_customize->add_section('credits_section', array(
         'title' => __('Section crédits', 'theme_31w'),
@@ -286,6 +224,69 @@ function theme_31w_customize_register($wp_customize) {
         'settings' => 'credits_membre_image' . $i,
       )));
     }
+    
+    
+    ////////////////////////////////////////////////////////////////// cartes
+      $wp_customize->add_section('section_cartes', array(
+        'title' => __('cartes', 'theme_31w'),
+        'priority' => 30,
+      ));
+
+      //////////////couleur dos cartes
+      $wp_customize->add_setting('cartes_rouge', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw'
+      ));
+      $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_rouge', array(
+        'label' => __('dos cartes rouges', 'theme_31w'),
+        'section' => 'section_cartes',
+      )));
+
+      $wp_customize->add_setting('cartes_bleu', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw'
+      ));
+      $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_bleu', array(
+        'label' => __('dos cartes bleus', 'theme_31w'),
+        'section' => 'section_cartes',
+      )));
+
+      ///////////////// symboles cartes
+      $wp_customize->add_setting('cartes_hearts', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw'
+      ));
+      $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_hearts', array(
+        'label' => __('symbole cartes coeurs', 'theme_31w'),
+        'section' => 'section_cartes',
+      )));
+
+      $wp_customize->add_setting('cartes_spades', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw'
+      ));
+      $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_spades', array(
+        'label' => __('symbole cartes pics', 'theme_31w'),
+        'section' => 'section_cartes',
+      )));
+
+      $wp_customize->add_setting('cartes_diamonds', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw'
+      ));
+      $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_diamonds', array(
+        'label' => __('symbole cartes carreaux', 'theme_31w'),
+        'section' => 'section_cartes',
+      )));
+
+      $wp_customize->add_setting('cartes_clubs', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw'
+      ));
+      $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cartes_clubs', array(
+        'label' => __('symbole cartes trefles', 'theme_31w'),
+        'section' => 'section_cartes',
+      )));
   }
   
   add_action('customize_register', 'theme_31w_customize_register'); 

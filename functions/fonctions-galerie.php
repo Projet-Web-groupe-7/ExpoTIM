@@ -11,10 +11,10 @@
                 );
             break;
 
-            case 'jour-de-la-terre':
+            case 'graphisme':
                 $args =  array(
                     'posts_per_page'  => -1,
-                    'post_type'       => 'projets-jour-terre',
+                    'post_type'       => 'projets-graphisme',
                 );
             break;
         }
@@ -23,7 +23,7 @@
 
     // ne pas oublier de rajouter les cas ici, necessaire pour
     // la fonction section_projet_random()
-    $allCases = ['arcade', 'jour-de-la-terre'];
+    $allCases = ['arcade', 'graphisme'];
 
 
 
@@ -71,9 +71,9 @@
                     $post_img = get_field('projet-arcade_image');
                 break;
 
-                case 'jour-de-la-terre':
-                    $post_name = get_field('projet-jour-terre_nom');
-                    $post_img = get_field('projet-jour-terre_image');
+                case 'graphisme':
+                    $post_name = get_field('projet-graphisme_nom');
+                    $post_img = get_field('projet-graphisme_image');
                 break;
             }
     ?>
@@ -227,6 +227,7 @@
             </div>
             <?php
                 $nb=6;
+                // $nb=2;
                 for($i=0; $i< $nb; $i++){
             ?>
                 <div class="carte-anim"></div>
@@ -246,15 +247,22 @@
         .cartes-random .carte-anim:nth-child(2n){
             background-image: url(<?= $dosBleu ?>);
         }
+
         <?php for($i=1; $i<= $nb+1; $i++){?>
             .cartes-random .carte-anim:nth-child(<?= $i ?>){
                 position: relative;
                 right: <?= ($i-1) * 130 ?>px;
             }
-
             .cartes-random .carte-anim.shuffled:nth-child(<?= $i ?>){
                 position: relative;
                 right: <?= ($i-1) * 259 ?>px;
+            }
+
+            @media screen and (max-width: 720px){
+            .cartes-random .carte-anim:nth-child(<?= $i ?>){
+                position: relative;
+                right: <?= ($i-1) * 200 ?>px;
+            }
             }
         <?php } ?>
 

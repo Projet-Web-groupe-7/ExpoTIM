@@ -1,43 +1,118 @@
+@keyframes titleFadeSlide {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes bgFadeInBlur {
+    0% {
+        opacity: 0;
+        filter: blur(40px) brightness(0.4);
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(20px) brightness(0.6);
+        transform: scale(1.1);
+    }
+}
+
+
+@keyframes posterFade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
 .projet-container{
     display: flex;
     flex-direction: column;
 
 }
 
-
-
 .projet-container-haut {
     position: relative;
-    width: 100%;
-    height: 70vh; 
+    width: 100vw;
+    height: 65vh;
+    overflow: hidden;
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    margin: 0;
 }
 
-.background-mask {
+/* Background blur */
+.projet-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center center;
-    -webkit-mask-image: linear-gradient(to right, black 10%, transparent 55%);
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: cover;
-    mask-image: linear-gradient(to right, black 10%, transparent 55%);
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    z-index: 0;
-}
-
-
-
-.projet-container-haut h1{
+    object-fit: cover;
+    filter: blur(20px) brightness(0.6);
+    transform: scale(1.1);
     z-index: 1;
+    opacity: 0;
+    animation: bgFadeInBlur 1.8s ease forwards;
 }
+
+/* Full poster (not cropped) */
+.projet-poster {
+    position: relative;
+    max-height: 90%;
+    width: auto;
+    z-index: 2;
+    opacity: 0;
+    animation: posterFade 1.2s ease-out forwards;  
+    transition: transform 0.4s ease, filter 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.projet-poster:hover {
+    transform: 
+        translateY(-10px)
+        rotateY(6deg)
+        rotateX(3deg)
+        scale(1.03);
+    filter: brightness(1.05);
+}
+
+.projet-container-haut h1 {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 25px;
+    border-radius: 4px;
+    opacity: 0;                 
+    animation: titleFadeSlide 1.2s ease forwards 0.3s;
+}
+
+
+.projet-container-haut::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    z-index: 2;
+    pointer-events: none;
+}
+
+
 
 
 .projet-container-bas {
@@ -67,42 +142,90 @@
     flex: 1 1 60%;
     position: relative;
     overflow: hidden;
-    max-height: 70vh; /* limite la hauteur */
+    max-height: 70vh;
+    min-height: 300px; /* <-- garantir une taille minimum */
+    width: 100%;
+   
+
 }
 
+/* #projet-graphisme-page .carrousel-slide img {
+    object-fit: contain;
+    width: auto ;
+    height: 100%;
+    max-height: 100%;
+} */
+
+
+#projet-graphisme-page .projet-container-bas {
+    height: auto;
+    margin-top: 40px;
+}
+
+#projet-graphisme-page .carrousel {
+    height: auto;
+    min-height: auto;
+    max-height: none;
+
+}
+
+
+#projet-graphisme-page .carrousel-slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: auto;
+    align-items: flex-start;
+    
+}
+
+#projet-graphisme-page .carrousel-slide.active {
+    position: relative;       
+    margin: 0;                 
+}
+
+#projet-graphisme-page .carrousel-slide img {
+    width: 100%;
+    height: auto ;
+    max-height: 82vh;
+    object-fit: contain;
+    display: block;
+}
 
 /* Slides */
-.carrousel__images {
-    position: relative;
+.carrousel-images {
     width: 100%;
     height: 100%;
+
 }
 
-
-.carrousel__slide {
+.carrousel-slide {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100%; /* toujours occuper le parent */
     opacity: 0;
-    transition: opacity 1s ease-in-out; /* transition de fondu */
-    z-index: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.carrousel__slide.active {
+.carrousel-slide.active {
     opacity: 1;
     z-index: 1;
 }
 
-.carrousel__slide img {
+.carrousel-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    max-height: 100%; /* évite qu'elles dépassent */
 }
 
 /* Flèches du carrousel */
-.carrousel__btn {
+.carrousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -116,14 +239,187 @@
     transition: background 0.3s;
 }
 
-.carrousel__btn:hover {
+.carrousel-btn:hover {
     background: rgba(0,0,0,0.8);
 }
 
-.carrousel__btn--prev {
-    left: 50px;
+.carrousel-btn--prev {
+    left: 30px;
 }
 
-.carrousel__btn--next {
+.carrousel-btn--next {
     right: 10px;
+}
+
+
+/* .scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(6px);
+    transition: 
+        opacity 0.9s ease-out,
+        transform 0.9s ease-out,
+        filter 0.9s ease-out;
+}
+
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+} */
+
+
+
+
+@media screen and (max-width: 1024px) {
+
+    .projet-poster {
+        display: block;      
+        margin: 0 auto;       
+        max-width: 90%;           
+        max-width: 500px;     
+        height: auto;
+        max-height: none;
+        object-fit: contain;
+    }
+
+    
+
+    .projet-container-haut {
+        height: auto;
+        padding: 40px 0;
+    }
+    
+    .projet-container-bas {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+
+    .projet-container-bas-droite {
+        display: contents;
+    }
+
+    
+    .projet-container-bas-droite > div:first-child { 
+        order: 1; 
+    } 
+    .carrousel { 
+        order: 2; 
+    }                                      
+    .projet-container-bas-droite > div:last-child { 
+        order: 3; 
+    }
+
+    #projet-graphisme-page .projet-container-bas {
+        flex-direction: column;
+    }
+
+    #projet-graphisme-page .carrousel {
+        order: 2;
+        width: 100%;
+        margin: 30px auto;
+    }
+
+    #projet-graphisme-page .projet-container-bas-droite {
+        order: 1;
+        padding: 0 20px;
+    }
+
+    /* Flèches un peu plus petites sur tablette/mobile */
+    #projet-graphisme-page .carrousel-btn {
+        font-size: 1.8rem;
+        padding: 10px;
+    }
+
+    #projet-graphisme-page .carrousel-slide.active {    
+        margin: 20px;                 
+    }
+    #projet-graphisme-page .carrousel-btn--prev { left: 15px; }
+    #projet-graphisme-page .carrousel-btn--next { right: 0px; }
+
+    .carrousel {
+        width: 100% ;
+        max-width: 100% ;
+        margin: 0 auto ;
+    }
+
+    .carrousel-images {
+        width: 100% ;
+        margin: 0;
+    }
+
+
+    .carrousel-slide {
+        width: 100% ;
+        height: auto ;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+   
+    .carrousel-slide img {
+        width: 100% ;
+        height: auto ;
+        object-fit: contain ;
+        display: block;
+    }
+
+    
+
+
+
+} 
+
+
+
+@media screen and (max-width: 600px) {
+
+    /* .projet-poster {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* VERY IMPORTANT FIX */
+    /* .projet-container-haut {
+        display: block ;  
+        text-align: center;
+        width: 100%;
+
+        
+    } */ */
+
+
+
+
+    .projet-container-haut {
+        width: 100%;              /* ← Fix overflow */
+        height: 45vh;             /* ← Plus petit pour mobile */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        overflow: hidden;         /* ← Évite décalages */
+        text-align: center;
+    }
+
+    .projet-bg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;        /* ← Empêche débordement */
+        filter: blur(20px) brightness(0.6);
+        transform: scale(1.1);
+    }
+
+    .projet-poster {
+        max-width: 80%;           /* ← Ajuste taille de l'image */
+        height: auto;
+        margin: 0 auto;
+    }
+
+    
 }

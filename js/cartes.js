@@ -1,13 +1,18 @@
-console.log("cartes.js");
+//console.log("cartes.js");
 if(document.querySelector("section#gallerie-cartes") != null){
     dealAll();
-    console.log("1")
+    //set les symboles
+    resetSymboles();
+    // event listner
+    window.addEventListener("resize", resetSymboles);
+    //console.log("1")
 } else if(document.querySelector("section.projet-random .cartes-random") != null){
-    console.log("2")
+    //console.log("2")
     centrerCartes();
     Randomlistner();
+    resizeListener();
 } else {
-    console.log("3")
+    //console.log("3")
 }
 
 
@@ -89,21 +94,68 @@ function vroom(elm1, elm2){
 }
 
 
+// changer symbols on resize 
+// la fonction qui change les styles des cartes
+function resetSymboles() {
+    let symboles;
+    if(window.innerWidth > 1280){
+        //syboles défaut (grid 4)
+        symboles = ["heart", "spade", "diamond", "club", "club", "diamond", "spade", "heart"];
+    } else if(window.innerWidth > 950){
+        //syboles défaut (grid 3)
+        symboles = ["heart", "spade", "diamond", "club"];
+    } else if(window.innerWidth > 680){
+        //symboles mobiles (grid 2)
+        symboles = ["heart", "spade", "club", "diamond"];
+    } else {
+        symboles = ["heart", "spade", "diamond", "club"];
+    }
+    let syIndex = 0;
 
-// ////////////////////////////// aleatoire
+    let lesCartes = document.querySelectorAll("section#gallerie-cartes .carte");
+    for(let i = 0; i<= lesCartes.length-1; i++){
+        //clear la classe
+        lesCartes[i].classList.remove("heart");
+        lesCartes[i].classList.remove("spade");
+        lesCartes[i].classList.remove("diamond");
+        lesCartes[i].classList.remove("club");
+        // rajouter la bonne classe
+        lesCartes[i].classList.add(symboles[syIndex]);
+        
+        // alterner sybole
+        syIndex++;
+        syIndex = syIndex % symboles.length;
+    }
+}
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////// aleatoire
+
 //fonction pour centrer les cartes dans la section projet aleatoire
 function centrerCartes(){
     let cartesCentrer = document.querySelectorAll("section.projet-random .cartes-random .carte-anim");
 
     //trouver la larger
     let x1 = cartesCentrer[0].getBoundingClientRect().left;
-    let x2 = cartesCentrer[cartesCentrer.length-1].getBoundingClientRect().right;
+    let x2 = trouverDerniereCarte(cartesCentrer).getBoundingClientRect().right;
     let largeur = x2-x1;
     //console.log(largeur);
 
     //ajuster la largeur du contenant
     let contenant = document.querySelector("section.projet-random .cartes-random");
     contenant.style.width = largeur.toString() + "px";
+}
+function trouverDerniereCarte(lesCartes){
+    //trouver derniere carte active
+    for(i = lesCartes.length-1; i>=0; i--){
+        let leStyle = window.getComputedStyle(lesCartes[i], null);
+        let laValeur = leStyle.getPropertyValue("display");
+        //quiter la loop des quon trouve le premier pas display:none
+        if(laValeur != "none"){
+            // lesCartes[i].style.scale = "0.5";
+            return lesCartes[i];
+        }
+    }
 }
 
 function animateRandomShuffle(){
@@ -125,6 +177,7 @@ function animateRandomShuffle(){
             carte.classList.remove("shuffled");
 
             setTimeout(function(){
+                centrerCartes();
                 carte.classList.add("shuffled");
             }, "400");
         }
@@ -187,7 +240,7 @@ function dealRandom(){
     //sortir les cartes du paquet
     let section = document.querySelector("section.projet-random .cartes-random");
     section.append(cartes[i]);
-    console.log(cartes[i]);
+    //console.log(cartes[i]);
 
     // deplacer les cartes
     let paq = document.querySelector("section.projet-random .cartes-random .paquet");
@@ -199,12 +252,47 @@ function dealRandom(){
     }, "700");
 }
 
-//effet hover sur cartes
-// document.querySelectorAll(".carte").forEach(carte => {
-//     carte.addEventListener("mouseenter", () => {
-//         carte.style.transform += " translateY(-10px) scale(1.05)";
-//     });
-//     carte.addEventListener("mouseleave", () => {
-//         carte.style.transform = carte.style.transform.replace(" translateY(-10px) scale(1.05)", "");
-//     });
-// });
+
+//gerer la section adaptative quand la page change de largeur
+let prevWindowSize;
+function resizeListener(){
+    window.addEventListener("resize", function(){
+        let v1 = io(window.innerWidth);
+        let v2 = io(prevWindowSize);
+        // si la taille de l'ecran varie entre plus ou moins
+        // que 720px (le breakpoint)
+        if(v1 != v2){
+            resize();
+        }
+        prevWindowSize = this.window.innerWidth;
+    })
+
+    function resize(){
+        let lesCartes = document.querySelectorAll("section.projet-random .cartes-random .carte-anim");
+
+        if(!lesCartes[0].classList.contains("shuffled")){
+            centrerCartes();
+        } else {
+            animateRandomShuffle();
+        }
+    }
+
+    function io(val){
+        if(val <= 720){
+            return true;
+        } else{
+            return false;
+        }
+    }
+}
+
+
+// effet hover sur cartes
+document.querySelectorAll(".carte").forEach(carte => {
+    carte.addEventListener("mouseenter", () => {
+        carte.style.transform += " translateY(-10px) scale(1.05)";
+    });
+    carte.addEventListener("mouseleave", () => {
+        carte.style.transform = carte.style.transform.replace(" translateY(-10px) scale(1.05)", "");
+    });
+});

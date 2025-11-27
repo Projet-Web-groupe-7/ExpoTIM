@@ -9,12 +9,7 @@
 
 <div class="footer contenu">
 
-    <div class="footer reseaux">
-        <h4>Réseaux</h4>
-            <?php 
-            icones_sociaux();
-            ?>
-    </div>
+
     <div class="footer commanditaire">
         <h4>Commanditaires</h4>
          <?php 
@@ -46,10 +41,17 @@
                     ));?>
     </div>
 </div>
-
+    <div class="footer reseaux">
+            <?php 
+            icones_sociaux();
+            ?>
+    </div>
 <div class="footer credits">
     <p>© 2025 LesAsDuTim. Tous droits réservés.</p>
 </div>
 
 </footer>
-<?php wp_footer() ?>
+                
+<?php wp_footer() ?>                
+</body>
+</html>
