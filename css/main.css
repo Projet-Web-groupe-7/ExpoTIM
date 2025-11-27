@@ -125,7 +125,6 @@ body {
     width: 2rem;
     height: 2rem;
     background-color: red;
-    border: red solid 5px;
     border-radius: 50%;
     top: calc(var(--mouse-y) - 1rem);
     left: calc(var(--mouse-x) - 1rem);
@@ -244,8 +243,10 @@ header nav a{
     header nav a{
         color: var(--texte-couleur);
     }
-}
 
+.curseur{
+    display: none;
+}
 
 .recherche{
     font-family: var(--header-recherche-font);
@@ -265,6 +266,8 @@ main p{
     font-family: var(--main-paragraphe-font);
     font-size: 1rem;
     color: var(--texte-couleur-principal);
+}
+
 }
 
 /* Animations pour le contenu principal des sections.
