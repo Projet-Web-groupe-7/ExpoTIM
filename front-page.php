@@ -1,11 +1,13 @@
-<h1 class="titreLogo"><?php echo get_bloginfo('name'); ?></h1>
-<div class="contenuVideo">
-<video autoplay loop muted playsinline class="video-front-page">
-        <source src="<?php echo get_template_directory_uri(); ?>/video/VideoPromotionnelleWeb.mp4" type="video/mp4">
-    </video> 
-</div> 
 <?php get_header(); ?>
     <main class="main-front-page">
+        <section class="hero">
+            <h1 class="titreLogo"><?php echo get_bloginfo('name'); ?></h1>
+            <div class="contenuVideo">
+                <video autoplay loop muted playsinline class="video-front-page">
+                    <source src="<?php echo get_template_directory_uri(); ?>/video/VideoPromotionnelleWeb.mp4" type="video/mp4">
+                </video> 
+            </div> 
+        </section>
         <!-- Section contenant la description de l'exposition -->
         <section class="desc-expo">
             <h2>C'est quoi l'expo TIM?</h2>
