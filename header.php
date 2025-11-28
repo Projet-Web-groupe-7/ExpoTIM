@@ -11,6 +11,8 @@
     <?php wp_head(); ?>
 </head>
 <body>
+    <div class="curseur"></div>
+
     <header>
         <div class="entete">
             <figure class="entete-logo">
@@ -28,10 +30,18 @@
                     'container' => 'nav',
                     'container_class' => 'entete-menu'
                 )); ?>
+                <div class="dropdown">
+                    <li class="dropdown-btn">ExpoTim</li>
+                    <?php wp_nav_menu(array(
+                        "menu" => "siteExpoTim",
+                        'container' => 'nav',
+                        'container_class' => 'entete-expoTim'
+                    )); ?>
+                </div>
             </div>
             <div class="entete-recherche">
                     <?php get_search_form(); ?>
-                </div>
+            </div>
             <label for="maCheckbox" class="boutons">
                 <div class="trait"></div>
                 <div class="trait"></div>

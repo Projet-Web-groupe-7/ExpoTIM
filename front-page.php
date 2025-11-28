@@ -9,7 +9,7 @@
             </div> 
         </section>
         <!-- Section contenant la description de l'exposition -->
-        <section class="desc-expo">
+        <section class="desc-expo fondu-en-bas">
             <h2>C'est quoi l'expo TIM?</h2>
             <p><?php echo get_theme_mod('hero_desc', __('Bienvenue sur le site de l\'exposition des travaux des étudiants du programme TIM', 'theme_5w5')); ?></p>
         </section>
@@ -23,7 +23,7 @@
         </div> -->
         <!-- Section contenant la sélection d'un projet aléatoire -->
         <?php section_projet_random(); ?>
-        <section class="decks-expo">
+        <section class="decks-expo fondu-en-bas">
             <h2>Nos decks de cartes d’expositions</h2>
             <!--  Boîte décorative -->
             <div class="expo-deck">
