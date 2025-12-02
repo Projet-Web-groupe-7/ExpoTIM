@@ -45,7 +45,3 @@ function commanditaires() {
     }
     echo '</div>';
 }
-
-
-
-

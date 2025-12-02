@@ -1,22 +1,26 @@
-<h1 class="titreLogo"><?php echo get_bloginfo('name'); ?></h1>
-<div class="contenuVideo">
-   <video autoplay loop muted playsinline class="video-front-page">
-        <source src="<?php echo get_template_directory_uri(); ?>/video/VideoPromotionnelleWeb.mp4" type="video/mp4">
-    </video> 
-</div>           
 <?php get_header(); ?>
     <main class="main-front-page">
+        <section class="hero">
+            <h1 class="titreLogo"><?php echo get_bloginfo('name'); ?></h1>
+            <div class="contenuVideo">
+                <video autoplay loop muted playsinline class="video-front-page">
+                    <source src="<?php echo get_template_directory_uri(); ?>/video/VideoPromotionnelleWeb.mp4" type="video/mp4">
+                </video> 
+            </div> 
+        </section>
         <!-- Section contenant la description de l'exposition -->
         <section class="desc-expo fondu-en-bas">
             <h2>C'est quoi l'expo TIM?</h2>
             <p><?php echo get_theme_mod('hero_desc', __('Bienvenue sur le site de l\'exposition des travaux des étudiants du programme TIM', 'theme_5w5')); ?></p>
+        </section>
+        <!-- <div class="division">
             <div class="motifs">
-                <!-- <img src="../images/cartes/clubs.png" alt="motifs">
+                <img src="../images/cartes/clubs.png" alt="motifs">
                 <img src="../images/cartes/diamonds.png" alt="motifs">
                 <img src="../images/cartes/spades.png" alt="motifs">
-                <img src="../images/cartes/hearts.png" alt="motifs"> -->
+                <img src="../images/cartes/hearts.png" alt="motifs">
             </div>
-        </section>
+        </div> -->
         <!-- Section contenant la sélection d'un projet aléatoire -->
         <?php section_projet_random(); ?>
         <section class="decks-expo fondu-en-bas">
@@ -35,6 +39,4 @@
             </div>
         </section>
     </main>
-    <?php get_footer(); ?>
-</body>
-</html>
+<?php get_footer(); ?>
