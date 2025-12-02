@@ -14,7 +14,5 @@
     </main>
     
     <?php get_footer(); ?>
-</body>
-</html>
 
 <?php galerie_carte_css(); ?>
