@@ -89,7 +89,7 @@
             </div>
         </div>
     </div>
-    <?php section_projet_random(); ?>
 </article>
+<?php section_projet_random(); ?>
 
 <?php get_footer(); ?>

@@ -85,6 +85,7 @@
 
     /* Cartes */
     --carte-couleur-fond:#FBFBFF;
+    --carte-couleur-text: #000;
     --carte-couleur-border:linear-gradient(90deg,rgba(101, 126, 212, 1) 0%, rgba(255, 255, 255, 1) 100%);
     --carte-couleur-border-alternatif:linear-gradient(90deg,rgba(255, 51, 31, 1) 0%, rgba(255, 255, 255, 1) 100%);
 

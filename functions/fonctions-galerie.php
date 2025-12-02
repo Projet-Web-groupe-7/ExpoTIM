@@ -85,7 +85,7 @@
                 <div class="premier-etage">
                     <!-- nom projet -->
                     <p><?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?></p>
-                    <div class="symbole"></div>
+                    <!-- <div class="symbole"></div> -->
                 </div>
                 <!-- img projet -->
                 <img src="<?php if($post_img){echo $post_img ['url'];}?>" alt="<?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?>">
