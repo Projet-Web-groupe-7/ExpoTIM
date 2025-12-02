@@ -85,7 +85,7 @@
                 <div class="premier-etage">
                     <!-- nom projet -->
                     <p><?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?></p>
-                    <div class="symbole"></div>
+                    <!-- <div class="symbole"></div> -->
                 </div>
                 <!-- img projet -->
                 <img src="<?php if($post_img){echo $post_img ['url'];}?>" alt="<?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?>">
@@ -168,15 +168,9 @@
 ?>
 <style>
     /* coeur */
-    .carte.heart .container .front, .carte.diamond .container .front, .carte.heart .container .back, .carte.diamond .container .back{
-        border: 6px solid red;
-    }
     .carte.heart .container .back, .carte.diamond .container .back{
         /* background-color: rgb(156, 0, 0); */
         background-image: url(<?= $dosRouge //['url']?>);
-    }
-    .carte.spade .container .front, .carte.club .container .front, .carte.spade .container .back, .carte.club .container .back{
-        border: 6px solid blue;
     }
     .carte.spade .container .back, .carte.club .container .back{
         /* background-color: rgb(0, 4, 130); */

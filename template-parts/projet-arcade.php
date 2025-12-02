@@ -99,9 +99,11 @@
     </div>
 
 
-    <?php section_projet_random(); ?>
-   
+    
 </article>
+<div class="projet-solo-random">
+    <?php section_projet_random(); ?>
+</div>
 
 
 <?php get_footer(); ?>
