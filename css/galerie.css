@@ -76,6 +76,8 @@ main.gallerie section#gallerie-cartes{
 
     backface-visibility: hidden;
     position: absolute;
+
+    box-shadow: -10px 0px 20px rgba(0, 0, 0, .2);
 }
 .carte .back{
     /* background-color: rgb(138, 28, 21);
@@ -186,7 +188,7 @@ main.gallerie section#gallerie-cartes{
     min-height: 388px;
     max-width: 259px;
     max-height: 388px;
-    border: 3px solid rgb(0, 0, 0);
+    /* border: 3px solid rgb(0, 0, 0); */
     box-shadow: -10px 0px 14px rgba(0, 0, 0, 1);
 
     background-repeat: no-repeat;
@@ -194,12 +196,15 @@ main.gallerie section#gallerie-cartes{
     border-radius: 20px;
 
     margin: 0;
-    transition: right .5s, width 0.5s;
+    transition: right .5s, width 0.5s, box-shadow 1s;
+}
+.cartes-random .paquet.shuffled,.carte-anim.shuffled{
+    box-shadow: -10px 0px 20px rgba(0, 0, 0, .2);
 }
 .cartes-random .carte {
     position: relative;
     right: 1590px;
-    bottom: 75px;
+    bottom: 85px;
 }
 
 
