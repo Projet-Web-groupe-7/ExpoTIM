@@ -90,6 +90,8 @@
         </div>
     </div>
 </article>
-<?php section_projet_random(); ?>
+<div class="projet-solo-random">
+    <?php section_projet_random(); ?>
+</div>
 
 <?php get_footer(); ?>
