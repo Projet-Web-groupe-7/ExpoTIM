@@ -223,6 +223,18 @@ function theme_31w_customize_register($wp_customize) {
         'section' => 'credits_section',
         'settings' => 'credits_membre_image' . $i,
       )));
+
+      // Lien du membre
+      $wp_customize->add_setting('credits_membre_lien' . $i, array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+      ));
+
+      $wp_customize->add_control('credits_membre_lien' . $i, array(
+        'label' => sprintf(__('Lien du membre %d', 'theme_31w'), $i),
+        'section' => 'credits_section',
+        'type' => 'url',
+      ));
     }
     
     
@@ -306,9 +318,11 @@ function theme_31w_customize_register($wp_customize) {
     for ($i = 1; $i <= $nb_membres; $i++) {
       $nom = get_theme_mod('credits_membre_nom' . $i, '');
       $image = get_theme_mod('credits_membre_image' . $i, '');
+      $lien = get_theme_mod('credits_membre_lien' . $i, '');
       $membres[] = array(
         'nom' => $nom,
         'image' => $image,
+        'lien' => $lien,
       );
     }
 

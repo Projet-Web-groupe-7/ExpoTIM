@@ -15,16 +15,24 @@
         foreach ($membres as $membre) :
           $nom  = isset($membre['nom']) ? $membre['nom'] : '';
           $image = isset($membre['image']) ? $membre['image'] : '';
+          $lien = isset($membre['lien']) ? $membre['lien'] : '';
           ?>
-          <span class="membre">
+          <div class="membre">
             <?php if (! empty($image)) : ?>
               <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($nom ?: 'Membre'); ?>">
             <?php else : ?>
               <!-- Image par défaut si aucune photo -->
               <img src="<?php echo esc_url(get_template_directory_uri() . '/images/cartes/placeholder.png'); ?>" alt="<?php echo esc_attr($nom ?: 'Membre'); ?>">
             <?php endif; ?>
-            <p><?php echo esc_html($nom); ?></p>
-          </span>
+            <div class="infos_membre">
+              <p class="nom"><?php echo esc_html($nom); ?></p>
+              <?php if (! empty($lien)) : ?>
+                <a class="lien" href="<?php echo esc_url($lien); ?>" target="_blank" rel="noopener">Voir le profil</a>
+              <?php else : ?>
+                <span>Pas de lien disponible</span>
+              <?php endif; ?>
+            </div>
+          </div>
         <?php
         endforeach;
       else :
