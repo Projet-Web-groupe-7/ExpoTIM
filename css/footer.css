@@ -35,8 +35,8 @@ footer ul {
     list-style: none;
 }
 
-a {
-    padding: 10px;
+footer a {
+    padding: 0px;
     text-decoration: none;
     color: aliceblue;
     transition: color ease 0.5s ;
@@ -44,6 +44,18 @@ a {
 a:hover {
 
     color: var(--bouton-couleur-fond-hover);
+
+}
+footer .menuExt {
+
+    display: flex;
+    flex-direction: row;
+
+}
+footer nav {
+
+    display: flex;
+    flex-direction: row;
 
 }
 

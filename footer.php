@@ -32,20 +32,24 @@
             </a>
     </div>
 
-    <div class="footer menuExt">
+    
+</div>
+
+<div class="footer reseaux">
+    <?php 
+        icones_sociaux();
+    ?>
+</div>
+
+<div class="footer menuExt">
         <h4>Menu</h4>
     <?php wp_nav_menu(array(
                         "menu"=>"principal",
                         "container"=>"nav",
                         "container_class"=>"piedpage__s1__externe"
                     ));?>
-    </div>
 </div>
-    <div class="footer reseaux">
-            <?php 
-            icones_sociaux();
-            ?>
-    </div>
+
 <div class="footer credits">
     <p>© 2025 LesAsDuTim. Tous droits réservés.</p>
 </div>
