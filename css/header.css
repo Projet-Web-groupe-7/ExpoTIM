@@ -331,8 +331,7 @@ header {
 
     width: 50px;
     background-color: var(--header-nav-couleur-fond);
-    display: flex;
-    flex-direction: row;
+
   }
 
 
