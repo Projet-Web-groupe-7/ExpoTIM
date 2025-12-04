@@ -27,6 +27,30 @@ main.gallerie{
     line-height: 1.4;
 }
 
+/*  //////////////////////////////////// filtres */
+.gallerie .hero .filtre{
+    border: 1px solid red;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+
+    margin-top: 20px;
+}
+
+.gallerie .hero .filtre h2{
+    margin: 0 10px;
+    padding: 8px;
+}
+.gallerie .hero .filtre h3{
+    margin: 0 10px;
+    border: 3px solid white;
+    padding: 8px;
+}
+
+.gallerie .hero .filtre h3.actif{
+    background-color: #00494d;
+}
+
 
 main.gallerie section#gallerie-cartes{
     display: grid;
@@ -181,7 +205,6 @@ main.gallerie section#gallerie-cartes{
         max-width: 90vw;
     }
 }
-
 
 
 /* ///////////////////////////////////////// cartes projet random */

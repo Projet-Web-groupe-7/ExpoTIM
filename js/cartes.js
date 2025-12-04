@@ -5,6 +5,8 @@ if(document.querySelector("section#gallerie-cartes") != null){
     resetSymboles();
     // event listner
     window.addEventListener("resize", resetSymboles);
+
+    fitresFinissants();
     //console.log("1")
 } else if(document.querySelector("section.projet-random .cartes-random") != null){
     //console.log("2")
@@ -127,6 +129,51 @@ function resetSymboles() {
         syIndex = syIndex % symboles.length;
     }
 }
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////// filtres
+function fitresFinissants(){
+    if(document.querySelector(".gallerie .hero .filtre") != null){
+        console.log("cest icite");
+        
+        let options = document.querySelectorAll(".gallerie .hero .filtre h3");
+        gererClasse();
+
+
+
+        // event listener
+        for(let option of options){
+            option.addEventListener("click", function(evt){
+                let url = new URL(window.location);
+                url.searchParams.set("fl", evt.target.dataset.fl);
+                window.history.replaceState({}, "", url);
+
+                gererClasse();
+            })
+        }
+
+        //gerer les classes qui changent
+        function gererClasse(){
+            // définir au cas ou ce nest pas défini
+            let searchParam;
+            if(new URLSearchParams(window.location.search).get("fl") == null){
+                searchParam = "none";
+            } else {
+                searchParam = new URLSearchParams(window.location.search).get("fl");
+            }
+            // donner la class a celui qui correspond
+            for(let option of options){
+                option.classList.remove("actif");
+                if(option.dataset.fl == searchParam){
+                    option.classList.add("actif");
+                } else {
+                    option.classList.remove("actif");
+                }
+            }
+        }
+    }
+}
+
+
 
 
 // ///////////////////////////////////////////////////////////////////////////////////////////////// aleatoire

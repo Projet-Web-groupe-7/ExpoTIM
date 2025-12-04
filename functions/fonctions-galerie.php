@@ -28,13 +28,23 @@
 
 
     // la section hero
-    function galerie_hero() {
+    function galerie_hero($estPageFinissants = false) {
 ?>
     <div class="hero">
         <!-- <h2>Galerie projets Arcade - 2ème année</h2> -->
         <!-- <h3>L’Arcade de l’expoTIM présente les prototypes de jeux vidéo créés par les étudiants de deuxième année en Technique d’intégration multimédia. Réalisés dans le cadre du cours Création de jeu en équipe, ces projets sont le fruit d’un processus de production complet : de la conception et la planification à la création des médias, de la programmation aux tests de qualité jusqu’au produit fini.
         </h3> -->
         <?= get_the_content(); ?>
+        
+        <?php if($estPageFinissants == true) {?>
+            <nav class="filtre">
+                <h2>filtres:</h2>
+                <h3 class="actif" data-fl="none">Aucun filtre</h3>
+                <h3 data-fl="option-1">option-1</h3>
+                <h3 data-fl="option-2">option-2</h3>
+                <h3 data-fl="option-3">option-3</h3>
+            </nav>
+        <?php } ?>
     </div>
 <?php
     }
