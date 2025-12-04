@@ -83,7 +83,9 @@
             <div>
                 <h2>Lien du projet</h2>
                 <?php  if  ( $projet_graphisme_url): ?>
-                    <p><?php  echo  $projet_graphisme_url ; ?></p>
+                    <a href="<?php echo $projet_graphisme_url; ?>">
+                        <?php echo $projet_graphisme_url; ?>
+                    </a>
                 <?php  endif; ?>
             
             </div>
