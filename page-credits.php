@@ -12,10 +12,15 @@
       $membres = function_exists('expo_get_membres_equipe') ? expo_get_membres_equipe() : array();
 
       if (! empty($membres)) :
+        // Compte le nombre total de membres pour la gestion des séparateurs
+        $total = count($membres);
+        $index = 0;
         foreach ($membres as $membre) :
+          $index++;
           $nom  = isset($membre['nom']) ? $membre['nom'] : '';
           $image = isset($membre['image']) ? $membre['image'] : '';
           $lien = isset($membre['lien']) ? $membre['lien'] : '';
+          $description = isset($membre['description']) ? $membre['description'] : '';
           ?>
           <div class="membre">
             <?php if (! empty($image)) : ?>
@@ -25,14 +30,25 @@
               <img src="<?php echo esc_url(get_template_directory_uri() . '/images/cartes/placeholder.png'); ?>" alt="<?php echo esc_attr($nom ?: 'Membre'); ?>">
             <?php endif; ?>
             <div class="infos_membre">
-              <p class="nom"><?php echo esc_html($nom); ?></p>
-              <?php if (! empty($lien)) : ?>
-                <a class="lien" href="<?php echo esc_url($lien); ?>" target="_blank" rel="noopener">Voir le profil</a>
-              <?php else : ?>
-                <span>Pas de lien disponible</span>
+              <div class="infos_membre_head">
+                <p class="nom"><?php echo esc_html($nom); ?></p>
+                <?php if (! empty($lien)) : ?>
+                  <a class="lien" href="<?php echo esc_url($lien); ?>" target="_blank" rel="noopener">Voir le profil</a>
+                <?php else : ?>
+                  <span>Pas de lien disponible</span>
+                <?php endif; ?>
+              </div>
+              <?php if (! empty($description)) : ?>
+                <p class="description"><?php echo esc_html($description); ?></p>
+                <?php else : ?>
+                  <span class="description">Pas de description disponible</span>
               <?php endif; ?>
             </div>
           </div>
+          <!-- Séparateur entre les membres sauf pour le dernier -->
+          <?php if ($index < $total) : ?>
+            <?php get_template_part('template-parts/division'); ?>
+          <?php endif; ?>
         <?php
         endforeach;
       else :

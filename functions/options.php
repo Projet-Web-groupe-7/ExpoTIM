@@ -29,8 +29,9 @@
     wp_enqueue_style('expo-footer-style', get_template_directory_uri() . '/css/footer.css');
     wp_enqueue_style('expo-galerie-style', get_template_directory_uri() . '/css/galerie.css');
     wp_enqueue_style('expo-credits-style', get_template_directory_uri() . '/css/credits.css');
-      wp_enqueue_style('expo-search-style', get_template_directory_uri() . '/css/search.css');
+    wp_enqueue_style('expo-search-style', get_template_directory_uri() . '/css/search.css');
     wp_enqueue_style('expo-projet-solo-style', get_template_directory_uri() . '/css/projet-solo.css');
+    wp_enqueue_style('expo-division-style', get_template_directory_uri() . '/css/division.css');
       
       
 

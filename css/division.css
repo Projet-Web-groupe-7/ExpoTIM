@@ -1,0 +1,19 @@
+/* Décorations entre les sections */
+.motifs {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  user-select: none;
+}
+
+.motifs::before {
+  content: "";
+  position: absolute;
+  height: 0.5px;
+  width: 80vw;
+  background-color: white;
+  z-index: -1;
+}
