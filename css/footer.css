@@ -1,10 +1,8 @@
 /* Footer */
 footer{
     width: 100vw;
-    background-color: var(--footer-couleur-fond);
     font-size: 1rem;
     padding: 20px;
-
 }
 
 footer .contenu {
@@ -41,24 +39,20 @@ footer a {
     color: aliceblue;
     transition: color ease 0.5s ;
 }
-a:hover {
+footer a:hover {
 
     color: var(--bouton-couleur-fond-hover);
 
 }
-footer .menuExt {
+.menuExt nav ul {
 
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    gap: 10px;
 
 }
-footer nav {
-
-    display: flex;
-    flex-direction: row;
-
-}
-
 
 footer .credits p {
     display: flex;
@@ -67,19 +61,7 @@ footer .credits p {
 }
 
 footer .credits {
-    border-top: white solid 1px;
-}
-
-
-footer nav{
-    font-family: var(--footer-nav-font);
-    font-size: 1rem;
-    color: var(--texte-couleur-principal);
-}
-
-footer .contenu div{
-    height: auto;
-    margin: 0;
+    border-top: white solid 0.5px;
 }
 
 
