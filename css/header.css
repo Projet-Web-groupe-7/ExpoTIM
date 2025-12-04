@@ -1,7 +1,8 @@
 header {
   z-index: 1000;
-  position : sticky;
+  position : fixed;
   top: 0;
+  width: 100vw;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -13,6 +14,7 @@ header {
   flex-wrap: wrap; /* allows wrapping when space is tight */
   gap: 1rem;
   margin: 0;
+  
 }
 
 #maCheckbox,
@@ -70,7 +72,7 @@ header {
   left: 0;
   height: 100%;
   width: 0;                        /* point de départ */
-  background-color: red;
+  background-color: var(--section-exposition-couleur-fond-secondaire);
   z-index: -1;
   transition: width 0.5s ease-out;
 }
@@ -91,7 +93,7 @@ header {
 } */
 
 #menu-principal a:active{
-  background-color: var(--bouton-couleur-fond-active);
+  background-color: var(--section-exposition-couleur-fond-secondaire);
 }
 
 #menu-principal a:hover::after {
@@ -101,56 +103,53 @@ header {
 }
 
 /* MENU DEROULANT EXPOTIM */
-.dropdown { 
-  position: relative; 
-  display: inline-block; 
-  margin: 0;
-  list-style: none;
-  cursor: pointer;
-  
-}
-.dropdown-btn {
-  padding: 0.6rem 3rem;
-  text-align: center;
-  border-radius: 0.8rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  background-color: none;
-  list-style: none;
-}
-.dropdown-btn:hover {
-  color: var(--bouton-couleur-fond-hover);
-  
-}
-.entete-expoTim {
-  position: absolute; 
-  background: var(--header-nav-couleur-fond);
-  min-width: 160px; 
-  padding: 20px;
-  align-content: center;
-  text-decoration: none;
-  z-index: 10;
-  border-radius: 8px;
-
-  /* Animation */
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.3s ease;
-}
-.entete-expoTim a { 
+.sub-menu a { 
   display: block; 
   padding: 12px 16px; 
   color: #ffffff; 
 }
-.entete-expoTim ul { 
+
+.sub-menu ul { 
   list-style: none;
 }
 
-.dropdown:hover .entete-expoTim { 
-  opacity: 1;
-  max-height: 500px; /* suffisamment grand pour contenir toutes les options */
+/* ---- Animation dropdown ---- */
+.menu li {
+  position: relative;
 }
+
+/* État fermé */
+.menu .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--header-nav-couleur-fond);
+  border-radius: 8px;
+  padding: 20px 0;
+  list-style: none;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  transform: translateY(-10px);
+  transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease,
+      transform 0.3s ease;
+}
+
+/* État ouvert */
+.menu li:hover > .sub-menu {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu .menu-item-has-children > a {
+    pointer-events: none;
+}
+
 
 /* SEARCH */
 .entete-recherche {
@@ -296,44 +295,11 @@ header {
   opacity: 1;                    /* Affiche l’input */
 }
 
-
-
-/* BOUTON EXPOTIM TABLETTE*/
-.entete-expoTim {
-  font-size: smaller;
-  padding: 5px;
-}
-.dropdown-btn {
-  font-size: smaller;
-  width: 100px;
-  align-self: center;
-  padding: 5px;
-}
-
-
-
-
 }
 
 /* Téléphone */
 /* Mobile header fixes */
 @media screen and (max-width: 900px) {
-
-  .dropdown {
-    align-self: center;
-    position: absolute;
-    top: 70px;
-    right: 10rem;
-  }
-
-
-  .entete-expoTim {
-
-    width: 50px;
-    background-color: var(--header-nav-couleur-fond);
-
-  }
-
 
   .entete {
     position: relative;          
