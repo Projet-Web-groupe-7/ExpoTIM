@@ -146,7 +146,7 @@ header {
 }
 
 
-/* SEARCH */
+/* BARRE DE RECHERCHE */
 .entete-recherche {
   display: flex;
   justify-content: flex-end;
@@ -157,16 +157,17 @@ header {
   display: flex;
   height: 2rem;
   width: 14rem;
-    border-radius: 10px;
+  border-radius: 10px;
 
 }
 
 .recherche-input {
+  width: 100%;
+  height: 100%;
   border: none;
   outline: none;
   flex: 1;
   padding: 3px;
-  border: white solid 2px;
   border-radius: 10px;
 }
 
@@ -176,16 +177,28 @@ header {
 
 }
 
+
+
 .recherche-bouton {
+  position: absolute;
+  right: 40px;             /* place le bouton DEDANS */
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 30px;
+  height: 30px;
+
+
   background-color:var(--header-nav-couleur-fond);
-  border: white solid 2px;
   border-radius: 10px;
-  padding: 0 10px;
-  cursor: pointer;
+
+
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.2s ease;
+
+  padding: 0;
 }
 .recherche-bouton:hover {
   background-color:var(--section-exposition-couleur-fond-secondaire);
@@ -251,7 +264,6 @@ header {
 }
 
 .recherche-input {
-  border: white solid 2px;
   border-radius: 10px;
   outline: none;
   padding: 0;                 
@@ -271,16 +283,10 @@ header {
   border: white solid 2px;
   border-radius: 10px;
   padding: 0 10px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.2s ease;
-  height: 100%;
-}
-
-.recherche-bouton:hover {
-  background-color: var(--bouton-couleur-fond-hover);
 }
 
 /*quand la souris passe, l’input s’ouvre */
@@ -331,6 +337,30 @@ header {
     margin-right: 60px; 
     flex-grow: 1;
   }
+
+  
+  .recherche-bouton {
+    position: absolute;
+    right: 78px;             /* place le bouton DEDANS */
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 30px;
+    height: 30px;
+
+
+    background-color:var(--header-nav-couleur-fond);
+    border-radius: 10px;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+
+    padding: 0;
+  }
+
   
   .entete-recherche form {
     display: flex;
