@@ -125,7 +125,7 @@ body {
     z-index: 9999999;
     width: 2rem;
     height: 2rem;
-    background-color: red;
+    background-color: var(--section-exposition-couleur-fond-secondaire);
     border-radius: 50%;
     top: calc(var(--mouse-y) - 1rem);
     left: calc(var(--mouse-x) - 1rem);
@@ -145,8 +145,27 @@ body {
     transform: translate(-50%, -50%);
 }
 
+/* Traînée du curseur */
+.trail {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999998;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+
+    /* Dissolution lente */
+    transition: 
+        opacity 0.25s linear, 
+        transform 0.25s linear;
+}
+
 /* Curseur inactif lorsqu'on quitte la fenêtre */
 .curseur.inactif {
+    display: none;
+}
+/* Curseur inactif lorsqu'on quitte la fenêtre */
+.trail.inactif {
     display: none;
 }
 

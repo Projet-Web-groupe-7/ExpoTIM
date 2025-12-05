@@ -61,7 +61,7 @@ header {
   text-align: center;
   border-radius: 0.8rem;
   text-decoration: none;
-  transition: all 0.3s ease, width 0.5s ease-out;
+  transition: box-shadow 1s ease, width 0.5s ease-out;
   overflow: hidden;
 }
 
@@ -79,18 +79,13 @@ header {
 
 #menu-principal a:hover::after {
   width: 100%;                     /* animation */
+
 }
 
 #menu-principal a:hover {
   color: white;
+  box-shadow: 0 0 10px 5px #FFABAB;
 }
-
-
-
-/* #menu-principal a:hover{
-  background-color: var(--bouton-couleur-fond-hover);
-  color: var(--header-couleur-fond);
-} */
 
 #menu-principal a:active{
   background-color: var(--section-exposition-couleur-fond-secondaire);
@@ -125,7 +120,7 @@ header {
   left: 0;
   background: var(--header-nav-couleur-fond);
   border-radius: 8px;
-  padding: 20px 0;
+  padding: 30px;
   list-style: none;
 
   max-height: 0;
@@ -193,7 +188,8 @@ header {
   transition: background 0.2s ease;
 }
 .recherche-bouton:hover {
-  background-color:var(--bouton-couleur-fond-hover);
+  background-color:var(--section-exposition-couleur-fond-secondaire);
+  box-shadow: 0 0 10px 5px #FFABAB;
 }
 
 
