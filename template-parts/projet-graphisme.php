@@ -90,6 +90,7 @@
             
             </div>
         </div>
+        
     </div>
     <?php section_projet_random(); ?>
 </article>

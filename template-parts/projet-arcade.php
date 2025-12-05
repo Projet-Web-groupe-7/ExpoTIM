@@ -8,7 +8,7 @@
     $projet_arcade_membre4= get_field('projet-arcade_membre-4');
     $projet_arcade_membre5= get_field('projet-arcade_membre-5');
     $projet_arcade_annee= get_field('projet-arcade_annee');
-
+    $projet_arcade_video = get_field('projet-arcade_video');
 
 ?>
 
@@ -96,12 +96,19 @@
             </div>
             
         </div>
+
+        
     </div>
 
-
-    <?php section_projet_random(); ?>
+    
+    
    
 </article>
+<article class="videoAracde">
+    <iframe src="<?php echo esc_url($projet_arcade_video); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</article>
 
+
+<?php section_projet_random(); ?>
 
 <?php get_footer(); ?>
