@@ -9,6 +9,11 @@
   user-select: none;
 }
 
+.motifs img {
+  height: 20px;
+  width: auto;
+}
+
 .motifs::before {
   content: "";
   position: absolute;
