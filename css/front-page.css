@@ -36,7 +36,7 @@
 .desc-expo {
   position: relative;
   padding: clamp(2rem, 6vw, 6rem);
-  border-bottom: white solid 0.5px;
+  /* border-bottom: white solid 0.5px; */
 }
 
 .desc-expo::before {
@@ -50,13 +50,6 @@
   opacity: 0.15;
   z-index: -1;
   pointer-events: none;
-}
-
-/* Décorations entre les sections */
-.motifs {
-  position: absolute;
-  bottom: -10px;
-  right: 50px;
 }
 
 /** Styles pour le menu accordéon des différentes expositions sur grands écrans **/
