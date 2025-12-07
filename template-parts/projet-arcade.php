@@ -53,7 +53,7 @@
             ?>
                 <div class="carrousel-images">
                     <?php foreach ($images as $index => $image): ?>
-                        <div class="carrousel-slide <?php echo $index === 0 ? 'active' : ''; ?>">
+                        <div class="carrousel-slide <?php echo $index === 0 ? 'active' : ''; ?>" >
                             <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
                         </div>
                     <?php endforeach; ?>
