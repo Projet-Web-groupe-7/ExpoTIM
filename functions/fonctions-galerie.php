@@ -81,6 +81,7 @@
             //définir les champs
             $post_name;
             $post_img;
+            $finissant_cat = null;
             switch ($case) {
                 case 'arcade':
                     $post_name = get_field('projet-arcade_nom');
@@ -95,12 +96,13 @@
                 case 'finissants':
                     $post_name = get_field('projet-finissant_nom');
                     $post_img = get_field('projet-finissant_image');
+                    $finissant_cat = get_field('projet-finissant_categorie');
                 break;
             }
     ?>
 
     <!-- lien projet -->
-    <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>">
+    <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>" <?php setCategory($finissant_cat); ?>>
         <div class="container">
             <div class="front">
                 <div class="premier-etage">
@@ -127,7 +129,14 @@
         // tres important!!
         wp_reset_postdata();
     ?>
-<?php } ?>
+<?php 
+    }
+    function setCategory($cat){
+        if($cat != null){
+            echo "data-cat='{$cat}'";
+        }
+    } 
+?>
 
 
 
