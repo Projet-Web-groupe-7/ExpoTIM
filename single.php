@@ -11,6 +11,9 @@ switch ($post_type){
     case 'projets-graphisme':
         get_template_part('template-parts/projet-graphisme');
     break;
+    case 'projets-finissants':
+        get_template_part('template-parts/projet-finissant');
+    break;
     
 }
 

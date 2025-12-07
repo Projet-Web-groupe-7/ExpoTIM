@@ -17,13 +17,19 @@
                     'post_type'       => 'projets-graphisme',
                 );
             break;
+            case 'finissants':
+                $args =  array(
+                    'posts_per_page'  => -1,
+                    'post_type'       => 'projets-finissants',
+                );
+            break;
         }
         return $args;
     }
 
     // ne pas oublier de rajouter les cas ici, necessaire pour
     // la fonction section_projet_random()
-    $allCases = ['arcade', 'graphisme'];
+    $allCases = ['arcade', 'graphisme', 'finissants'];
 
 
 
@@ -74,6 +80,11 @@
                 case 'graphisme':
                     $post_name = get_field('projet-graphisme_nom');
                     $post_img = get_field('projet-graphisme_image');
+                break;
+
+                case 'finissants':
+                    $post_name = get_field('projet-finissant_nom');
+                    $post_img = get_field('projet-finissant_image');
                 break;
             }
     ?>
