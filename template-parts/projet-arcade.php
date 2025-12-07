@@ -8,7 +8,7 @@
     $projet_arcade_membre4= get_field('projet-arcade_membre-4');
     $projet_arcade_membre5= get_field('projet-arcade_membre-5');
     $projet_arcade_annee= get_field('projet-arcade_annee');
-
+    $projet_arcade_video = get_field('projet-arcade_video');
 
 ?>
 
@@ -72,19 +72,19 @@
             <div>
                 <h2>Équipe/Auteur</h2>
                 <?php  if  ($projet_arcade_membre1): ?>
-                    <p><?php  echo $projet_arcade_membre1 ; ?></p>
+                    <h3><?php  echo $projet_arcade_membre1 ; ?></h3>
                 <?php  endif; ?>
                 <?php  if  ($projet_arcade_membre2): ?>
-                    <p><?php  echo $projet_arcade_membre2 ; ?></p>
+                    <h3><?php  echo $projet_arcade_membre2 ; ?></h3>
                 <?php  endif; ?>
                 <?php  if  ($projet_arcade_membre3): ?>
-                    <p><?php  echo $projet_arcade_membre3 ; ?></p>
+                    <h3><?php  echo $projet_arcade_membre3 ; ?></h3>
                 <?php  endif; ?>
                 <?php  if  ($projet_arcade_membre4): ?>
-                    <p><?php  echo $projet_arcade_membre4 ; ?></p>
+                    <h3><?php  echo $projet_arcade_membre4 ; ?></h3>
                 <?php  endif; ?>
                 <?php  if  ($projet_arcade_membre5): ?>
-                    <p><?php  echo $projet_arcade_membre5 ; ?></p>
+                    <h3><?php  echo $projet_arcade_membre5 ; ?></h3>
                 <?php  endif; ?>
             </div>
             
@@ -96,11 +96,24 @@
             </div>
             
         </div>
+
+        
     </div>
 
+<<<<<<< HEAD
 
     
 </article>
+=======
+    
+    
+   
+</article>
+<article class="videoAracde">
+    <iframe src="<?php echo esc_url($projet_arcade_video); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</article>
+
+>>>>>>> Erik_Sprint3
 <div class="projet-solo-random">
     <?php section_projet_random(); ?>
 </div>

@@ -136,6 +136,32 @@ function animateTrail() {
     requestAnimationFrame(animateTrail);
 }
 
-animateTrail();
+function animateTrail2() {
+    // Le premier élément se déplace vers la souris
+    trail[0].x += (mouseX - trail[0].x) * 0.2;
+    trail[0].y += (mouseY - trail[0].y) * 0.2;
+    trail[0].el.style.left = trail[0].x + "px";
+    trail[0].el.style.top = trail[0].y + "px";
+    trail[0].el.style.opacity = 1;
+    trail[0].el.style.transform = `translate(-50%, -50%) scale(1.3)`; // Échelle énergétique optionnelle
+
+    // Chaque élément suivant suit l'élément précédent
+    for (let i = 1; i < trail.length; i++) {
+        trail[i].x += (trail[i-1].x - trail[i].x) * 0.2;
+        trail[i].y += (trail[i-1].y - trail[i].y) * 0.2;
+        trail[i].el.style.left = trail[i].x + "px";
+        trail[i].el.style.top = trail[i].y + "px";
+
+        const fade = 1 - i / TRAIL_COUNT;
+        trail[i].el.style.opacity = fade;
+        trail[i].el.style.transform = `translate(-50%, -50%) scale(${1 + fade * 0.3})`;
+    }
+
+    requestAnimationFrame(animateTrail2);
+}
+
+
+// animateTrail();
+animateTrail2();
 
 

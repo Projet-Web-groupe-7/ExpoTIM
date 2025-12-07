@@ -17,13 +17,19 @@
                     'post_type'       => 'projets-graphisme',
                 );
             break;
+            case 'finissants':
+                $args =  array(
+                    'posts_per_page'  => -1,
+                    'post_type'       => 'projets-finissants',
+                );
+            break;
         }
         return $args;
     }
 
     // ne pas oublier de rajouter les cas ici, necessaire pour
     // la fonction section_projet_random()
-    $allCases = ['arcade', 'graphisme'];
+    $allCases = ['arcade', 'graphisme', 'finissants'];
 
 
 
@@ -40,9 +46,10 @@
             <nav class="filtre">
                 <h2>filtres:</h2>
                 <h3 class="actif" data-fl="none">Aucun filtre</h3>
-                <h3 data-fl="option-1">option-1</h3>
-                <h3 data-fl="option-2">option-2</h3>
-                <h3 data-fl="option-3">option-3</h3>
+                <h3 data-fl="video">Vidéo / Design</h3>
+                <h3 data-fl="jeu">Jeu</h3>
+                <h3 data-fl="3d">3D</h3>
+                <h3 data-fl="web">Web</h3>
             </nav>
         <?php } ?>
     </div>
@@ -75,6 +82,7 @@
             //définir les champs
             $post_name;
             $post_img;
+            $finissant_cat = null;
             switch ($case) {
                 case 'arcade':
                     $post_name = get_field('projet-arcade_nom');
@@ -85,11 +93,17 @@
                     $post_name = get_field('projet-graphisme_nom');
                     $post_img = get_field('projet-graphisme_image');
                 break;
+
+                case 'finissants':
+                    $post_name = get_field('projet-finissant_nom');
+                    $post_img = get_field('projet-finissant_image');
+                    $finissant_cat = get_field('projet-finissant_categorie');
+                break;
             }
     ?>
 
     <!-- lien projet -->
-    <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>">
+    <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>" <?php setCategory($finissant_cat); ?>>
         <div class="container">
             <div class="front">
                 <div class="premier-etage">
@@ -116,7 +130,14 @@
         // tres important!!
         wp_reset_postdata();
     ?>
-<?php } ?>
+<?php 
+    }
+    function setCategory($cat){
+        if($cat != null){
+            echo "data-cat='{$cat}'";
+        }
+    } 
+?>
 
 
 

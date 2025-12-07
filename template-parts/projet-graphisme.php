@@ -3,7 +3,6 @@
     $projet_graphisme_description= get_field('projet-graphisme_description');
     $projet_graphisme_image= get_field('projet-graphisme_image');
     $projet_graphisme_membre1= get_field('projet-graphisme_membre-1');
-    $projet_graphisme_membre2= get_field('projet-graphisme_membre-2');
     $projet_graphisme_annee= get_field('projet-graphisme_annee');
     $projet_graphisme_url= get_field('projet-graphisme_url');
 
@@ -66,10 +65,10 @@
             <div>
                 <h2>Équipe/Auteur</h2>
                 <?php  if  ($projet_graphisme_membre1): ?>
-                    <p><?php  echo $projet_graphisme_membre1 ; ?></p>
+                    <h3><?php  echo $projet_graphisme_membre1 ; ?></h3>
                 <?php  endif; ?>
                 <?php  if  ($projet_graphisme_membre2): ?>
-                    <p><?php  echo $projet_graphisme_membre2 ; ?></p>
+                    <h3><?php  echo $projet_graphisme_membre2 ; ?></h3>
                 <?php  endif; ?>
             </div>
             
@@ -83,11 +82,14 @@
             <div>
                 <h2>Lien du projet</h2>
                 <?php  if  ( $projet_graphisme_url): ?>
-                    <p><?php  echo  $projet_graphisme_url ; ?></p>
+                    <a href="<?php echo $projet_graphisme_url; ?>">
+                        <?php echo $projet_graphisme_url; ?>
+                    </a>
                 <?php  endif; ?>
             
             </div>
         </div>
+        
     </div>
 </article>
 <div class="projet-solo-random">

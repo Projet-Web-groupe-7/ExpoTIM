@@ -103,19 +103,55 @@ html {
 }
 
 body {
-    background: var(--main-couleur-fond);
+    background: #050510;
     color: var(--texte-couleur-principal);
     font-family: var(--main-paragraphe-font);
     min-height: 100vh;
-    overflow-x: hidden; /* Empêche le débordement horizontal indésirable */
+    overflow-x: hidden;
 }
 
+/* Couche 1 : grosses masses d'énergie */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(circle at 20% 50%, rgba(0,110,255,0.45), transparent 60%),
+              radial-gradient(circle at 80% 50%, rgba(255,0,72,0.45), transparent 60%);
+  animation: energyShift 12s ease-in-out infinite alternate;
+  filter: blur(40px);
+}
 
-.card {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  padding: 2rem;
+/* Couche 2 : turbulence / vagues d'énergie */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: 
+    repeating-linear-gradient(45deg,
+      rgba(0,150,255,0.08) 0px,
+      rgba(0,150,255,0.08) 10px,
+      rgba(255,0,80,0.08) 10px,
+      rgba(255,0,80,0.08) 20px
+    );
+  background-size: 200% 200%;
+  animation: waves 18s linear infinite;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+}
+
+/* Animation des masses d’énergie */
+@keyframes energyShift {
+  0% { transform: translate(-5%, -3%) scale(1); }
+  100% { transform: translate(5%, 3%) scale(1.15); }
+}
+
+/* Animation des vagues */
+@keyframes waves {
+  0% { background-position: 0 0; }
+  50% { background-position: 200% 100%; }
+  100% { background-position: 0 0; }
 }
 
 /* Curseur personnalisé
@@ -163,10 +199,6 @@ body {
 
 /* Curseur inactif lorsqu'on quitte la fenêtre */
 .curseur.inactif {
-    display: none;
-}
-/* Curseur inactif lorsqu'on quitte la fenêtre */
-.trail.inactif {
     display: none;
 }
 
@@ -269,6 +301,9 @@ header nav a{
     }
 
 .curseur{
+    display: none;
+}
+.trail{
     display: none;
 }
 
