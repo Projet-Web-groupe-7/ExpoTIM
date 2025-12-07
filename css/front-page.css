@@ -192,10 +192,10 @@
   background-image: url('../images/cartes/finissants.png');
 }
 .deck-cartes .arcade a::before {
-  background-image: url('../images/cartes/arcade.jpg');
+  background-image: url('../images/cartes/arcade.png');
 }
 .deck-cartes .graphisme a::before {
-  background-image: url('../images/cartes/graphisme.jpg');
+  background-image: url('../images/cartes/graphisme.png');
 }
 
 /********** VERSION MOBILE **********/
