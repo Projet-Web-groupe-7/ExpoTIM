@@ -19,7 +19,7 @@ if(document.querySelector("section#gallerie-cartes") != null){
 
 
 function dealAll() {
-    let cartes = document.querySelectorAll(".carte.hidden");
+    let cartes = document.querySelectorAll(".carte.hidden:not(.filtered-out)");
     let delay = 30;
     let i = 0;
     let frame = 0;
@@ -47,7 +47,7 @@ function dealAll() {
 
 //fonction pour faire apparaitre les cartes
 function deal(){
-    let cartes = document.querySelectorAll(".carte.hidden");
+    let cartes = document.querySelectorAll(".carte.hidden:not(.filtered-out)");
     ////cartes choisies alléatoirement
     // let i = Math.random() * cartes.length;
     // i = Math.floor(i);
@@ -114,7 +114,7 @@ function resetSymboles() {
     }
     let syIndex = 0;
 
-    let lesCartes = document.querySelectorAll("section#gallerie-cartes .carte");
+    let lesCartes = document.querySelectorAll("section#gallerie-cartes .carte:not(.filtered-out)");
     for(let i = 0; i<= lesCartes.length-1; i++){
         //clear la classe
         lesCartes[i].classList.remove("heart");
@@ -133,10 +133,16 @@ function resetSymboles() {
 // ///////////////////////////////////////////////////////////////////////////////////////////////// filtres
 function fitresFinissants(){
     if(document.querySelector(".gallerie .hero .filtre") != null){
-        console.log("cest icite");
+        let lastFilter;
+        if(new URLSearchParams(window.location.search).get("fl") == null){
+            lastFilter = "none";
+        } else {
+            lastFilter = new URLSearchParams(window.location.search).get("fl");
+        }
         
         let options = document.querySelectorAll(".gallerie .hero .filtre h3");
         gererClasse();
+        filtrer();
 
 
 
@@ -148,6 +154,23 @@ function fitresFinissants(){
                 window.history.replaceState({}, "", url);
 
                 gererClasse();
+                filtrer();
+
+                //define filter
+                let filter;
+                if(new URLSearchParams(window.location.search).get("fl") == null){
+                    filter = "none";
+                } else {
+                    filter = new URLSearchParams(window.location.search).get("fl");
+                }
+                //re deal cards if filter changes
+                if(filter != lastFilter){
+                    let lesCartes = document.querySelectorAll("section#gallerie-cartes .carte");
+                    lesCartes.forEach((carte)=>{carte.classList.add("hidden")});
+                    dealAll();
+                }
+
+                lastFilter = new URLSearchParams(window.location.search).get("fl");
             })
         }
 
@@ -169,6 +192,31 @@ function fitresFinissants(){
                     option.classList.remove("actif");
                 }
             }
+        }
+
+        function filtrer(){
+            let filtre = new URLSearchParams(window.location.search).get("fl");
+            if(filtre != null){
+                filtre = filtre.toLowerCase();
+            } else {
+                filtre = "none";
+            }
+
+            let lesCartes = document.querySelectorAll("section#gallerie-cartes .carte");
+            for(let carte of lesCartes){
+                let cat = carte.dataset.cat;
+                cat = cat.toLowerCase();
+
+                if(cat.includes(filtre) || filtre == "none"){
+                    // alert(cat);
+                    carte.classList.remove("filtered-out");
+                } else {
+                    carte.classList.add("filtered-out");
+                }
+            }
+
+            // remetre les symbolles en ordre
+            resetSymboles();
         }
     }
 }
