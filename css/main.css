@@ -5,7 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     cursor: none;
-
+    line-height: 1.4;
 }
 
 
@@ -28,10 +28,15 @@
       /* Curseur */
     --mouse-x: 0px;
     --mouse-y: 0px;
- 
-
 }
 
+/* Tailles */
+h2{
+    font-size: clamp(1rem, 4vw, 2rem);
+}
+p{
+    font-size: clamp(0.8rem, 2.2vw, 1.2rem);
+}
 
 /* Couleurs */
 :root{
@@ -237,7 +242,7 @@ body::after {
     font-family: var(--titre-accueil-font);
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(4rem, 9vw, 10rem);
+    font-size: clamp(4rem, 9vw, 8rem);
     color: var(--titre-accueil-couleur);
     text-align: center;
     margin: 0 auto;
