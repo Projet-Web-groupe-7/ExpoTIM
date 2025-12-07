@@ -35,8 +35,11 @@
 /* Section contenant l'explication de l'exposition */
 .desc-expo {
   position: relative;
+  width: min(
+    clamp(45ch, 60%, 75ch),
+    90vw
+  );
   padding: clamp(2rem, 6vw, 6rem);
-  /* border-bottom: white solid 0.5px; */
 }
 
 .desc-expo::before {
@@ -56,7 +59,7 @@
 .decks-expo {
   width: 100vw;
   justify-content: flex-start;
-  margin-bottom: 200px;
+  margin-bottom: 3rem;
 }
 
 /* Conteneur pour les decks de cartes et la boîte décorative */

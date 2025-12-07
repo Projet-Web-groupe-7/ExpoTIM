@@ -49,7 +49,6 @@
 .equipe .liste-equipe .membre .infos_membre_head {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   margin: 0;
   text-align: left;
 }
@@ -66,7 +65,8 @@
   padding: 0;
   width: fit-content;
   text-align: left;
-  transition: all 0.3s;
+  font-weight: normal;
+  transition: font-weight 0.2s, color 0.2s;
 }
 
 .equipe .liste-equipe .membre .lien:hover {
