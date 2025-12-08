@@ -11,6 +11,10 @@
     <?php wp_head(); ?>
 </head>
 <body>
+    <div id="chargement">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/logos/IconLogo.png" class="chargement-logo" alt="logo">
+    </div>
+
     <div class="curseur"></div>
 
     <header>

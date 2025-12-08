@@ -8,18 +8,25 @@
 }
 
 .contenuVideo {
-  margin: 0;
-  background-color: #000000;
+  margin: 0 auto;
 }
 
 .video-front-page {
-  width: 100vw;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 12px;
   margin: 0 auto;
+  animation: popIn 2s ease-out forwards;
+
 }
+
+@keyframes popIn {
+  0%   { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60%  { transform: scale(1.2) rotate(3deg); opacity: 1; }
+  80%  { transform: scale(0.9) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
 
 /* Sections de contenu de la page d'accueil */
 .desc-expo, .projet-random, .decks-expo {

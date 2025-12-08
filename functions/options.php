@@ -89,6 +89,15 @@
         '/js/curseur.js'),
         true
     );
+
+    wp_enqueue_script(
+        'chargement',
+        get_template_directory_uri() . '/js/chargement.js',
+        array(),
+        filemtime(get_template_directory() . 
+        '/js/chargement.js'),
+        true
+    );
       
       
   } 
