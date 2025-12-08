@@ -21,6 +21,19 @@
             header.style.transform = 'translateY(0)';
 	    }
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // éviter les valeurs négatives
-        }
+       }
+
+       // Mesurer automatiquement la hauteur du header et l'appliquer au body
+       function ajusterHauteurContenu() {
+              const headerHeight = header.offsetHeight;
+              document.body.style.paddingTop = headerHeight + "px";
+       }
+
+       // Ajuster au chargement
+       window.addEventListener("DOMContentLoaded", ajusterHauteurContenu);
+
+       // Ajuster si on redimensionne la fenêtre
+       window.addEventListener("resize", ajusterHauteurContenu);
+
 
         

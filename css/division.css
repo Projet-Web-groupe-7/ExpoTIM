@@ -1,0 +1,30 @@
+/* Décorations entre les sections */
+.motifs {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.4rem, 1.5vw, 1rem);
+  margin: 0;
+  user-select: none;
+}
+
+.motifs img {
+  height: clamp(18px, 3vw, 36px);
+  width: auto;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 2;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+}
+
+.motifs::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 80vw;
+  background-color: white;
+  transform: scaleY(0.5);
+  transform-origin: center;
+  z-index: 0;
+}

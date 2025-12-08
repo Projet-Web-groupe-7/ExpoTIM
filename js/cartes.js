@@ -5,6 +5,8 @@ if(document.querySelector("section#gallerie-cartes") != null){
     resetSymboles();
     // event listner
     window.addEventListener("resize", resetSymboles);
+
+    fitresFinissants();
     //console.log("1")
 } else if(document.querySelector("section.projet-random .cartes-random") != null){
     //console.log("2")
@@ -17,7 +19,7 @@ if(document.querySelector("section#gallerie-cartes") != null){
 
 
 function dealAll() {
-    let cartes = document.querySelectorAll(".carte.hidden");
+    let cartes = document.querySelectorAll(".carte.hidden:not(.filtered-out)");
     let delay = 30;
     let i = 0;
     let frame = 0;
@@ -45,7 +47,7 @@ function dealAll() {
 
 //fonction pour faire apparaitre les cartes
 function deal(){
-    let cartes = document.querySelectorAll(".carte.hidden");
+    let cartes = document.querySelectorAll(".carte.hidden:not(.filtered-out)");
     ////cartes choisies alléatoirement
     // let i = Math.random() * cartes.length;
     // i = Math.floor(i);
@@ -112,7 +114,7 @@ function resetSymboles() {
     }
     let syIndex = 0;
 
-    let lesCartes = document.querySelectorAll("section#gallerie-cartes .carte");
+    let lesCartes = document.querySelectorAll("section#gallerie-cartes .carte:not(.filtered-out)");
     for(let i = 0; i<= lesCartes.length-1; i++){
         //clear la classe
         lesCartes[i].classList.remove("heart");
@@ -127,6 +129,99 @@ function resetSymboles() {
         syIndex = syIndex % symboles.length;
     }
 }
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////// filtres
+function fitresFinissants(){
+    if(document.querySelector(".gallerie .hero .filtre") != null){
+        let lastFilter;
+        if(new URLSearchParams(window.location.search).get("fl") == null){
+            lastFilter = "none";
+        } else {
+            lastFilter = new URLSearchParams(window.location.search).get("fl");
+        }
+        
+        let options = document.querySelectorAll(".gallerie .hero .filtre h3");
+        gererClasse();
+        filtrer();
+
+
+
+        // event listener
+        for(let option of options){
+            option.addEventListener("click", function(evt){
+                let url = new URL(window.location);
+                url.searchParams.set("fl", evt.target.dataset.fl);
+                window.history.replaceState({}, "", url);
+
+                gererClasse();
+                filtrer();
+
+                //define filter
+                let filter;
+                if(new URLSearchParams(window.location.search).get("fl") == null){
+                    filter = "none";
+                } else {
+                    filter = new URLSearchParams(window.location.search).get("fl");
+                }
+                //re deal cards if filter changes
+                if(filter != lastFilter){
+                    let lesCartes = document.querySelectorAll("section#gallerie-cartes .carte");
+                    lesCartes.forEach((carte)=>{carte.classList.add("hidden")});
+                    dealAll();
+                }
+
+                lastFilter = new URLSearchParams(window.location.search).get("fl");
+            })
+        }
+
+        //gerer les classes qui changent
+        function gererClasse(){
+            // définir au cas ou ce nest pas défini
+            let searchParam;
+            if(new URLSearchParams(window.location.search).get("fl") == null){
+                searchParam = "none";
+            } else {
+                searchParam = new URLSearchParams(window.location.search).get("fl");
+            }
+            // donner la class a celui qui correspond
+            for(let option of options){
+                option.classList.remove("actif");
+                if(option.dataset.fl == searchParam){
+                    option.classList.add("actif");
+                } else {
+                    option.classList.remove("actif");
+                }
+            }
+        }
+
+        function filtrer(){
+            let filtre = new URLSearchParams(window.location.search).get("fl");
+            if(filtre != null){
+                filtre = filtre.toLowerCase();
+            } else {
+                filtre = "none";
+            }
+
+            let lesCartes = document.querySelectorAll("section#gallerie-cartes .carte");
+            for(let carte of lesCartes){
+                let cat = carte.dataset.cat;
+                cat = cat.toLowerCase();
+
+                if(cat.includes(filtre) || filtre == "none"){
+                    // alert(cat);
+                    carte.classList.remove("filtered-out");
+                } else {
+                    carte.classList.add("filtered-out");
+                }
+            }
+
+            // remetre les symbolles en ordre
+            resetSymboles();
+        }
+    }
+}
+
+
 
 
 // ///////////////////////////////////////////////////////////////////////////////////////////////// aleatoire

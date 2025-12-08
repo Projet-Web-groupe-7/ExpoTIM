@@ -5,7 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     cursor: none;
-
+    line-height: 1.4;
 }
 
 
@@ -28,10 +28,15 @@
       /* Curseur */
     --mouse-x: 0px;
     --mouse-y: 0px;
- 
-
 }
 
+/* Tailles */
+h2{
+    font-size: clamp(1rem, 4vw, 2rem);
+}
+p{
+    font-size: clamp(0.8rem, 2.2vw, 1.2rem);
+}
 
 /* Couleurs */
 :root{
@@ -61,6 +66,7 @@
     /* Textes */
     --texte-couleur-principal:#B6B7C1;
     --texte-couleur-secondaire: #FBFBFF;
+    --lien-couleur-bouton: #FF331F;
 
 
     /* Page accueil */
@@ -85,6 +91,7 @@
 
     /* Cartes */
     --carte-couleur-fond:#FBFBFF;
+    --carte-couleur-text: #000;
     --carte-couleur-border:linear-gradient(90deg,rgba(101, 126, 212, 1) 0%, rgba(255, 255, 255, 1) 100%);
     --carte-couleur-border-alternatif:linear-gradient(90deg,rgba(255, 51, 31, 1) 0%, rgba(255, 255, 255, 1) 100%);
 
@@ -101,19 +108,55 @@ html {
 }
 
 body {
-    background: var(--main-couleur-fond);
+    background: #050510;
     color: var(--texte-couleur-principal);
     font-family: var(--main-paragraphe-font);
     min-height: 100vh;
-    overflow-x: hidden; /* Empêche le débordement horizontal indésirable */
+    overflow-x: hidden;
 }
 
+/* Couche 1 : grosses masses d'énergie */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(circle at 20% 50%, rgba(0,110,255,0.45), transparent 60%),
+              radial-gradient(circle at 80% 50%, rgba(255,0,72,0.45), transparent 60%);
+  animation: energyShift 12s ease-in-out infinite alternate;
+  filter: blur(40px);
+}
 
-.card {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  padding: 2rem;
+/* Couche 2 : turbulence / vagues d'énergie */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: 
+    repeating-linear-gradient(45deg,
+      rgba(0,150,255,0.08) 0px,
+      rgba(0,150,255,0.08) 10px,
+      rgba(255,0,80,0.08) 10px,
+      rgba(255,0,80,0.08) 20px
+    );
+  background-size: 200% 200%;
+  animation: waves 18s linear infinite;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+}
+
+/* Animation des masses d’énergie */
+@keyframes energyShift {
+  0% { transform: translate(-5%, -3%) scale(1); }
+  100% { transform: translate(5%, 3%) scale(1.15); }
+}
+
+/* Animation des vagues */
+@keyframes waves {
+  0% { background-position: 0 0; }
+  50% { background-position: 200% 100%; }
+  100% { background-position: 0 0; }
 }
 
 /* Curseur personnalisé
@@ -124,7 +167,7 @@ body {
     z-index: 9999999;
     width: 2rem;
     height: 2rem;
-    background-color: red;
+    background-color: var(--section-exposition-couleur-fond-secondaire);
     border-radius: 50%;
     top: calc(var(--mouse-y) - 1rem);
     left: calc(var(--mouse-x) - 1rem);
@@ -144,6 +187,21 @@ body {
     transform: translate(-50%, -50%);
 }
 
+/* Traînée du curseur */
+.trail {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999998;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+
+    /* Dissolution lente */
+    transition: 
+        opacity 0.25s linear, 
+        transform 0.25s linear;
+}
+
 /* Curseur inactif lorsqu'on quitte la fenêtre */
 .curseur.inactif {
     display: none;
@@ -161,6 +219,38 @@ body {
 
     display: none;
     
+}
+
+/* Logo de chargement */
+/* Écran de chargement */
+#chargement {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bouton-couleur-fond); /* Change la couleur si tu veux */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Logo animé */
+.chargement-logo {
+    width: 120px;   /* ajuste la taille du logo */
+    animation: rotateLogo 1.5s linear infinite;
+    opacity: 0.9;
+}
+
+/* Animation de rotation */
+@keyframes rotateLogo {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 
@@ -184,7 +274,7 @@ body {
     font-family: var(--titre-accueil-font);
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(4rem, 9vw, 10rem);
+    font-size: clamp(4rem, 9vw, 8rem);
     color: var(--titre-accueil-couleur);
     text-align: center;
     margin: 0 auto;
@@ -192,7 +282,14 @@ body {
     padding: clamp(3rem, 6vw, 6rem) 0;
     position: relative;
     z-index: 1;
+
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: showTitle 1s ease-out forwards;
+    animation-delay: 0.5s;
 }
+
+
 
 /* Logo à l'arrière-plan */
 .titreLogo::before {
@@ -205,6 +302,24 @@ body {
     background-size: contain;
     z-index: -1;
     pointer-events: none;
+}
+
+@keyframes showTitle {
+  0% {
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-50%) translateY(-10%);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(-50%) translateY(5%);   /* petit rebond */
+  }
+  100% {
+    transform: translateX(-50%) translateY(0%);
+    opacity: 1;
+  }
 }
 
 /* État initial */
@@ -248,6 +363,9 @@ header nav a{
     }
 
 .curseur{
+    display: none;
+}
+.trail{
     display: none;
 }
 

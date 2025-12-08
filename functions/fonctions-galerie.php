@@ -34,13 +34,24 @@
 
 
     // la section hero
-    function galerie_hero() {
+    function galerie_hero($estPageFinissants = false) {
 ?>
     <div class="hero">
         <!-- <h2>Galerie projets Arcade - 2ème année</h2> -->
         <!-- <h3>L’Arcade de l’expoTIM présente les prototypes de jeux vidéo créés par les étudiants de deuxième année en Technique d’intégration multimédia. Réalisés dans le cadre du cours Création de jeu en équipe, ces projets sont le fruit d’un processus de production complet : de la conception et la planification à la création des médias, de la programmation aux tests de qualité jusqu’au produit fini.
         </h3> -->
         <?= get_the_content(); ?>
+        
+        <?php if($estPageFinissants == true) {?>
+            <nav class="filtre">
+                <h2>filtres:</h2>
+                <h3 class="actif" data-fl="none">Aucun filtre</h3>
+                <h3 data-fl="video">Vidéo / Design</h3>
+                <h3 data-fl="jeu">Jeu</h3>
+                <h3 data-fl="3d">3D</h3>
+                <h3 data-fl="web">Web</h3>
+            </nav>
+        <?php } ?>
     </div>
 <?php
     }
@@ -71,7 +82,11 @@
             //définir les champs
             $post_name;
             $post_img;
+<<<<<<< HEAD
             $post_membres = [];
+=======
+            $finissant_cat = null;
+>>>>>>> dev
             switch ($case) {
                 case 'arcade':
                     $post_name = get_field('projet-arcade_nom');
@@ -97,10 +112,14 @@
                 case 'finissants':
                     $post_name = get_field('projet-finissant_nom');
                     $post_img = get_field('projet-finissant_image');
+<<<<<<< HEAD
                     $post_membres = array_filter([
                         get_field('projet-finissant_membre-1'),
                     ]);
             
+=======
+                    $finissant_cat = get_field('projet-finissant_categorie');
+>>>>>>> dev
                 break;
             }
 
@@ -116,13 +135,13 @@
     ?>
 
     <!-- lien projet -->
-    <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>">
+    <a href="<?php  the_permalink(); ?>" class="carte hidden <?= classSymbole(); ?>" <?php setCategory($finissant_cat); ?>>
         <div class="container">
             <div class="front">
                 <div class="premier-etage">
                     <!-- nom projet -->
                     <p><?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?></p>
-                    <div class="symbole"></div>
+                    <!-- <div class="symbole"></div> -->
                 </div>
                 <!-- img projet -->
                 <img src="<?php if($post_img){echo $post_img ['url'];}?>" alt="<?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?>">
@@ -153,7 +172,14 @@
         // tres important!!
         wp_reset_postdata();
     ?>
-<?php } ?>
+<?php 
+    }
+    function setCategory($cat){
+        if($cat != null){
+            echo "data-cat='{$cat}'";
+        }
+    } 
+?>
 
 
 
@@ -215,15 +241,9 @@
 ?>
 <style>
     /* coeur */
-    .carte.heart .container .front, .carte.diamond .container .front, .carte.heart .container .back, .carte.diamond .container .back{
-        border: 6px solid red;
-    }
     .carte.heart .container .back, .carte.diamond .container .back{
         /* background-color: rgb(156, 0, 0); */
         background-image: url(<?= $dosRouge //['url']?>);
-    }
-    .carte.spade .container .front, .carte.club .container .front, .carte.spade .container .back, .carte.club .container .back{
-        border: 6px solid blue;
     }
     .carte.spade .container .back, .carte.club .container .back{
         /* background-color: rgb(0, 4, 130); */

@@ -1,9 +1,9 @@
 header {
   z-index: 1000;
-  position : sticky;
+  position : fixed;
   top: 0;
+  width: 100vw;
   transition: transform 0.3s ease-in-out;
-
 }
 
 .entete {
@@ -11,9 +11,10 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  flex-wrap: wrap; /* allows wrapping when space is tight */
+  flex-wrap: wrap;
   gap: 1rem;
   margin: 0;
+
 }
 
 #maCheckbox,
@@ -23,7 +24,7 @@ header {
 
 /* LOGO */
 .custom-logo {
-  max-width: 100px;
+  max-width: 50px;
   height: auto;
 }
 
@@ -60,7 +61,7 @@ header {
   text-align: center;
   border-radius: 0.8rem;
   text-decoration: none;
-  transition: all 0.3s ease, width 0.5s ease-out;
+  transition: box-shadow 1s ease, width 0.5s ease-out;
   overflow: hidden;
 }
 
@@ -71,28 +72,23 @@ header {
   left: 0;
   height: 100%;
   width: 0;                        /* point de départ */
-  background-color: red;
+  background-color: var(--section-exposition-couleur-fond-secondaire);
   z-index: -1;
   transition: width 0.5s ease-out;
 }
 
 #menu-principal a:hover::after {
   width: 100%;                     /* animation */
+
 }
 
 #menu-principal a:hover {
-  color: #000000;
+  color: white;
+  box-shadow: 0 0 10px 5px #FFABAB;
 }
 
-
-
-/* #menu-principal a:hover{
-  background-color: var(--bouton-couleur-fond-hover);
-  color: var(--header-couleur-fond);
-} */
-
 #menu-principal a:active{
-  background-color: var(--bouton-couleur-fond-active);
+  background-color: var(--section-exposition-couleur-fond-secondaire);
 }
 
 #menu-principal a:hover::after {
@@ -102,58 +98,55 @@ header {
 }
 
 /* MENU DEROULANT EXPOTIM */
-.dropdown { 
-  position: relative; 
-  display: inline-block; 
-  margin: 0;
-  list-style: none;
-  cursor: pointer;
-  
-}
-.dropdown-btn {
-  padding: 0.6rem 3rem;
-  text-align: center;
-  border-radius: 0.8rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  background-color: none;
-  list-style: none;
-}
-.dropdown-btn:hover {
-  color: var(--bouton-couleur-fond-hover);
-  
-}
-.entete-expoTim {
-  position: absolute; 
-  background: var(--header-nav-couleur-fond);
-  min-width: 160px; 
-  padding: 20px;
-  align-content: center;
-  text-decoration: none;
-  z-index: 10;
-  border-radius: 8px;
-
-  /* Animation */
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.3s ease;
-}
-.entete-expoTim a { 
+.sub-menu a { 
   display: block; 
   padding: 12px 16px; 
   color: #ffffff; 
 }
-.entete-expoTim ul { 
+
+.sub-menu ul { 
   list-style: none;
 }
 
-.dropdown:hover .entete-expoTim { 
-  opacity: 1;
-  max-height: 500px; /* suffisamment grand pour contenir toutes les options */
+/* ---- Animation dropdown ---- */
+.menu li {
+  position: relative;
 }
 
-/* SEARCH */
+/* État fermé */
+.menu .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--header-nav-couleur-fond);
+  border-radius: 8px;
+  padding: 30px;
+  list-style: none;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  transform: translateY(-10px);
+  transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease,
+      transform 0.3s ease;
+}
+
+/* État ouvert */
+.menu li:hover > .sub-menu {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu .menu-item-has-children > a {
+    pointer-events: none;
+}
+
+
+/* BARRE DE RECHERCHE */
 .entete-recherche {
   display: flex;
   justify-content: flex-end;
@@ -164,16 +157,17 @@ header {
   display: flex;
   height: 2rem;
   width: 14rem;
-    border-radius: 10px;
+  border-radius: 10px;
 
 }
 
 .recherche-input {
+  width: 100%;
+  height: 100%;
   border: none;
   outline: none;
   flex: 1;
   padding: 3px;
-  border: white solid 2px;
   border-radius: 10px;
 }
 
@@ -183,32 +177,50 @@ header {
 
 }
 
+
+
 .recherche-bouton {
+  position: absolute;
+  right: 40px;             /* place le bouton DEDANS */
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 30px;
+  height: 30px;
+
+
   background-color:var(--header-nav-couleur-fond);
-  border: white solid 2px;
   border-radius: 10px;
-  padding: 0 10px;
-  cursor: pointer;
+
+
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.2s ease;
+
+  padding: 0;
 }
 .recherche-bouton:hover {
-  background-color:var(--bouton-couleur-fond-hover);
+  background-color:var(--section-exposition-couleur-fond-secondaire);
+  box-shadow: 0 0 10px 5px #FFABAB;
 }
 
 
-/* Tablette*/
-@media screen and (max-width: 1024px) {
+/* FORMAT TABLETTE*/
+@media screen and (max-width: 1320px){
   .entete {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+
+  }
+  .entete-navigation {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0;
   }
 
   .entete-menu {
     margin-left: 0;
-    justify-content: center;
   }
 
   .entete-recherche {
@@ -221,26 +233,75 @@ header {
     width: 100%;
     max-width: 300px;
   }
+
+  #menu-principal a {
+  font-size: smaller;
+  width: 100px;
+  align-self: center;
+  padding: 5px;
+}
+
+#menu-principal {
+  gap:0;
+  margin: 0;
+}
+
+/* BARRE DE RECHERCHE TABLETTE*/
+.entete-recherche {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 5px;
+}
+
+.recherche {
+  display: flex;
+  height: 2rem;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;         
+  transition: width 0.3s ease;  
+  width: auto;                   
+}
+
+.recherche-input {
+  border-radius: 10px;
+  outline: none;
+  padding: 0;                 
+  width: 0;                      
+  opacity: 0;                   
+  transition: all 0.3s ease;
+}
+
+.recherche-input::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+  font-style: italic;
+}
+
+/* Bouton loupe */
+.recherche-bouton {
+  background-color: var(--header-nav-couleur-fond);
+  border: white solid 2px;
+  border-radius: 10px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+/*quand la souris passe, l’input s’ouvre */
+.recherche:hover .recherche-input,
+.recherche-input:focus {
+  width: 14rem;                  /* La largeur que tu avais */
+  padding: 3px;                  /* Réapparition du padding */
+  opacity: 1;                    /* Affiche l’input */
+}
+
 }
 
 /* Téléphone */
 /* Mobile header fixes */
-@media screen and (max-width: 720px) {
-
-  .dropdown {
-    align-self: center;
-  }
-  .dropdown-btn {
-    margin-top: 20px;
-  }
-
-  .entete-expoTim {
-    width: 100vw;
-    background-color: #D9D9D9;
-    display: flex;
-    flex-direction: center;
-  }
-
+@media screen and (max-width: 900px) {
 
   .entete {
     position: relative;          
@@ -251,6 +312,12 @@ header {
     justify-content: space-between;
     padding: 0 16px;             
     box-sizing: border-box;
+  }
+
+  .entete-menu {
+    display: flex;
+    justify-content: center;
+    gap: 0;
   }
 
   #maCheckbox {
@@ -270,6 +337,30 @@ header {
     margin-right: 60px; 
     flex-grow: 1;
   }
+
+  
+  .recherche-bouton {
+    position: absolute;
+    right: 78px;             /* place le bouton DEDANS */
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 30px;
+    height: 30px;
+
+
+    background-color:var(--header-nav-couleur-fond);
+    border-radius: 10px;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+
+    padding: 0;
+  }
+
   
   .entete-recherche form {
     display: flex;
@@ -318,7 +409,7 @@ header {
     right: 0;
     left: 0;                   
     width: 100%;               
-    background-color: #D9D9D9;
+    background-color: var(--header-nav-couleur-fond);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -347,12 +438,9 @@ header {
   /* --- END CLEANER X --- */
 
   #menu-principal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+    grid-template-rows: repeat(3, 50px);  /* 3 lignes de 200px (modifiable) */
   }
 
-  #menu-principal a {
-    border: none;
-  }
 }

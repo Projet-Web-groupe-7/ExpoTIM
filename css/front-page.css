@@ -8,18 +8,25 @@
 }
 
 .contenuVideo {
-  margin: 0;
-  background-color: #000000;
+  margin: 0 auto;
 }
 
 .video-front-page {
-  width: 100vw;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 12px;
   margin: 0 auto;
+  animation: popIn 2s ease-out forwards;
+
 }
+
+@keyframes popIn {
+  0%   { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60%  { transform: scale(1.2) rotate(3deg); opacity: 1; }
+  80%  { transform: scale(0.9) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
 
 /* Sections de contenu de la page d'accueil */
 .desc-expo, .projet-random, .decks-expo {
@@ -35,8 +42,11 @@
 /* Section contenant l'explication de l'exposition */
 .desc-expo {
   position: relative;
+  width: min(
+    clamp(45ch, 60%, 75ch),
+    90vw
+  );
   padding: clamp(2rem, 6vw, 6rem);
-  border-bottom: white solid 0.5px;
 }
 
 .desc-expo::before {
@@ -52,18 +62,11 @@
   pointer-events: none;
 }
 
-/* Décorations entre les sections */
-.motifs {
-  position: absolute;
-  bottom: -10px;
-  right: 50px;
-}
-
 /** Styles pour le menu accordéon des différentes expositions sur grands écrans **/
 .decks-expo {
   width: 100vw;
   justify-content: flex-start;
-  margin-bottom: 200px;
+  margin-bottom: 3rem;
 }
 
 /* Conteneur pour les decks de cartes et la boîte décorative */
@@ -88,13 +91,28 @@
   width: calc(var(--expo-width) + 20px);
   height: calc(var(--expo-height) + 20px);
   flex-shrink: 0;
-  border: 1px solid white;
-  background-color: #161693;
+  border: 10px solid white;
+  background-color: var(--section-exposition-couleur-fond-secondaire);
   position: relative;
+  box-shadow: 5px 0 5px rgba(0,0,0,0.3);
   z-index: 5;
 }
 
 /* Décorations internes de la boîte */
+.expo-boite::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  width: 60%;
+  height: 60%;
+  background-image: url('../images/cartes/spades.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .expo-boite::after {
   content: "";
   position: absolute;
@@ -181,10 +199,10 @@
   background-image: url('../images/cartes/finissants.png');
 }
 .deck-cartes .arcade a::before {
-  background-image: url('../images/cartes/arcade.jpg');
+  background-image: url('../images/cartes/arcade.png');
 }
 .deck-cartes .graphisme a::before {
-  background-image: url('../images/cartes/graphisme.jpg');
+  background-image: url('../images/cartes/graphisme.png');
 }
 
 /********** VERSION MOBILE **********/
@@ -196,7 +214,16 @@
   .expo-boite {
     height: 300px;
     width: 220px;
+    box-shadow: 0 -5px 5px rgba(0,0,0,0.3);
+    background-image: url('../images/cartes/BoiteDeCarteMobile.jpg');
   }
+  
+  .expo-boite::before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
   .expo-menu {
     margin-left: 0;
     margin-bottom: -150px;

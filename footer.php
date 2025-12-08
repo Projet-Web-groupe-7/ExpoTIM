@@ -1,11 +1,20 @@
 <?php
-    $footer_couleur_arriere = get_theme_mod('footer_couleur_arriere', '#080730');
-    $footer_couleur_texte = get_theme_mod('footer_couleur_texte', '#B6B7C1');
-    
+function hexToRgba($hex, $alpha = 0){
+    $hex = str_replace('#', '', $hex);
+    $r = hexdec(substr($hex,0,2));
+    $g = hexdec(substr($hex,2,2));
+    $b = hexdec(substr($hex,4,2));
+    return "rgba($r, $g, $b, $alpha)";
+}
+
+$footer_couleur_arriere = get_theme_mod('footer_couleur_arriere', '#080730');
+$footer_couleur_texte = get_theme_mod('footer_couleur_texte', '#B6B7C1');
+$footer_transparent = hexToRgba($footer_couleur_arriere, 0);
 ?>
 
+<footer style="background: linear-gradient(to bottom, <?= $footer_transparent ?> 0%, <?= $footer_couleur_arriere ?> 40%, <?= $footer_couleur_arriere ?> 100%); color: <?= $footer_couleur_texte ?>;">
 
-<footer style ="background-color: <?= $footer_couleur_arriere?>; color: <?= $footer_couleur_texte?>;">
+
 
 <div class="footer contenu">
 
@@ -32,20 +41,23 @@
             </a>
     </div>
 
-    <div class="footer menuExt">
-        <h4>Menu</h4>
+    
+</div>
+
+<div class="footer reseaux">
+    <?php 
+        icones_sociaux();
+    ?>
+</div>
+
+<div class="footer menuExt">
     <?php wp_nav_menu(array(
                         "menu"=>"principal",
                         "container"=>"nav",
                         "container_class"=>"piedpage__s1__externe"
                     ));?>
-    </div>
 </div>
-    <div class="footer reseaux">
-            <?php 
-            icones_sociaux();
-            ?>
-    </div>
+
 <div class="footer credits">
     <p>© 2025 LesAsDuTim. Tous droits réservés.</p>
 </div>

@@ -63,8 +63,6 @@
     </main>
     
     <?php get_footer(); ?>
-</body>
-</html>
 
 
 <!-- cartes differentes -->

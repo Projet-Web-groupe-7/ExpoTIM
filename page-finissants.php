@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
     <main class="gallerie">
-        <?php galerie_hero(); ?>
+        <?php galerie_hero(true); ?>
 
         <section id="gallerie-cartes">
             <div class="paquet" style="color:white;"></div>

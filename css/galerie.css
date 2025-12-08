@@ -4,23 +4,54 @@ main.gallerie{
     overflow-x: hidden;
     background: none;
     max-width: 100vw;
+
+    /* display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center; */
 }
 
 .gallerie .hero{
     color: var(--texte-couleur-secondaire);
-    padding-left: 10px;
-    max-width: 84%;
+    margin-left: 94px;
+    max-width: 1235px;
+    margin-bottom: 30px;
 }
 .gallerie .hero h2,h3{
     color: var(--texte-couleur-secondaire);
 }
+.gallerie .hero h2{
+    margin-bottom: 20px;
+}
+.gallerie .hero h3{
+    line-height: 1.4;
+}
 
-/* main.gallerie section#gallerie-cartes{
+/*  //////////////////////////////////// filtres */
+.gallerie .hero .filtre{
+    border: 1px solid red;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    align-items: flex-start;
-} */
+
+    margin-top: 20px;
+}
+
+.gallerie .hero .filtre h2{
+    margin: 0 10px;
+    padding: 8px;
+}
+.gallerie .hero .filtre h3{
+    margin: 0 10px;
+    border: 3px solid white;
+    padding: 8px;
+}
+
+.gallerie .hero .filtre h3.actif{
+    background-color: #00494d;
+}
+
+
 main.gallerie section#gallerie-cartes{
     display: grid;
     grid-template-columns: repeat(4, 325px);
@@ -42,7 +73,6 @@ main.gallerie section#gallerie-cartes{
 .carte{
     width: 259px;
     height: 388px;
-    margin: 20px;
     margin: 37px;
     /* transition pour le déplacement */
     transition: transform .7s;
@@ -76,6 +106,8 @@ main.gallerie section#gallerie-cartes{
 
     backface-visibility: hidden;
     position: absolute;
+
+    box-shadow: -10px 0px 20px rgba(0, 0, 0, .2);
 }
 .carte .back{
     /* background-color: rgb(138, 28, 21);
@@ -86,7 +118,8 @@ main.gallerie section#gallerie-cartes{
 .carte .front{
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    /* justify-content: center; */
     align-items: center;
     font-family: var(--main-paragraphe-font);
 
@@ -98,12 +131,14 @@ main.gallerie section#gallerie-cartes{
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: center;
     align-items: center;
     margin: 0;
 }
-.carte .front .premier-etage p,div{
+.carte .front .premier-etage p{
     margin: 20px 20px 0 20px;
+    color: var(--carte-couleur-text);
 }
 .carte .front img{
     width: 233px;
@@ -113,18 +148,13 @@ main.gallerie section#gallerie-cartes{
     background-color: #D9D9D9;
 }
 .front .symbole{
-    width: 26px;
-    height: 28px;
+    /* me tantais pas faire des maths */
+    width: calc(26px * 1.2);
+    height: calc(28px * 1.2);
     background-size: cover;
     background-position: center;
-
-
-    /* background-color:green; */
-}
-.front .symbole:nth-of-type(2){
-    margin: 0 15px 15px 15px;
-    align-self: flex-start;
-    transform: rotate(180deg);
+    margin: 0 0 3px 0;
+    scale: 1.2;
 }
 
 
@@ -134,9 +164,14 @@ main.gallerie section#gallerie-cartes{
     position: absolute;
     opacity: 0;
     user-select: none;
+    display: none;
 }
 .carte-no-transit{
     transition: none;
+}
+
+.filtered-out{
+    display: none;
 }
 
 
@@ -146,12 +181,20 @@ main.gallerie section#gallerie-cartes{
         grid-template-columns: repeat(3, 325px);
         margin-bottom: 70px;
     }
+
+    .gallerie .hero{
+        max-width: 915px;
+    }
 }
 @media screen and (max-width: 950px){
     main.gallerie section#gallerie-cartes{
         display: grid;
         grid-template-columns: repeat(2, 325px);
         margin-bottom: 70px;
+    }
+
+    .gallerie .hero{
+        max-width: 592px;
     }
 }
 @media screen and (max-width: 680px){
@@ -160,8 +203,12 @@ main.gallerie section#gallerie-cartes{
         grid-template-columns: repeat(1, 325px);
         margin-bottom: 70px;
     }
-}
 
+    .gallerie .hero{
+        margin: 0 5vw;
+        max-width: 90vw;
+    }
+}
 
 
 /* ///////////////////////////////////////// cartes projet random */
@@ -186,7 +233,7 @@ main.gallerie section#gallerie-cartes{
     min-height: 388px;
     max-width: 259px;
     max-height: 388px;
-    border: 3px solid rgb(0, 0, 0);
+    /* border: 3px solid rgb(0, 0, 0); */
     box-shadow: -10px 0px 14px rgba(0, 0, 0, 1);
 
     background-repeat: no-repeat;
@@ -194,12 +241,15 @@ main.gallerie section#gallerie-cartes{
     border-radius: 20px;
 
     margin: 0;
-    transition: right .5s, width 0.5s;
+    transition: right .5s, width 0.5s, box-shadow .5s, scale .5s;
+}
+.cartes-random .paquet.shuffled,.carte-anim.shuffled{
+    box-shadow: -10px 0px 20px rgba(0, 0, 0, .2);
 }
 .cartes-random .carte {
     position: relative;
     right: 1590px;
-    bottom: 75px;
+    bottom: 47px;
 }
 
 
@@ -227,13 +277,11 @@ main.gallerie section#gallerie-cartes{
     }
 
     .cartes-random .carte-anim{
-        /* transition: translate .5s; */
-        scale: .8;
+        /* scale: .8; */
+        /* transition scale fait plus haut */
     }
-    /* .cartes-random .carte-anim.shuffled{
-        translate: 30px 0 ;
+    .cartes-random .carte-anim.shuffled{
+        /* scale: 1; */
     }
-    .cartes-random .carte-anim:not(.shuffled){
-        translate: -100px 0 ;
-    } */
+    
 }

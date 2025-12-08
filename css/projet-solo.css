@@ -181,6 +181,7 @@
     max-height: 82vh;
     object-fit: contain;
     display: block;
+    box-shadow: none;
 }
  
 /* Slides */
@@ -518,6 +519,8 @@
         max-height:90%;
         margin: 0 auto;
     }
+<<<<<<< HEAD
+=======
 
     .carrousel-slide img {
         width:100%;
@@ -525,6 +528,7 @@
         object-fit:cover;
         padding: 10px;  
     }
+>>>>>>> Erik_Sprint3
 <<<<<<< HEAD
 
     .projet-solo-random{

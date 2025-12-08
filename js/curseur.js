@@ -64,3 +64,104 @@ function basculerAffichageCurseur(event) {
         curseur.classList.remove('inactif');
     }
 }
+
+/* --- TRAÎNÉE ÉNERGIQUE ROUGE --- */
+
+const TRAIL_COUNT = 14;
+const trail = [];
+
+// Dégradé rouge énergique (intensité → fade)
+const colors = [];
+for (let i = 0; i < TRAIL_COUNT; i++) {
+    const ratio = i / TRAIL_COUNT;
+    colors.push(`rgba(255, 50, 50, ${0.45 - ratio * 0.40})`); 
+}
+
+for (let i = 0; i < TRAIL_COUNT; i++) {
+    const el = document.createElement("div");
+    el.classList.add("trail");
+
+    el.style.background = colors[i];
+
+    // Tailles dynamiques, plus petites vers la fin
+    const size = 1.8 - i * 0.1;
+    el.style.width = `${size}rem`;
+    el.style.height = `${size}rem`;
+
+    // Glow énergie rouge
+    el.style.boxShadow = `0 0 ${10 - i * 0.5}px rgba(255, 0, 0, ${0.6 - i * 0.05})`;
+
+    document.body.appendChild(el);
+
+    trail.push({
+        el,
+        x: 0,
+        y: 0,
+        opacity: 1
+    });
+}
+
+let mouseX = 0, mouseY = 0;
+
+// Position de la souris
+document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+// Animation du suivi + dissolution lente
+function animateTrail() {
+    let prevX = mouseX;
+    let prevY = mouseY;
+
+    trail.forEach((t, i) => {
+        // interpolation rapide → fluide
+        t.x += (prevX - t.x) * 0.20;
+        t.y += (prevY - t.y) * 0.20;
+
+        t.el.style.left = t.x + "px";
+        t.el.style.top = t.y + "px";
+
+        // Dissolution lente
+        const fade = 1 - i / TRAIL_COUNT;
+        t.el.style.opacity = fade;
+
+        // Léger agrandissement dynamique → effet énergétique
+        t.el.style.transform = `translate(-50%, -50%) scale(${1 + fade * 0.3})`;
+
+        prevX = t.x;
+        prevY = t.y;
+    });
+
+    requestAnimationFrame(animateTrail);
+}
+
+function animateTrail2() {
+    // Le premier élément se déplace vers la souris
+    trail[0].x += (mouseX - trail[0].x) * 0.2;
+    trail[0].y += (mouseY - trail[0].y) * 0.2;
+    trail[0].el.style.left = trail[0].x + "px";
+    trail[0].el.style.top = trail[0].y + "px";
+    trail[0].el.style.opacity = 1;
+    trail[0].el.style.transform = `translate(-50%, -50%) scale(1.3)`; // Échelle énergétique optionnelle
+
+    // Chaque élément suivant suit l'élément précédent
+    for (let i = 1; i < trail.length; i++) {
+        trail[i].x += (trail[i-1].x - trail[i].x) * 0.2;
+        trail[i].y += (trail[i-1].y - trail[i].y) * 0.2;
+        trail[i].el.style.left = trail[i].x + "px";
+        trail[i].el.style.top = trail[i].y + "px";
+
+        const fade = 1 - i / TRAIL_COUNT;
+        trail[i].el.style.opacity = fade;
+        trail[i].el.style.transform = `translate(-50%, -50%) scale(${1 + fade * 0.3})`;
+    }
+
+    requestAnimationFrame(animateTrail2);
+}
+
+
+// animateTrail();
+animateTrail2();
+
+
