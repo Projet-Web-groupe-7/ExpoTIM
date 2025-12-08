@@ -35,7 +35,10 @@
                     $case = 'graphisme';
                 } elseif ($post_type === 'projets-arcade') {
                     $case = 'arcade';
-                } else {
+                } elseif ($post_type === 'projets-finissants') {
+                    $case = 'finissants';
+                }
+                 else {
                     continue;
                 }
 
@@ -45,7 +48,7 @@
                     'p'         => $post->ID
                 ];
 
-                galerie_get_cartes($args, $case);
+                galerie_get_cartes($args, $case,  $search_query);
             }
 
         } else {
