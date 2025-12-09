@@ -1,36 +1,51 @@
-(function(){
-    console.log("carrousel.js");
+(function () {
 
     const slides = document.querySelectorAll(".carrousel-slide");
-    const prevBtn = document.querySelector(".carrousel-btn--prev");
-    const nextBtn = document.querySelector(".carrousel-btn--next");
+    if (!slides.length) return;
 
-    if (slides.length === 0) return;
+    let index = 0;
 
-    let indexActuel = 0;
-    const total = slides.length;
+    function appliquerClasses() {
+        slides.forEach(s => {
+            s.classList.remove("active","prev","depth1","depth2","other");
+        });
 
-    function afficherSlide(index) {
-        slides.forEach(s => s.classList.remove("active"));
-        slides[index].classList.add("active");
+        const total = slides.length;
+
+        const i0 = index % total;
+        const i1 = (index - 1 + total) % total;
+        const i2 = (index - 2 + total) % total;
+        const i3 = (index - 3 + total) % total;
+
+        slides[i0].classList.add("active");
+        slides[i1].classList.add("prev");
+        slides[i2].classList.add("depth1");
+        slides[i3].classList.add("depth2");
+
+        slides.forEach((s,i)=>{
+            if (![i0,i1,i2,i3].includes(i)) {
+                s.classList.add("other");
+            }
+        });
     }
 
-    function suivant() {
-        indexActuel = (indexActuel + 1) % total;
-        afficherSlide(indexActuel);
+    function next() {
+        index = (index + 1) % slides.length;
+        appliquerClasses();
     }
 
-    function precedent() {
-        indexActuel = (indexActuel - 1 + total) % total;
-        afficherSlide(indexActuel);
+    function prev() {
+        index = (index - 1 + slides.length) % slides.length;
+        appliquerClasses();
     }
 
-    // Flèches
-    if (nextBtn) nextBtn.addEventListener("click", suivant);
-    if (prevBtn) prevBtn.addEventListener("click", precedent);
+    // clicks
+    document.querySelector(".carrousel-btn--next")?.addEventListener("click", next);
+    document.querySelector(".carrousel-btn--prev")?.addEventListener("click", prev);
 
-    // Défilement automatique toutes les 5 secondes
-    setInterval(suivant, 5000);
+    // autoplay
+    setInterval(next, 5000);
 
-    afficherSlide(indexActuel);
+    appliquerClasses();
+
 })();
