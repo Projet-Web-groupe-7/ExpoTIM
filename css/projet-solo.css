@@ -445,17 +445,6 @@
         right: 5px;
         z-index: 5;
     }
-   
- 
-    .projet-solo-random{
-        margin-top: 200px;
-    }
-
-    
-
-    .projet-solo-random{
-        margin-top: 200px;
-    }
 
 } 
 
@@ -523,13 +512,12 @@
         object-fit:cover;
         padding: 10px;  
     }
-
-    .projet-solo-random{
-        margin-top: 350px;
-    }
-    
- 
-    .projet-solo-random{
-        margin-top: 350px;
-    }
 } 
+
+
+/* margin pour le projet solo */
+/* @media screen and (max-width: 1024px) {
+    .projet-solo-random{
+        margin-top: 200px;
+    }
+} */
