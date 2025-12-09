@@ -49,7 +49,7 @@
                 <h3 data-fl="jeu">Jeu</h3>
                 <h3 data-fl="web">Web</h3>
                 <h3 data-fl="3d">3D</h3>
-                <h3 data-fl="video">Vidéo / Design</h3>
+                <!-- <h3 data-fl="video">Vidéo / Design</h3> -->
             </nav>
         <?php } ?>
     </div>
