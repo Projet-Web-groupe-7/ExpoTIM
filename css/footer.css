@@ -25,6 +25,11 @@ footer .reseaux {
     text-align: center;
 }
 
+/*  */
+footer .reseaux img {
+    margin: 0 6px;
+}
+
 footer h4 {
     font-size: larger;
     padding-bottom: 10px;

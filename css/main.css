@@ -5,7 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     cursor: none;
-
+    line-height: 1.4;
 }
 
 
@@ -28,10 +28,15 @@
       /* Curseur */
     --mouse-x: 0px;
     --mouse-y: 0px;
- 
-
 }
 
+/* Tailles */
+h2{
+    font-size: clamp(1rem, 4vw, 2rem);
+}
+p{
+    font-size: clamp(0.8rem, 2.2vw, 1.2rem);
+}
 
 /* Couleurs */
 :root{
@@ -216,6 +221,38 @@ body::after {
     
 }
 
+/* Logo de chargement */
+/* Écran de chargement */
+#chargement {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bouton-couleur-fond); /* Change la couleur si tu veux */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Logo animé */
+.chargement-logo {
+    width: 120px;   /* ajuste la taille du logo */
+    animation: rotateLogo 1.5s linear infinite;
+    opacity: 0.9;
+}
+
+/* Animation de rotation */
+@keyframes rotateLogo {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 
 /* Boutons */
 .boutons{
@@ -237,7 +274,7 @@ body::after {
     font-family: var(--titre-accueil-font);
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(4rem, 9vw, 10rem);
+    font-size: clamp(4rem, 9vw, 8rem);
     color: var(--titre-accueil-couleur);
     text-align: center;
     margin: 0 auto;
@@ -245,7 +282,18 @@ body::after {
     padding: clamp(3rem, 6vw, 6rem) 0;
     position: relative;
     z-index: 1;
+
+    opacity: 0;
+    transform: translateY(-20px);
+    
+    
 }
+
+.titreLogo.reveal {
+    animation: showTitle 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
 
 /* Logo à l'arrière-plan */
 .titreLogo::before {
@@ -258,6 +306,24 @@ body::after {
     background-size: contain;
     z-index: -1;
     pointer-events: none;
+}
+
+@keyframes showTitle {
+  0% {
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-50%) translateY(-10%);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(-50%) translateY(5%);   /* petit rebond */
+  }
+  100% {
+    transform: translateX(-50%) translateY(0%);
+    opacity: 1;
+  }
 }
 
 /* État initial */

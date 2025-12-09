@@ -1,6 +1,7 @@
 /* Conteneur main */
 .credits {
   margin: 3rem auto;
+  max-width: 90vw;
 }
 
 /* Section contenant le titre de la page et la liste des membres de l'équipe */
@@ -16,7 +17,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 60vw;
   row-gap: 2rem;
 }
 
@@ -25,9 +25,11 @@
   display: flex;
   gap: 1.5rem;
   border-radius: 10px;
-  padding: 0.7rem;
-  /* margin-bottom: 0.5rem; */
+  padding: clamp(1rem, 2vw, 1.5rem);
   overflow: hidden;
+  width: 100%;
+  background-color: rgba(0, 16, 94, 0.6);
+
 }
 
 .equipe .liste-equipe .membre img {
@@ -41,6 +43,8 @@
 .equipe .liste-equipe .membre .infos_membre {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-width: 0;
   align-items: flex-start;
   gap: 1.5rem;
   margin: 0.5rem 0;
@@ -49,7 +53,6 @@
 .equipe .liste-equipe .membre .infos_membre_head {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   margin: 0;
   text-align: left;
 }
@@ -66,7 +69,8 @@
   padding: 0;
   width: fit-content;
   text-align: left;
-  transition: all 0.3s;
+  font-weight: normal;
+  transition: font-weight 0.2s, color 0.2s;
 }
 
 .equipe .liste-equipe .membre .lien:hover {
@@ -77,11 +81,22 @@
 .equipe .liste-equipe .membre .description {
   font-size: 0.9rem;
   text-align: left;
+  max-width: 50ch;
 }
 
 @media (max-width: 768px) {
   .equipe .liste-equipe .membre {
     flex-direction: column;
+  }
+
+  .equipe .liste-equipe {
+    align-items: center;
+    text-align: center;
+    width: 60vw;
+  }
+
+  .equipe .liste-equipe .membre .infos_membre {
+    max-width: 100%;
   }
 
   .equipe .liste-equipe .membre img {

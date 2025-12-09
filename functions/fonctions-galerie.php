@@ -65,7 +65,7 @@
 
 
     // le code PHP de la carte
-    function galerie_get_cartes($args, $case) {
+    function galerie_get_cartes($args, $case, $search_query = '') {
 ?>
     <?php
         
@@ -82,23 +82,55 @@
             //définir les champs
             $post_name;
             $post_img;
+
+            $post_membres = [];
+
             $finissant_cat = null;
+
             switch ($case) {
                 case 'arcade':
                     $post_name = get_field('projet-arcade_nom');
                     $post_img = get_field('projet-arcade_image');
+                    $post_membres = array_filter([
+                        get_field('projet-arcade_membre-1'),
+                        get_field('projet-arcade_membre-2'),
+                        get_field('projet-arcade_membre-3'),
+                        get_field('projet-arcade_membre-4'),
+                        get_field('projet-arcade_membre-5'),
+                    ]);
+                    
                 break;
 
                 case 'graphisme':
                     $post_name = get_field('projet-graphisme_nom');
                     $post_img = get_field('projet-graphisme_image');
-                break;
+                    $post_membres = array_filter([
+                        get_field('projet-graphisme_membre-1'),
+                        get_field('projet-graphisme_membre-2'),
+                    ]);
+                    
 
                 case 'finissants':
                     $post_name = get_field('projet-finissant_nom');
                     $post_img = get_field('projet-finissant_image');
-                    $finissant_cat = get_field('projet-finissant_categorie');
+
+                    $post_membres = array_filter([
+                        get_field('projet-finissant_membre-1'),
+                    ]);
+            
+              $finissant_cat = get_field('projet-finissant_categorie');
+
                 break;
+            }
+
+            $post_membres = array_filter($post_membres);
+            $matched_members = [];
+            if ($search_query !== '') {
+                foreach ($post_membres as $membre) {
+                    if (stripos($membre, $search_query) !== false) {
+                        $matched_members[] = $membre;
+                    }
+                }
             }
     ?>
 
@@ -114,12 +146,29 @@
                 <!-- img projet -->
                 <img src="<?php if($post_img){echo $post_img ['url'];}?>" alt="<?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?>">
                 <div class="symbole"></div>
+                <?php if (!empty($matched_members)): ?>
+                    <button class="btn-membres" aria-expanded="false" type="button">Afficher les membres trouvés</button>
+
+                    <div class="membres-slide" role="region" aria-hidden="true">
+                        <div class="membres-slide-inner">
+                            <?php foreach ($matched_members as $m) : ?>
+                                <span class="badge"><?= esc_html($m); ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
 
+            
+            
+            
 
             <div class="back"></div>
+            
         </div>
+        
     </a>
+   
     <?php
             endwhile;
         } else {
