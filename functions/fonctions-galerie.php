@@ -82,11 +82,11 @@
             //définir les champs
             $post_name;
             $post_img;
-<<<<<<< HEAD
+
             $post_membres = [];
-=======
+
             $finissant_cat = null;
->>>>>>> dev
+
             switch ($case) {
                 case 'arcade':
                     $post_name = get_field('projet-arcade_nom');
@@ -98,6 +98,7 @@
                         get_field('projet-arcade_membre-4'),
                         get_field('projet-arcade_membre-5'),
                     ]);
+                    
                 break;
 
                 case 'graphisme':
@@ -107,19 +108,18 @@
                         get_field('projet-graphisme_membre-1'),
                         get_field('projet-graphisme_membre-2'),
                     ]);
-                break;
+                    
 
                 case 'finissants':
                     $post_name = get_field('projet-finissant_nom');
                     $post_img = get_field('projet-finissant_image');
-<<<<<<< HEAD
+
                     $post_membres = array_filter([
                         get_field('projet-finissant_membre-1'),
                     ]);
             
-=======
-                    $finissant_cat = get_field('projet-finissant_categorie');
->>>>>>> dev
+              $finissant_cat = get_field('projet-finissant_categorie');
+
                 break;
             }
 

@@ -32,6 +32,7 @@
     wp_enqueue_style('expo-search-style', get_template_directory_uri() . '/css/search.css');
     wp_enqueue_style('expo-projet-solo-style', get_template_directory_uri() . '/css/projet-solo.css');
     wp_enqueue_style('expo-division-style', get_template_directory_uri() . '/css/division.css');
+    wp_enqueue_style('expo-animationGASP-style', get_template_directory_uri() . '/css/animationGASP.css');
       
       
 
@@ -96,6 +97,24 @@
         array(),
         filemtime(get_template_directory() . 
         '/js/chargement.js'),
+        true
+    );
+
+    /* Animation GSAP pour l'intro */
+    wp_enqueue_script(
+        'gsap',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+        array(),
+        null,
+        true
+    );
+    
+
+    wp_enqueue_script(
+        'intro-gsap',
+        get_template_directory_uri() . '/js/intro.js',
+        array('gsap'),
+        filemtime(get_template_directory() . '/js/intro.js'),
         true
     );
       
