@@ -7,6 +7,12 @@
   row-gap: 3rem;
 }
 
+.hero {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+}
+
 .contenuVideo {
   margin: 0 auto;
 }
@@ -17,7 +23,7 @@
   border-radius: 12px;
   margin: 0 auto;
   
-
+  background-color: black;
 }
 
 .video-front-page.reveal {
@@ -210,6 +216,11 @@
 
 /********** VERSION MOBILE **********/
 @media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .expo-deck {
     flex-direction: column-reverse;
     align-items: center;
