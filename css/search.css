@@ -3,31 +3,102 @@
 }
 
 
+.btn-membres {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 6px 12px;
+    font-size: .85rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer;
+    z-index: 40; /* au-dessus de l'image */
+    position: relative;
+    border-radius: .8rem;
+}
 
 
-.membres-badges {
-    display:flex;
-    flex-wrap: wrap;
+.btn-membres::after {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 100%;
+
+    background-color: var(--section-exposition-couleur-fond-secondaire);
+
+    z-index: -1;
+    border-radius: .8rem;
+    transition: width .5s ease-out;
+}
+
+/* hover */
+.btn-membres:hover {
+    box-shadow: 0 0 10px 5px #FFABAB;
+}
+
+.btn-membres:hover::after {
+    width: 100%;
+}
+
+/* clic */
+.btn-membres:active {
+    background-color: var(--section-exposition-couleur-fond-secondaire);
+}
+
+/* ---- slide (cachée par défaut, under the bottom) ---- */
+.membres-slide {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50%;               /* recouvre la moitié de la carte */
+    max-height: 50%;
+    box-sizing: border-box;
+    padding: 14px;
+    display: flex;
+    align-items: flex-start;
     justify-content: center;
-    gap:6px;
-    padding-top: 30px;
-    text-align: center;
+    overflow-y: auto;
+    pointer-events: none;      /* bloque l'interaction tant que cachée */
+    background: #ffffff;       /* DIV blanche */
+    color: #111;
+    transform: translateY(100%); /* cachée sous la carte */
+    opacity: 0;
+    transition: transform .42s cubic-bezier(.16,.84,.44,1), opacity .28s ease;
+    z-index: 35;
+    border-radius: 0 0 20px 20px; /* en bas seulement */
 }
 
-.badge {
+/* inner pour espacement des badges */
+.membres-slide-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* badges style (tu peux garder ton style existant) */
+.membres-slide .badge {
     font-size: .75rem;
-    padding: 3px 8px;
+    padding: 6px 10px;
     border-radius: 999px;
-    background: rgba(0,0,0,.55);
-    color: white;
-    backdrop-filter: blur(3px);
-    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(0,0,0,0.08);
+    color: #111;
+    border: 1px solid rgba(0,0,0,0.06);
+    white-space: nowrap;
 }
 
-.carte .badge {
-    transition: transform .2s ease;
+/* état visible */
+.membres-slide.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
 }
 
-.carte .badge:hover {
-    transform: scale(1.05);
+/* option : ombre légère quand ouvert */
+.membres-slide.active {
+    box-shadow: 0 -8px 24px rgba(0,0,0,0.15);
 }

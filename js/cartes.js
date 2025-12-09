@@ -391,3 +391,39 @@ document.querySelectorAll(".carte").forEach(carte => {
         carte.style.transform = carte.style.transform.replace(" translateY(-10px) scale(1.05)", "");
     });
 });
+
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('btn-membres')) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const btn = e.target;
+        const slide = btn.nextElementSibling;
+
+        if (!slide) return;
+
+        const isActive = slide.classList.toggle('active');
+
+        // changer le texte du bouton
+        btn.textContent = isActive ? 'Cacher les membres trouvés' : 'Afficher les membres trouvés';
+
+        // accessibilité
+        btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+    }
+
+    // fermeture si clic en dehors de la carte
+    if (!e.target.closest('.carte')) {
+        document.querySelectorAll('.membres-slide.active').forEach(function(s) {
+            s.classList.remove('active');
+
+            const b = s.previousElementSibling;
+            if (b && b.classList.contains('btn-membres')) {
+                b.textContent = 'Afficher les membres'; // remettre texte par défaut
+                b.setAttribute('aria-expanded', 'false');
+            }
+
+            s.setAttribute('aria-hidden', 'true');
+        });
+    }
+});

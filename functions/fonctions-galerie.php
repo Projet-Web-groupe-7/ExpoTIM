@@ -147,21 +147,28 @@
                 <img src="<?php if($post_img){echo $post_img ['url'];}?>" alt="<?php if($post_name){echo $post_name;} else {echo "Nom du projet";}?>">
                 <div class="symbole"></div>
                 <?php if (!empty($matched_members)): ?>
-                    <div class="membres-badges">
-                        <?php foreach ($matched_members as $m) : ?>
-                            <span class="badge"><?= esc_html($m); ?></span>
-                        <?php endforeach; ?>
+                    <button class="btn-membres" aria-expanded="false" type="button">Afficher les membres trouvés</button>
+
+                    <div class="membres-slide" role="region" aria-hidden="true">
+                        <div class="membres-slide-inner">
+                            <?php foreach ($matched_members as $m) : ?>
+                                <span class="badge"><?= esc_html($m); ?></span>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 <?php endif; ?>
             </div>
+
+            
+            
             
 
-
             <div class="back"></div>
+            
         </div>
         
     </a>
-    
+   
     <?php
             endwhile;
         } else {
