@@ -255,11 +255,15 @@ main.gallerie section#gallerie-cartes{
 
     align-items: center;
 }
+
 .cartes-random{
     display: flex;
     flex-flow: row nowrap;
 
     transition: width .5s;
+}
+.cartes-random:hover{
+    /* scale: 1.2; */
 }
 
 .cartes-random .paquet,.carte-anim{
@@ -277,7 +281,10 @@ main.gallerie section#gallerie-cartes{
     border-radius: 20px;
 
     margin: 0;
-    transition: right .5s, width 0.5s, box-shadow .5s, scale .5s;
+    transition: right .5s, width 0.5s, box-shadow .5s, scale .5s, scale  .2s;
+}
+.carte-anim:not(.shuffled):hover{
+    scale: 1.08;
 }
 .cartes-random .paquet.shuffled,.carte-anim.shuffled{
     box-shadow: -10px 0px 20px rgba(0, 0, 0, .2);

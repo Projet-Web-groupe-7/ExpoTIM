@@ -287,7 +287,7 @@
     function section_projet_random(){
         global $allCases;
 ?>
-    <section class="projet-random">
+    <section class="projet-random fondu-en-bas">
         <h2>Choisis un projet au hasard</h2>
         <div class="cartes-random">
             <div class="paquet carte-anim" style="color:white;">
