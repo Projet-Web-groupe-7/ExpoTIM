@@ -96,7 +96,7 @@
             <div>
                 <h2>Lien du projet</h2>
                 <?php  if  ( $projet_finissant_url): ?>
-                    <a href="<?php echo $projet_finissant_url; ?>">
+                    <a class="lienProjet" href="<?php echo $projet_finissant_url; ?>">
                         <?php echo $projet_finissant_url; ?>
                     </a>
                 <?php  endif; ?>
