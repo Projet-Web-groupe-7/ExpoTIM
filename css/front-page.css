@@ -7,17 +7,49 @@
   row-gap: 3rem;
 }
 
-.hero {
+.main-front-page .hero {
   width: 90vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 3rem;
 }
 
+.main-front-page .hero .hero-contenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  padding: 0 1rem;
+  opacity: 0;
+}
+
+/* Section contenant l'explication de l'exposition */
+.desc-expo {
+  position: relative;
+  padding: clamp(1rem, 5vw, 5rem);
+  text-align: center;
+}
+
+.desc-expo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../images/cartes/AsReel.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: 0.15;
+  z-index: -1;
+  pointer-events: none;
+}
+
 .video-front-page {
-  max-width: 900px;
+  max-width: 1200px;
   width: 100%;
   border-radius: 12px;
+
+  background-color: black;
 }
 
 .video-front-page.reveal {
@@ -32,7 +64,7 @@
 
 
 /* Sections de contenu de la page d'accueil */
-.desc-expo, .projet-random, .decks-expo {
+.projet-random, .decks-expo {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,29 +72,6 @@
   row-gap: 2rem;
   margin: 0 auto;
   width: 80vw;
-}
-
-/* Section contenant l'explication de l'exposition */
-.desc-expo {
-  position: relative;
-  width: min(
-    clamp(45ch, 60%, 75ch),
-    90vw
-  );
-  padding: clamp(2rem, 6vw, 6rem);
-}
-
-.desc-expo::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("../images/cartes/AsReel.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  opacity: 0.15;
-  z-index: -1;
-  pointer-events: none;
 }
 
 /** Styles pour le menu accordéon des différentes expositions sur grands écrans **/

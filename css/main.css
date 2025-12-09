@@ -276,7 +276,7 @@ body::after {
     font-family: var(--titre-accueil-font);
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(3rem, 8vw, 7rem);
+    font-size: clamp(2rem, 5vw, 6rem);
     color: var(--titre-accueil-couleur);
     margin: 0;
     text-align: center;
@@ -285,11 +285,11 @@ body::after {
     position: relative;
     z-index: 1;
 
-    opacity: 0;
+    /* opacity: 0; */
     transform: translateY(-20px);
 }
 
-.titreLogo.reveal {
+.main-front-page .hero .hero-contenu {
     animation: showTitle 1s ease-out forwards;
     animation-delay: 0.5s;
 }
