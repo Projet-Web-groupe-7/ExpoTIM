@@ -285,10 +285,14 @@ body::after {
 
     opacity: 0;
     transform: translateY(-20px);
+    
+    
+}
+
+.titreLogo.reveal {
     animation: showTitle 1s ease-out forwards;
     animation-delay: 0.5s;
 }
-
 
 
 /* Logo à l'arrière-plan */

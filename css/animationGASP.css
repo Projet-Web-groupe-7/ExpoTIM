@@ -32,7 +32,8 @@
 
 /* wrapper */
 .intro-expo-wrapper {
-    max-width: 900px;
+    max-width: 100%;
+
     position: relative;
     z-index: 2;
     border: 2px solid rgba(255,190,11,.35);
@@ -47,10 +48,8 @@
 --------------------------------*/
 
 .intro-texte {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    font-weight: 800;
-    letter-spacing: .5px;
-
+    font-size: clamp(2rem, 4vw, 3.5rem);
+   
     text-shadow: 0 2px 12px rgba(0,0,0,.6);
 }
 
@@ -64,40 +63,65 @@
     width: .35em;
 }
 
-/* ------------------------------
-   BOUTON PREMIUM
---------------------------------*/
+
 
 .intro-bouton {
+    position: relative;
     display: inline-block;
 
-    margin-top: 1.8rem;
-    padding: .9rem 2rem;
+    padding: 0.6rem 1.4rem;
+    font-weight: bold;
 
-    background: linear-gradient(135deg, #ffbe0b, #ff9f00);
-    color: #111;
-
-    font-weight: 800;
-    font-size: 1.1rem;
-
-    border-radius: 14px;
+    border-radius: .8rem;
     text-decoration: none;
+   
 
-    box-shadow:
-        0 6px 20px rgba(0,0,0,.35),
-        inset 0 -2px 0 rgba(0,0,0,.2);
+    border: 2px solid rgba(255,190,11,.35);
 
-    transition: transform .2s ease, box-shadow .2s ease;
+    
+
+    color: var(--texte-couleur-secondaire);
+
+    overflow: hidden;
+
+    transition: 
+        box-shadow 1s ease,
+        width .5s ease-out,
+        color .3s ease;
+
+    width: 220px;          /* comme les boutons du menu */
+    text-align: center;
 }
 
+/* fond animé */
+.intro-bouton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 100%;
+
+    background-color: var(--section-exposition-couleur-fond-secondaire);
+
+    z-index: -1;
+
+    transition: width .5s ease-out;
+}
+
+/* hover */
 .intro-bouton:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.45),
-        inset 0 -2px 0 rgba(0,0,0,.2);
+
+    box-shadow: 0 0 10px 5px #FFABAB;
 }
 
-/* effet clic */
-.intro-bouton:active {
-    transform: translateY(1px) scale(.99);
+.intro-bouton:hover::after {
+    width: 100%;
 }
+
+/* clic */
+.intro-bouton:active {
+    background-color: var(--section-exposition-couleur-fond-secondaire);
+}
+

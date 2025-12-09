@@ -41,3 +41,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     elements.forEach(el => observer.observe(el));
 });
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add("reveal");
+                observer.unobserve(entry.target); // évite de relancer
+            }
+        });
+    },{
+        threshold: .2
+    });
+
+    document.querySelectorAll(".titreLogo, .video-front-page")
+        .forEach(el => observer.observe(el));
+
+});
