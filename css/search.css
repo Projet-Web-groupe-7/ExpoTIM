@@ -68,7 +68,7 @@
     opacity: 0;
     transition: transform .42s cubic-bezier(.16,.84,.44,1), opacity .28s ease;
     z-index: 35;
-    border-radius: 0 0 20px 20px; /* en bas seulement */
+    border-radius:20px; /* en bas seulement */
 }
 
 /* inner pour espacement des badges */
