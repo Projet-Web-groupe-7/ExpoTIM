@@ -1,7 +1,31 @@
 <?php get_header(); ?>
-    <main class="main-front-page">
+    <section class="intro-expo">
+        <div class="intro-expo-wrapper">
+
+            <h1 class="intro-texte">
+                <?php 
+                    $intro = "Bienvenue sur le site de l'EXPO TIM : Les AS du TIM.";
+                    $chars = preg_split('//u', $intro, -1, PREG_SPLIT_NO_EMPTY);
+                    foreach ($chars as $char) {
+                        if (trim($char) === '') {
+                            echo "<span class='char char-space'>&nbsp;</span>";
+                        } else {
+                            echo "<span class='char'>{$char}</span>";
+                        }
+                    }
+                ?>
+            </h1>
+
+            <a href="#main" class="intro-bouton">Entrer sur le site</a>
+
+        </div>
+    </section>
+    <main class="main-front-page" id="main">
+        <!-- Section titre et video-->
         <section class="hero">
+
             <h1 class="titreLogo"><?php echo get_bloginfo('name'); ?></h1>
+            
             <div class="contenuVideo">
                 <video autoplay loop muted playsinline class="video-front-page">
                     <source src="<?php echo get_template_directory_uri(); ?>/video/VideoPromotionnelleWeb.mp4" type="video/mp4">

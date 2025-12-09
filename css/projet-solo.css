@@ -181,6 +181,7 @@
     max-height: 82vh;
     object-fit: contain;
     display: block;
+    box-shadow: none;
 }
  
 /* Slides */

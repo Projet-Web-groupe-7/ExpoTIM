@@ -221,6 +221,38 @@ body::after {
     
 }
 
+/* Logo de chargement */
+/* Écran de chargement */
+#chargement {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bouton-couleur-fond); /* Change la couleur si tu veux */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Logo animé */
+.chargement-logo {
+    width: 120px;   /* ajuste la taille du logo */
+    animation: rotateLogo 1.5s linear infinite;
+    opacity: 0.9;
+}
+
+/* Animation de rotation */
+@keyframes rotateLogo {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 
 /* Boutons */
 .boutons{
@@ -250,7 +282,18 @@ body::after {
     padding: clamp(3rem, 6vw, 6rem) 0;
     position: relative;
     z-index: 1;
+
+    opacity: 0;
+    transform: translateY(-20px);
+    
+    
 }
+
+.titreLogo.reveal {
+    animation: showTitle 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
 
 /* Logo à l'arrière-plan */
 .titreLogo::before {
@@ -263,6 +306,24 @@ body::after {
     background-size: contain;
     z-index: -1;
     pointer-events: none;
+}
+
+@keyframes showTitle {
+  0% {
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-50%) translateY(-10%);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(-50%) translateY(5%);   /* petit rebond */
+  }
+  100% {
+    transform: translateX(-50%) translateY(0%);
+    opacity: 1;
+  }
 }
 
 /* État initial */

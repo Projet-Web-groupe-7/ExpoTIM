@@ -11,10 +11,10 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  flex-wrap: wrap; /* allows wrapping when space is tight */
+  flex-wrap: wrap;
   gap: 1rem;
   margin: 0;
-  
+
 }
 
 #maCheckbox,

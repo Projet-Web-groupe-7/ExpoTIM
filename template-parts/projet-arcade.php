@@ -100,11 +100,9 @@
         
     </div>
 
-<<<<<<< HEAD
 
     
 </article>
-=======
     
     
    
@@ -113,7 +111,6 @@
     <iframe src="<?php echo esc_url($projet_arcade_video); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </article>
 
->>>>>>> Erik_Sprint3
 <div class="projet-solo-random">
     <?php section_projet_random(); ?>
 </div>
