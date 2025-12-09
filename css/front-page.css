@@ -7,17 +7,17 @@
   row-gap: 3rem;
 }
 
-.contenuVideo {
-  margin: 0 auto;
+.hero {
+  width: 90vw;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3rem;
 }
 
 .video-front-page {
   max-width: 900px;
   width: 100%;
   border-radius: 12px;
-  margin: 0 auto;
-  
-
 }
 
 .video-front-page.reveal {
@@ -210,6 +210,11 @@
 
 /********** VERSION MOBILE **********/
 @media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .expo-deck {
     flex-direction: column-reverse;
     align-items: center;

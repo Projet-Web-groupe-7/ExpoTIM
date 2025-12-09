@@ -31,10 +31,11 @@ main.gallerie{
 
 /*  //////////////////////////////////// filtres */
 .gallerie .hero .filtre{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+    width: 100%;
 
     margin-top: 20px;
 }
@@ -44,16 +45,49 @@ main.gallerie{
     padding: 8px;
 }
 .gallerie .hero .filtre h3{
-    margin: 0 10px;
-    border: 3px solid white;
+    margin:  5px 10px;
+    /* border: 1px solid var(--section-exposition-couleur-fond-secondaire);; */
+    border: 1px solid white;
     padding: 8px;
+
+    align-self: center;
 }
 
-.gallerie .hero .filtre h3.actif{
-    background-color: #00494d;
+
+.filtre h3 {
+    position: relative;
+    text-align: center;
+    border-radius: 0.8rem;
+    text-decoration: none;
+
+    transition: box-shadow 1s ease, width 0.5s ease-out;
+    overflow: hidden;
+}
+.filtre h3:hover {
+    color: white;
+    box-shadow: 0 0 10px 5px #FFABAB;
+}
+  
+.filtre h3::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;                        /* point de départ */
+    background-color: var(--section-exposition-couleur-fond-secondaire);
+    z-index: -1;
+    transition: width 0.5s ease-out;
+  }
+.filtre h3:hover::after, .filtre h3.actif::after {
+    width: 100%;                     /* animation */
+  
 }
 
 
+
+
+/* galerie */
 main.gallerie section#gallerie-cartes{
     display: grid;
     grid-template-columns: repeat(4, 325px);
