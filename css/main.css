@@ -187,6 +187,7 @@ body::after {
     transform: translate(-50%, -50%);
 }
 
+
 /* Traînée du curseur */
 .trail {
     position: fixed;
@@ -275,19 +276,17 @@ body::after {
     font-family: var(--titre-accueil-font);
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(4rem, 9vw, 8rem);
+    font-size: clamp(3rem, 8vw, 7rem);
     color: var(--titre-accueil-couleur);
+    margin: 0;
     text-align: center;
-    margin: 0 auto;
-    width: clamp(200px, 50%, 550px);
+    max-width: 600px;
     padding: clamp(3rem, 6vw, 6rem) 0;
     position: relative;
     z-index: 1;
 
     opacity: 0;
     transform: translateY(-20px);
-    
-    
 }
 
 .titreLogo.reveal {
@@ -311,18 +310,18 @@ body::after {
 
 @keyframes showTitle {
   0% {
-    transform: translateX(-50%) translateY(100%);
+    transform: translateY(100%);
     opacity: 0;
   }
   60% {
-    transform: translateX(-50%) translateY(-10%);
+    transform: translateY(-10%);
     opacity: 1;
   }
   80% {
-    transform: translateX(-50%) translateY(5%);   /* petit rebond */
+    transform: translateY(5%);   /* petit rebond */
   }
   100% {
-    transform: translateX(-50%) translateY(0%);
+    transform: translateY(0%);
     opacity: 1;
   }
 }

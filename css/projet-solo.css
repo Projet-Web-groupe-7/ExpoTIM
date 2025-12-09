@@ -31,8 +31,12 @@
         opacity: 1;
     }
 }
- 
- 
+.projet-container-bas-droite h2{
+    color: var(--texte-couleur-secondaire);
+ }
+.projet-container-bas-droite h3{
+    color: var(--texte-couleur-principal);
+ }
 .projet-container{
     display: flex;
     flex-direction: column;
@@ -119,9 +123,9 @@
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 20px;
-    margin-top: 20px;
     height: auto;
     min-height: 70vh;
+    margin: 40px;
 }
  
  
@@ -131,6 +135,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+   
 }
  
 .projet-container-bas-droite h2,
@@ -334,6 +339,11 @@
     aspect-ratio: 16 / 9;
     height: auto;
     display: block;
+}
+
+
+.lienProjet{
+    color: var(--texte-couleur);
 }
  
 @media screen and (max-width: 1024px) {
