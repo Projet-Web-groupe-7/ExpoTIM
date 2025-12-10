@@ -49,7 +49,7 @@
                 <h3 data-fl="jeu">Jeu</h3>
                 <h3 data-fl="web">Web</h3>
                 <h3 data-fl="3d">3D</h3>
-                <h3 data-fl="video">Vidéo / Design</h3>
+                <!-- <h3 data-fl="video">Vidéo / Design</h3> -->
             </nav>
         <?php } ?>
     </div>
@@ -287,7 +287,7 @@
     function section_projet_random(){
         global $allCases;
 ?>
-    <section class="projet-random">
+    <section class="projet-random fondu-en-bas">
         <h2>Choisis un projet au hasard</h2>
         <div class="cartes-random">
             <div class="paquet carte-anim" style="color:white;">

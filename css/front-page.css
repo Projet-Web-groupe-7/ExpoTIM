@@ -45,10 +45,9 @@
 }
 
 .video-front-page {
-  max-width: 1200px;
+  max-width: 60vw;
   width: 100%;
   border-radius: 12px;
-
   background-color: black;
 }
 
@@ -217,11 +216,32 @@
   background-image: url('../images/cartes/graphisme.png');
 }
 
+/******** FORMAT TABLETTE *************/
+@media screen and (max-width: 1320px){
+
+    .hero {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video-front-page {
+    max-width: 70vw;
+  }
+
+}
+
+
+
 /********** VERSION MOBILE **********/
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
     align-items: center;
+  }
+
+  
+  .video-front-page {
+    max-width: 100vw;
   }
 
   .expo-deck {

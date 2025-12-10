@@ -47,7 +47,7 @@ main.gallerie{
 .gallerie .hero .filtre h3{
     margin:  5px 10px;
     /* border: 1px solid var(--section-exposition-couleur-fond-secondaire);; */
-    border: 1px solid white;
+    border: 2px solid white;
     padding: 8px;
 
     align-self: center;
@@ -255,6 +255,7 @@ main.gallerie section#gallerie-cartes{
 
     align-items: center;
 }
+
 .cartes-random{
     display: flex;
     flex-flow: row nowrap;
@@ -277,7 +278,10 @@ main.gallerie section#gallerie-cartes{
     border-radius: 20px;
 
     margin: 0;
-    transition: right .5s, width 0.5s, box-shadow .5s, scale .5s;
+    transition: right .5s, width 0.5s, box-shadow .5s, scale .5s, scale  .2s;
+}
+.carte-anim:hover{
+    scale: 1.08;
 }
 .cartes-random .paquet.shuffled,.carte-anim.shuffled{
     box-shadow: -10px 0px 20px rgba(0, 0, 0, .2);
