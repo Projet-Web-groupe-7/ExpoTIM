@@ -109,6 +109,7 @@
                         get_field('projet-graphisme_membre-2'),
                     ]);
                     
+                break;
 
                 case 'finissants':
                     $post_name = get_field('projet-finissant_nom');
