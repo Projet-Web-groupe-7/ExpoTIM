@@ -4,7 +4,7 @@
 
             <h1 class="intro-texte">
                 <?php 
-                    $intro = "Bienvenue sur le site de l'EXPO TIM : Les AS du TIM.";
+                    $intro = "Bienvenue sur le site de l'expoTIM : Les AS du TIM.";
                     $chars = preg_split('//u', $intro, -1, PREG_SPLIT_NO_EMPTY);
                     foreach ($chars as $char) {
                         if (trim($char) === '') {
@@ -27,7 +27,7 @@
                 <h1 class="titreLogo"><?php echo get_bloginfo('name'); ?></h1>
                 <!-- Section contenant la description de l'exposition -->
                 <section class="desc-expo">
-                    <h2>C'est quoi l'expo TIM?</h2>
+                    <h2>C'est quoi l'expoTIM?</h2>
                     <p><?php echo get_theme_mod('hero_desc', __('Bienvenue sur le site de l\'exposition des travaux des étudiants du programme TIM', 'theme_5w5')); ?></p>
                 </section>
             </div>

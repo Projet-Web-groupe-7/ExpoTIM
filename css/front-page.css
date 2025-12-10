@@ -11,6 +11,7 @@
   width: 90vw;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 3rem;
 }
 
@@ -19,7 +20,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 600px;
+  max-width: 40vw;
   padding: 0 1rem;
   opacity: 0;
 }
@@ -27,8 +28,10 @@
 /* Section contenant l'explication de l'exposition */
 .desc-expo {
   position: relative;
-  padding: clamp(1rem, 5vw, 5rem);
+  padding: clamp(1rem, 5vw, 3rem);
   text-align: center;
+  max-width: 600px;
+  margin-top: -2rem;
 }
 
 .desc-expo::before {
@@ -47,6 +50,7 @@
 .video-front-page {
   max-width: 60vw;
   width: 100%;
+  height: fit-content;
   border-radius: 12px;
   background-color: black;
 }
@@ -224,6 +228,10 @@
     align-items: center;
   }
 
+   .main-front-page .hero .hero-contenu {
+    max-width: 70vw;
+  }
+
   .video-front-page {
     max-width: 70vw;
   }
@@ -238,7 +246,6 @@
     flex-direction: column;
     align-items: center;
   }
-
   
   .video-front-page {
     max-width: 100vw;
