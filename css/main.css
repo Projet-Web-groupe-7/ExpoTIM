@@ -34,6 +34,11 @@
 h2{
     font-size: clamp(1rem, 4vw, 2rem);
 }
+
+h3 {
+    font-weight: normal;
+}
+
 p{
     font-size: clamp(0.8rem, 2.2vw, 1.2rem);
 }
