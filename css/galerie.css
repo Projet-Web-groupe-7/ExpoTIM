@@ -47,7 +47,7 @@ main.gallerie{
 .gallerie .hero .filtre h3{
     margin:  5px 10px;
     /* border: 1px solid var(--section-exposition-couleur-fond-secondaire);; */
-    border: 1px solid white;
+    border: 2px solid white;
     padding: 8px;
 
     align-self: center;
@@ -262,9 +262,6 @@ main.gallerie section#gallerie-cartes{
 
     transition: width .5s;
 }
-.cartes-random:hover{
-    /* scale: 1.2; */
-}
 
 .cartes-random .paquet,.carte-anim{
     /* visibility: visible; */
@@ -283,7 +280,7 @@ main.gallerie section#gallerie-cartes{
     margin: 0;
     transition: right .5s, width 0.5s, box-shadow .5s, scale .5s, scale  .2s;
 }
-.carte-anim:not(.shuffled):hover{
+.carte-anim:hover{
     scale: 1.08;
 }
 .cartes-random .paquet.shuffled,.carte-anim.shuffled{
