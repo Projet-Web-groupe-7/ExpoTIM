@@ -267,8 +267,7 @@ header {
   border-radius: 10px;
   outline: none;
   padding: 0;                 
-  width: 0;                      
-  opacity: 0;                   
+  width: 14rem;                                      
   transition: all 0.3s ease;
 }
 
@@ -287,14 +286,6 @@ header {
   align-items: center;
   justify-content: center;
   transition: background 0.2s ease;
-}
-
-/*quand la souris passe, l’input s’ouvre */
-.recherche:hover .recherche-input,
-.recherche-input:focus {
-  width: 14rem;                  /* La largeur que tu avais */
-  padding: 3px;                  /* Réapparition du padding */
-  opacity: 1;                    /* Affiche l’input */
 }
 
 }
