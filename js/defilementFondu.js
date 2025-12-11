@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         threshold: .2
     });
 
-    document.querySelectorAll(".titreLogo, .video-front-page")
+    document.querySelectorAll(".main-front-page .hero .hero-contenu, .video-front-page")
         .forEach(el => observer.observe(el));
 
 });
