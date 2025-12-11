@@ -286,7 +286,7 @@ body::after {
     margin: 0;
     text-align: center;
     max-width: 600px;
-    padding: clamp(3rem, 6vw, 6rem) 0;
+    padding: clamp(2rem, 5vw, 5rem);
     position: relative;
     z-index: 1;
 
