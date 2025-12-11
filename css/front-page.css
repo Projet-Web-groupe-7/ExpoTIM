@@ -28,10 +28,17 @@
 /* Section contenant l'explication de l'exposition */
 .desc-expo {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
   padding: clamp(1rem, 5vw, 3rem);
   text-align: center;
   max-width: 600px;
   margin-top: -4.5rem;
+}
+
+.desc-expo p {
+  text-align: justify;
 }
 
 .desc-expo::before {
