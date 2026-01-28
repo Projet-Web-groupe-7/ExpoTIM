@@ -1,41 +1,50 @@
 let lastScrollTop = 0;
 const header = document.querySelector("header");
-if (!header) return;
 
-function updateHeaderHeight() {
-  const h = header.offsetHeight;
+if (header) {
 
-  document.documentElement.style.setProperty(
-    "--header-height",
-    `${h}px`
-  );
+  // --- Met à jour la hauteur du header et la variable CSS ---
+  let resizeTimeout;
+  function updateHeaderHeight() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const h = header.offsetHeight;
 
-  // gap = header + espace visuel (2rem ici)
-  document.documentElement.style.setProperty(
-    "--header-gap",
-    `calc(${h}px + 2rem)`
-  );
-}
-
-function gererLeDefilement() {
-  const currentScroll = window.scrollY;
-
-  if (currentScroll <= header.offsetHeight) {
-    header.style.transform = "translateY(0)";
-    lastScrollTop = currentScroll;
-    return;
+      document.documentElement.style.setProperty("--header-height", `${h}px`);
+      document.documentElement.style.setProperty("--header-gap", `calc(${h}px + 2rem)`);
+    }, 50); // 50ms de délai pour le debounce
   }
 
-  header.style.transform =
-    currentScroll > lastScrollTop
-      ? "translateY(-100%)"
-      : "translateY(0)";
+  // --- Gestion du scroll pour cacher/montrer le header ---
+  function gererLeDefilement() {
+    const currentScroll = window.scrollY;
+    const headerHeight = header.offsetHeight;
 
-  lastScrollTop = currentScroll;
+    if (currentScroll <= headerHeight) {
+      header.style.transform = "translateY(0)";
+      lastScrollTop = currentScroll;
+      return;
+    }
+
+    // Applique le transform seulement si nécessaire pour éviter les clignotements
+    if ((currentScroll > lastScrollTop && header.style.transform !== "translateY(-100%)") ||
+        (currentScroll < lastScrollTop && header.style.transform !== "translateY(0)")) {
+      header.style.transform = currentScroll > lastScrollTop
+        ? "translateY(-100%)"
+        : "translateY(0)";
+    }
+
+    lastScrollTop = currentScroll;
+  }
+
+  // --- Listeners ---
+  window.addEventListener("load", updateHeaderHeight);
+  window.addEventListener("resize", updateHeaderHeight);
+  window.addEventListener("scroll", gererLeDefilement);
+
+  // --- Observer pour changements dynamiques de la hauteur du header (ex: menu mobile ouvert) ---
+  new ResizeObserver(updateHeaderHeight).observe(header);
+
+  // --- Initial call ---
+  updateHeaderHeight();
 }
-
-window.addEventListener("load", updateHeaderHeight);
-window.addEventListener("resize", updateHeaderHeight);
-window.addEventListener("scroll", gererLeDefilement);
-
-new ResizeObserver(updateHeaderHeight).observe(header);

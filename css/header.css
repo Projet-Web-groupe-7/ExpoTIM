@@ -295,7 +295,7 @@ header {
 @media screen and (max-width: 900px) {
 
   .entete {
-    position: relative;          
+    /* position: relative;           */
     min-height: 64px;           
     display: flex;
     flex-direction: row;

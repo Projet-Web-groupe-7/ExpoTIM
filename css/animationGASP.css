@@ -129,9 +129,3 @@
 .intro-bouton:active {
     background-color: var(--section-exposition-couleur-fond-secondaire);
 }
-
-/* SECTIONS (autres que intro) */
-section:not(.intro-expo) {
-    padding-top: var(--header-gap);
-    scroll-margin-top: var(--header-height);
-}
