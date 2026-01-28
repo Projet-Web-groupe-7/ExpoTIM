@@ -1,39 +1,34 @@
-       // permettre au menu de glisser vers le haut lors du défilement vers le bas et de revenir 
-        
-        let lastScrollTop = 0; // position du scroll précédente
-        // Saisir l'entete
-        let header = document.querySelector("header");
+let lastScrollTop = 0;
+const header = document.querySelector("header");
 
-        // Lui associer un écouteur d'évènement
-        window.addEventListener("scroll", gererLeDefilement);
+function updateHeaderHeight() {
+  const h = header.offsetHeight;
+  document.documentElement.style.setProperty(
+    "--header-height",
+    `${h}px`
+  );
+}
 
-        // Fonction de l'évènement
-        function gererLeDefilement(_event) {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-	    if(currentScroll > lastScrollTop) {
-		    // On scroll vers le bas et cache le header
-            // En rajouter au header un style qui est le translate 
-            header.style.transform = 'translateY(-100%)';
-	    }
-	    else{
-		    // On scroll vers le haut et montrer le header
-            // On change le style translate a 0
-            header.style.transform = 'translateY(0)';
-	    }
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // éviter les valeurs négatives
-       }
+function gererLeDefilement() {
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-       // Mesurer automatiquement la hauteur du header et l'appliquer au body
-       function ajusterHauteurContenu() {
-              const headerHeight = header.offsetHeight;
-              document.body.style.paddingTop = headerHeight + "px";
-       }
+  // Toujours visible au top
+  if (currentScroll < header.offsetHeight) {
+    header.style.transform = "translateY(0)";
+    lastScrollTop = currentScroll;
+    return;
+  }
 
-       // Ajuster au chargement
-       window.addEventListener("DOMContentLoaded", ajusterHauteurContenu);
+  if (currentScroll > lastScrollTop) {
+    header.style.transform = "translateY(-100%)";
+  } else {
+    header.style.transform = "translateY(0)";
+  }
 
-       // Ajuster si on redimensionne la fenêtre
-       window.addEventListener("resize", ajusterHauteurContenu);
+  lastScrollTop = Math.max(currentScroll, 0);
+}
 
-
-        
+// Init
+window.addEventListener("DOMContentLoaded", updateHeaderHeight);
+window.addEventListener("resize", updateHeaderHeight);
+window.addEventListener("scroll", gererLeDefilement);

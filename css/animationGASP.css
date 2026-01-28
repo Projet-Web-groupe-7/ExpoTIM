@@ -3,19 +3,17 @@
 --------------------------------*/
 
 .intro-expo {
-    min-height: 100vh;
-    padding: 6rem 1.5rem;
+    min-height: calc(100svh - var(--header-height));
+    padding-top: var(--header-height);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 
-    text-align: center;
-    
-    color: white;
-
+    padding-inline: 1.5rem;
     position: relative;
     overflow: hidden;
+
+    color: white;
 }
 
 /* lumière décorative */
@@ -40,7 +38,9 @@
     padding: 2rem;
     border-radius: 20px;
     background: rgba(255,255,255,.03);
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ------------------------------
