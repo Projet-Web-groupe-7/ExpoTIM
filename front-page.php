@@ -6,12 +6,12 @@
                 <?php 
                     $intro = "Bienvenue sur le site de l'expoTIM : Les AS du TIM";
 
-                    // Split into words (keep spaces)
+                    // Séparer les mots tout en gardant les espaces
                     $words = preg_split('/(\s+)/u', $intro, -1, PREG_SPLIT_DELIM_CAPTURE);
 
                     foreach ($words as $word) {
                         if (trim($word) === '') {
-                            // normal space, browser can wrap here
+                            // espace normal, le navigateur peut faire un retour à la ligne ici
                             echo $word;
                         } else {
                             echo "<span class='word'>";
