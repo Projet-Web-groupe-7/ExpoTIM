@@ -53,6 +53,11 @@
     text-shadow: 0 2px 12px rgba(0,0,0,.6);
 }
 
+.word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
 .char {
     display: inline-block;
     will-change: transform, opacity;
