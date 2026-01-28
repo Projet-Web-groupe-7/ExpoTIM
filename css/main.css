@@ -108,6 +108,7 @@ p{
 
 :root {
     --header-height: 0px;
+    --header-gap: clamp(2rem, 6vh, 4rem);
 }
 
 
