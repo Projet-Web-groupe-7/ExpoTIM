@@ -106,6 +106,18 @@ p{
  
 }
 
+:root {
+    --header-height: 0px;
+    --header-gap: clamp(2rem, 6vh, 4rem);
+}
+
+main {
+    padding-top: var(--header-gap);
+}
+
+:target {
+    scroll-margin-top: var(--header-gap);
+}
 
 html {
 	overflow-x: hidden;
@@ -334,10 +346,12 @@ body::after {
 /* État initial */
 .fondu-en-bas {
     opacity: 0;
+    pointer-events: none;
 }
 
 /* Animation quand .active est ajoutée */
 .fondu-en-bas.active {
+    pointer-events: auto;
     animation: fondu-en-bas 700ms cubic-bezier(.17, .67, .88, 1.46) forwards;
 }
 
