@@ -111,6 +111,13 @@ p{
     --header-gap: clamp(2rem, 6vh, 4rem);
 }
 
+main, section, .projet-container, .gallerie, .credits {
+    padding-top: var(--header-gap);
+}
+
+:target {
+    scroll-margin-top: var(--header-gap);
+}
 
 html {
 	overflow-x: hidden;

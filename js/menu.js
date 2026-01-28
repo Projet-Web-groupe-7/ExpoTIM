@@ -1,34 +1,41 @@
 let lastScrollTop = 0;
 const header = document.querySelector("header");
+if (!header) return;
 
 function updateHeaderHeight() {
   const h = header.offsetHeight;
+
   document.documentElement.style.setProperty(
     "--header-height",
     `${h}px`
   );
+
+  // gap = header + espace visuel (2rem ici)
+  document.documentElement.style.setProperty(
+    "--header-gap",
+    `calc(${h}px + 2rem)`
+  );
 }
 
 function gererLeDefilement() {
-  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  const currentScroll = window.scrollY;
 
-  // Toujours visible au top
-  if (currentScroll < header.offsetHeight) {
+  if (currentScroll <= header.offsetHeight) {
     header.style.transform = "translateY(0)";
     lastScrollTop = currentScroll;
     return;
   }
 
-  if (currentScroll > lastScrollTop) {
-    header.style.transform = "translateY(-100%)";
-  } else {
-    header.style.transform = "translateY(0)";
-  }
+  header.style.transform =
+    currentScroll > lastScrollTop
+      ? "translateY(-100%)"
+      : "translateY(0)";
 
-  lastScrollTop = Math.max(currentScroll, 0);
+  lastScrollTop = currentScroll;
 }
 
-// Init
-window.addEventListener("DOMContentLoaded", updateHeaderHeight);
+window.addEventListener("load", updateHeaderHeight);
 window.addEventListener("resize", updateHeaderHeight);
 window.addEventListener("scroll", gererLeDefilement);
+
+new ResizeObserver(updateHeaderHeight).observe(header);
