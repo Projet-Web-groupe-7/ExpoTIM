@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   row-gap: 3rem;
 }
@@ -88,6 +88,8 @@
   width: 100vw;
   justify-content: flex-start;
   margin-bottom: 3rem;
+  overflow: visible;
+  min-height: 1px;
 }
 
 /* Conteneur pour les decks de cartes et la boîte décorative */
@@ -290,7 +292,7 @@
 
   .expo-menu {
     margin-left: 0;
-    margin-bottom: -150px;
+    margin-bottom: -200px;
     display: flex;
   }
 
@@ -312,7 +314,7 @@
   }
 
   .deck-cartes li:not(:first-child) {
-    margin-top: -150px;
+    margin-top: -200px;
   }
 
   .deck-cartes li:hover {
