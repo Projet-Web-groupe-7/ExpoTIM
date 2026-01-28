@@ -4,13 +4,22 @@
 
             <h1 class="intro-texte">
                 <?php 
-                    $intro = "Bienvenue sur le site de l'expoTIM : Les AS du TIM.";
-                    $chars = preg_split('//u', $intro, -1, PREG_SPLIT_NO_EMPTY);
-                    foreach ($chars as $char) {
-                        if (trim($char) === '') {
-                            echo "<span class='char char-space'>&nbsp;</span>";
+                    $intro = "Bienvenue sur le site de l'expoTIM : Les AS du TIM";
+
+                    // Split into words (keep spaces)
+                    $words = preg_split('/(\s+)/u', $intro, -1, PREG_SPLIT_DELIM_CAPTURE);
+
+                    foreach ($words as $word) {
+                        if (trim($word) === '') {
+                            // normal space, browser can wrap here
+                            echo $word;
                         } else {
-                            echo "<span class='char'>{$char}</span>";
+                            echo "<span class='word'>";
+                            $chars = preg_split('//u', $word, -1, PREG_SPLIT_NO_EMPTY);
+                            foreach ($chars as $char) {
+                                echo "<span class='char'>{$char}</span>";
+                            }
+                            echo "</span>";
                         }
                     }
                 ?>
