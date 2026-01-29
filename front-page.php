@@ -4,7 +4,7 @@
 
             <h1 class="intro-texte">
                 <?php 
-                    $intro = "Bienvenue sur le site de l'expoTIM : Les AS du TIM";
+                    $intro = "Bienvenue sur le site de l'expoTIM: Les AS du TIM";
 
                     // Séparer les mots tout en gardant les espaces
                     $words = preg_split('/(\s+)/u', $intro, -1, PREG_SPLIT_DELIM_CAPTURE);

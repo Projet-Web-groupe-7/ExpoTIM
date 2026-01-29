@@ -331,4 +331,7 @@
     transform: none;
   }
 
+  .deck-cartes li:active {
+    transform: translateY(-100px);
+  }
 }
