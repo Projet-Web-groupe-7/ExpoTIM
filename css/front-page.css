@@ -34,6 +34,7 @@
   text-align: center;
   max-width: 600px;
   margin-top: -4.5rem;
+  z-index: 0;
 }
 
 .desc-expo p {
@@ -56,7 +57,7 @@
 .video-front-page {
   max-width: 60vw;
   width: 100%;
-  height: fit-content;
+  height: auto;
   border-radius: 12px;
 }
 
@@ -84,16 +85,24 @@
 
 /** Styles pour le menu accordéon des différentes expositions sur grands écrans **/
 .decks-expo {
-  width: 100vw;
+  position: relative;
+  width: 100%;
   justify-content: flex-start;
   margin-bottom: 3rem;
   overflow: visible;
-  min-height: 1px;
+}
+
+.decks-expo > * {
+  margin-bottom: 2rem;
+}
+
+.decks-expo > *:last-child {
+  margin-bottom: 0;
 }
 
 /* Conteneur pour les decks de cartes et la boîte décorative */
 .expo-deck {
-  width: 100vw;
+  width: 100%;
   margin: 0;
   display: flex;
   align-items: center;
@@ -104,6 +113,8 @@
 
 /* Définir une taille adaptative commune pour boîte et cartes */
 :root {
+  --expo-width: 250px;
+  --expo-height: 180px;
   --expo-width: clamp(200px, 25vw, 350px);
   --expo-height: clamp(150px, 20vw, 250px);
 }
@@ -315,7 +326,9 @@
     margin-top: -240px;
   }
 
+  /* Pas de transformation au survol sur les appareils sans hover */
   .deck-cartes li:hover {
-    transform: translateY(-100px);
+    transform: none;
   }
+
 }

@@ -3,7 +3,7 @@ const header = document.querySelector("header");
 
 if (header) {
 
-  // --- Met à jour la hauteur du header et la variable CSS ---
+  // Met à jour la hauteur du header et la variable CSS
   let resizeTimeout;
   function updateHeaderHeight() {
     clearTimeout(resizeTimeout);
@@ -15,9 +15,9 @@ if (header) {
     }, 50); // 50ms de délai pour le debounce
   }
 
-  // --- Gestion du scroll pour cacher/montrer le header ---
+  // --- Gestion du scroll pour cacher/montrer le header
   function gererLeDefilement() {
-    const currentScroll = window.scrollY;
+    const currentScroll = window.scrollY || window.pageYOffset;
     const headerHeight = header.offsetHeight;
 
     if (currentScroll <= headerHeight) {
@@ -37,14 +37,16 @@ if (header) {
     lastScrollTop = currentScroll;
   }
 
-  // --- Listeners ---
+  // Listeners
   window.addEventListener("load", updateHeaderHeight);
   window.addEventListener("resize", updateHeaderHeight);
   window.addEventListener("scroll", gererLeDefilement);
 
-  // --- Observer pour changements dynamiques de la hauteur du header (ex: menu mobile ouvert) ---
-  new ResizeObserver(updateHeaderHeight).observe(header);
+  // Observer pour changements dynamiques de la hauteur du header
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(updateHeaderHeight).observe(header);
+  }
 
-  // --- Initial call ---
+  // Initial call
   updateHeaderHeight();
 }
